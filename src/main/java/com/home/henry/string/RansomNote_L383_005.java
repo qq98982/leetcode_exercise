@@ -19,11 +19,10 @@ public class RansomNote_L383_005 {
         }
         char[] r = ransomNote.toCharArray();
         for (int i = 0; i < r.length; i++) {
-            c[r[i] - 'a']--;
-        }
-        for (int i = 0; i < 26; i++) {
-            if (c[i] < 0) {
+            if (c[r[i] - 'a'] == 0) {
                 return false;
+            } else {
+                c[r[i] - 'a']--;
             }
         }
         return true;
