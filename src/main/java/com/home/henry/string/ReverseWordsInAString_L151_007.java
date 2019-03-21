@@ -4,7 +4,7 @@ package com.home.henry.string;
  * Given an input string, reverse the string word by word.
  * Note: split(" ")会有空的字符, 需要trim()
  */
-public class ReverseWordsInAString_151_007 {
+public class ReverseWordsInAString_L151_007 {
 
     public String reverseWords(String s) {
         if (null == s || s.length() == 0) {
