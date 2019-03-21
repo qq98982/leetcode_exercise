@@ -1,7 +1,10 @@
 package com.home.henry.string;
 
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  * Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once.
@@ -29,6 +32,8 @@ import java.util.Map;
  *
  * after one letter is determined in step 3, it need to be removed from the "last appeared position map", and the same letter should be ignored in the following steps
  * in step 3, the beginning index of the search range should be the index of previous determined letter plus one
+ *
+ * Stack, Queue is better
  */
 public class RemoveDuplicateLetters_L316_016 {
 
@@ -69,6 +74,64 @@ public class RemoveDuplicateLetters_L316_016 {
             minLastPos = Math.min(minLastPos, lastPos);
         }
         return minLastPos;
+    }
+
+    public String removeDuplicateLettersStack(String sr) {
+        int[] res = new int[26];
+        boolean[] visited = new boolean[26];
+        char[] c = sr.toCharArray();
+        //count number of occurances of character
+        for (char ch : c) {
+            res[ch - 'a']++;
+        }
+        Stack<Character> st = new Stack<>();
+        int index;
+        // "cbacdcbc" c = 4 b = 2 a = 1 d = 1
+        for (int i = 0; i < c.length; i++) {
+            index = c[i] - 'a';
+            res[index]--;
+            // default is false, so first in, will not ignore (character in stack)
+            if (visited[index]) {
+                continue;
+            }
+            while (!st.isEmpty() && c[i] < st.peek() && res[st.peek() - 'a'] != 0) {
+                visited[st.pop() - 'a'] = false;
+            }
+            st.push(c[i]);
+            visited[index] = true;
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!st.isEmpty()) {
+            sb.insert(0, st.pop());
+        }
+        return sb.toString();
+    }
+
+    public String removeDuplicateLettersQueue(String s) {
+        final int N = 26;
+        int[] count = new int[N];
+        boolean[] inQueue = new boolean[N];
+        Deque<Integer> dq = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            int idx = (s.charAt(i) - 'a');
+            count[idx]--;
+            if (inQueue[idx]) {
+                continue;
+            }
+            while (!dq.isEmpty() && dq.peekLast() > idx && count[dq.peekLast()] > 0) {
+                inQueue[dq.pollLast()] = false;
+            }
+            inQueue[idx] = true;
+            dq.offerLast(idx);
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!dq.isEmpty()) {
+            sb.append((char) (dq.pollFirst() + 'a'));
+        }
+        return sb.toString();
     }
 
 }
