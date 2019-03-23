@@ -38,13 +38,13 @@ basic
 
 6 low
 
-161 low
+161 low premium
 
 38
 
-358
+358 premium
 
-316
+316 premium
 
 271
 
@@ -58,11 +58,11 @@ basic
 
 273
 
-246
+246 premium
 
-247
+247 premium
 
-248 low
+248 low premium
 
 
 up level
