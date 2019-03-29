@@ -9,7 +9,7 @@ import java.util.Queue;
  * 103. Binary Tree Zigzag Level Order Traversal
  * BFS
  */
-public class BinaryTreeZigzagLevelOrderTraversal_L103_29 {
+public class BinaryTreeZigzagLevelOrderTraversal_L103_029 {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         // corner case
