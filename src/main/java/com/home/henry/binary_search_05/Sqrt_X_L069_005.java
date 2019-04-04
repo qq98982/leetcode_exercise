@@ -5,7 +5,7 @@ package com.home.henry.binary_search_05;
  * 注意判定条件 mid + 1 > x / mid + 1
  * 在left向右前, 有可能mid + 1 已经可以返回了
  */
-class Sqrx_L069_005 {
+class Sqrt_X_L069_005 {
 
     public int mySqrt(int x) {
         if (x < 2) {

@@ -9,7 +9,7 @@ package com.home.henry.binary_search_05;
  * 这里使用了[left, right)的迭代写法, 因为大部分的人会使用这种方法, 其他的[left,right]也可以, 明确一种即可
  * left + 1 < right这种方法需要写额外判断, 另外不容易理解, 不推荐
  */
-public class FindFirstAndLastPositionOfElementInSortedArray_L34_002 {
+public class FindFirstAndLastPositionOfElementInSortedArray_L034_002 {
 
     public int[] searchRange(int[] nums, int target) {
         if (nums == null || nums.length == 0) {return new int[] { -1, -1 };}

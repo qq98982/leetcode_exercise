@@ -1,6 +1,6 @@
 upper_bound
 
-35 34 704 981
+704 35 34 981
 
 69
 
@@ -12,13 +12,11 @@ rotated / peak
 
 kth + matrix
 
-378 668 
+378 668  719 373  
 
-4
+786 too hard
 
-kth + two pointers
-
-719 786
+4 important
 
 200 547 695 733 827
 
@@ -33,3 +31,14 @@ kth + two pointers
 127 126 752
 
 51 37 52
+
+374 
+
+278
+
+75
+
+159
+
+658
+
