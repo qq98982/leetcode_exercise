@@ -76,7 +76,9 @@ up level
 158
 
 
-substring(Sliding Window)
+substring(Sliding Window) 
+
+summary: https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem
 
 76
 
@@ -89,6 +91,8 @@ substring(Sliding Window)
 395
 
 159
+
+438
 
 
 palindrome
