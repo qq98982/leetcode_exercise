@@ -5,7 +5,7 @@ package com.home.henry.trie;
  * path是到达几次, end是是否结尾, nexts是底下的路径
  */
 public class ImplementTriePrefixTree_L208_002 {
-    public static class TrieNode {
+    private static class TrieNode {
         public int path;
         public int end;
         public TrieNode[] nexts;
