@@ -2,44 +2,89 @@ package com.home.henry.trie;
 
 /**
  * 208. Implement Trie (Prefix Tree)
+ * path是到达几次, end是是否结尾, nexts是底下的路径
  */
 public class ImplementTriePrefixTree_L208_002 {
-    private TrieNode root;
+    public static class TrieNode {
+        public int path;
+        public int end;
+        public TrieNode[] nexts;
 
-    public ImplementTriePrefixTree_L208_002() {
-        root = new TrieNode();
-        root.val = ' ';
+        public TrieNode() {
+            path = 0;
+            end = 0;
+            nexts = new TrieNode[26];
+        }
     }
 
-    public void insert(String word) {
-        TrieNode ws = root;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (ws.children[c - 'a'] == null) {
-                ws.children[c - 'a'] = new TrieNode(c);
+    public static class Trie {
+        private TrieNode root;
+
+        public Trie() {
+            root = new TrieNode();
+        }
+
+        public void insert(String word) {
+            if (word == null) {return;}
+            char[] chs = word.toCharArray();
+            TrieNode node = root;
+            int index = 0;
+            for (int i = 0; i < chs.length; i++) {
+                index = chs[i - 'a'];
+                if (node.nexts[index] == null) {
+                    node.nexts[index] = new TrieNode();
+                }
+                node = node.nexts[index];
             }
-            ws = ws.children[c - 'a'];
+            node.end++;
         }
-        ws.isWord = true;
+
+        public int search(String word) {
+            if (word == null) {return 0;}
+            char[] chs = word.toCharArray();
+            TrieNode node = root;
+            int index = 0;
+            for (int i = 0; i < chs.length; i++) {
+                index = chs[i] - 'a';
+                if (node.nexts[index] == null) {
+                    return 0;
+                }
+                node = node.nexts[index];
+            }
+            return node.end;
+        }
+
+        public void delete(String word) {
+            if (search(word) != 0) {
+                char[] chs = word.toCharArray();
+                TrieNode node = root;
+                int index = 0;
+                for (int i = 0; i < chs.length; i++) {
+                    index = chs[i] - 'a';
+                    if (--node.nexts[index].path == 0) {
+                        node.nexts[index] = null;
+                        return;
+                    }
+                    node = node.nexts[index];
+                }
+                node.end--;
+            }
+        }
+
+        public int prefixNumber(String pre) {
+            if (pre == null) {return 0;}
+            char[] chs = pre.toCharArray();
+            TrieNode node = root;
+            int index = 0;
+            for (int i = 0; i < chs.length; i++) {
+                index = chs[i] - 'a';
+                if (node.nexts[index] == null) {
+                    return 0;
+                }
+                node = node.nexts[index];
+            }
+            return node.path;
+        }
     }
 
-    public boolean search(String word) {
-        TrieNode ws = root;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (ws.children[c - 'a'] == null) { return false; }
-            ws = ws.children[c - 'a'];
-        }
-        return ws.isWord;
-    }
-
-    public boolean startsWith(String prefix) {
-        TrieNode ws = root;
-        for (int i = 0; i < prefix.length(); i++) {
-            char c = prefix.charAt(i);
-            if (ws.children[c - 'a'] == null) { return false; }
-            ws = ws.children[c - 'a'];
-        }
-        return true;
-    }
 }
