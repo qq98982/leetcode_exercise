@@ -34,11 +34,11 @@ basic
 
 87
 
-179
+179 low
 
 6 low
 
-161 low premium
+161 premium
 
 38
 
@@ -123,6 +123,8 @@ parentheses
 22 301 dfs
 
 32
+
+241
 
 
 sub sequence
