@@ -6,7 +6,7 @@ basic
 40
 216
 377 dp
-254
+254 premium
 46
 47
 31 string
