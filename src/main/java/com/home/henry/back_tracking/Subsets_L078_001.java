@@ -11,7 +11,7 @@ import java.util.List;
  * Input: nums = [1,2,3]
  * Output: [ [3], [1], [2], [1,2,3], [1,3], [2,3], [1,2], [] ]
  */
-public class Subsets_078_001 {
+public class Subsets_L078_001 {
 
     static class Solution {
         public List<List<Integer>> subsets(int[] nums) {

@@ -13,7 +13,7 @@ import java.util.List;
  * Output: [ [2], [1], [1,2,2], [2,2], [1,2], [] ]
  * Point: if (i > index && nums[i] == nums[i - 1]) {continue;}
  */
-public class SubsetsII_090_002 {
+public class SubsetsII_L090_002 {
     static class Solution {
         public List<List<Integer>> subsetsWithDup(int[] nums) {
             List<List<Integer>> res = new ArrayList<>();

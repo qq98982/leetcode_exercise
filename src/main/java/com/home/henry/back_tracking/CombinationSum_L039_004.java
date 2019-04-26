@@ -17,7 +17,7 @@ import java.util.List;
  *
  * NOTE: not i + 1 because we can reuse same elements !!!
  */
-public class CombinationSum_039_004 {
+public class CombinationSum_L039_004 {
 
     static class Solution {
         public List<List<Integer>> combinationSum(int[] candidates, int target) {

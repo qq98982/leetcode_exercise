@@ -11,7 +11,8 @@ import java.util.List;
  * Output: [ [2,4], [3,4], [2,3], [1,2], [1,3], [1,4], ]
  * Notice it from 1 to n
  */
-public class Combinations_077_003 {
+public class Combinations_L077_003 {
+
     static class Solution {
         public List<List<Integer>> combine(int n, int k) {
             List<List<Integer>> res = new ArrayList<>();

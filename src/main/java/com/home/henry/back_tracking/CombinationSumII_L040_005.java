@@ -18,7 +18,7 @@ import java.util.List;
  * Input: candidates = [2,5,2,1,2], target = 5,
  * A solution set is: [ [1,2,2], [5] ]
  */
-public class CombinationSumII_040_005 {
+public class CombinationSumII_L040_005 {
 
     static class Solution {
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
