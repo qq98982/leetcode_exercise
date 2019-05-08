@@ -1,4 +1,4 @@
-package com.home.henry.trie;
+package com.home.henry.trie_07;
 
 /**
  * 676. Implement Magic Dictionary

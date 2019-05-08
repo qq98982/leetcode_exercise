@@ -1,4 +1,4 @@
-package com.home.henry.dp;
+package com.home.henry.dp_08;
 
 /**
  * You are climbing a stair case. It takes n steps to reach to the top.

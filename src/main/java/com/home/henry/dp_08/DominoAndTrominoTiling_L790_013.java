@@ -1,4 +1,4 @@
-package com.home.henry.dp;
+package com.home.henry.dp_08;
 
 /**
  *790. Domino and Tromino Tiling

@@ -1,4 +1,4 @@
-package com.home.henry.dp;
+package com.home.henry.dp_08;
 
 /**
  * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).

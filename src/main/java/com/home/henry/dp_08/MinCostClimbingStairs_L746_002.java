@@ -1,4 +1,4 @@
-package com.home.henry.dp;
+package com.home.henry.dp_08;
 
 /**
  * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
