@@ -43,4 +43,17 @@ public class IsomorphicStrings_L205_009 {
         }
         return true;
     }
+
+    public boolean isIsomorphic3(String s, String t) {
+        int[] sch = new int[256];
+        int[] tch = new int[256];
+        for (int i = 0; i < s.length(); i++) {
+            if (sch[s.charAt(i)] != tch[t.charAt(i)]) {
+                return false;
+            } else {
+                sch[s.charAt(i)] = tch[t.charAt(i)] = t.charAt(i);
+            }
+        }
+        return true;
+    }
 }
