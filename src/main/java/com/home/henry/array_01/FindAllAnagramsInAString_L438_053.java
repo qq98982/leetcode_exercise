@@ -51,6 +51,7 @@ public class FindAllAnagramsInAString_L438_053 {
         }
     }
 
+    // "abaacbabc" "abc" 答案不对, 后面再看
     static class SolutionWhile {
         List<Integer> findAnagrams(String s, String p) {
             List<Integer> res = new ArrayList<>();
@@ -89,5 +90,7 @@ public class FindAllAnagramsInAString_L438_053 {
         System.out.println("[0, 6] -> " + sw.findAnagrams("cbaebabacd", "abc"));
         System.out.println("[0, 1, 2] -> " + s.findAnagrams("abab", "ab"));
         System.out.println("[0, 1, 2] -> " + sw.findAnagrams("abab", "ab"));
+        System.out.println("[3, 4, 6] -> " + s.findAnagrams("abaacbabc", "abc"));
+        System.out.println("[3, 4, 6] -> " + sw.findAnagrams("abaacbabc", "abc"));
     }
 }
