@@ -10,18 +10,18 @@ import java.util.List;
  *
  * Example: 123 + 4 - 5 + 67 - 89 = 100
  * Similar 282, 282是典型的back tracking
+ * 在这个题目里, 不用pre也可以的, 因为不涉及乘法
  */
 public class SumToTarget_FB {
 
     static class Solution {
         List<String> sumToTarget(String str, int target) {
             List<String> res = new ArrayList<>();
-            helper(res, "", str, target, 0, 0, 0);
+            helper(res, "", str, target, 0, 0);
             return res;
         }
 
-        private void helper(List<String> res, String path, String str, int target, int pos, long val,
-                            long pre) {
+        private void helper(List<String> res, String path, String str, int target, int pos, long val) {
             if (pos == str.length()) {
                 if (target == val) {
                     res.add(path);
@@ -33,10 +33,10 @@ public class SumToTarget_FB {
                 if (i != pos && str.charAt(pos) == '0') {break;}
                 long cur = Long.parseLong(str.substring(pos, i + 1));
                 if (pos == 0) {
-                    helper(res, path + cur, str, target, i + 1, cur, cur);
+                    helper(res, path + cur, str, target, i + 1, cur);
                 } else {
-                    helper(res, path + "+" + cur, str, target, i + 1, val + cur, cur);
-                    helper(res, path + "-" + cur, str, target, i + 1, val - cur, -cur);
+                    helper(res, path + "+" + cur, str, target, i + 1, val + cur);
+                    helper(res, path + "-" + cur, str, target, i + 1, val - cur);
                 }
             }
         }
