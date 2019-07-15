@@ -12,6 +12,7 @@ import java.util.List;
  * Input: [1,2,2]
  * Output: [ [2], [1], [1,2,2], [2,2], [1,2], [] ]
  * Point: if (i > index && nums[i] == nums[i - 1]) {continue;}
+ * 比如[1,2,2] 已经遍历完了[1, 2], 现在来了个新的2, 在[1, 2]中回退的时候减去2, 然后又加上了新来的2, 这样就会重复了
  */
 public class SubsetsII_L090_002 {
     static class Solution {
@@ -22,8 +23,8 @@ public class SubsetsII_L090_002 {
             return res;
         }
 
-        private void helper(List<List<Integer>> res, ArrayList<Object> list, int[] nums, int index) {
-            res.add(new ArrayList(list));
+        private void helper(List<List<Integer>> res, ArrayList<Integer> list, int[] nums, int index) {
+            res.add(new ArrayList<>(list));
             for (int i = index; i < nums.length; i++) {
                 if (i > index && nums[i] == nums[i - 1]) {continue;}
                 list.add(nums[i]);

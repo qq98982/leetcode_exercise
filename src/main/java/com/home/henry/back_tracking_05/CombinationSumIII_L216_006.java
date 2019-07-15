@@ -18,7 +18,7 @@ public class CombinationSumIII_L216_006 {
         private void helper(List<List<Integer>> res, List<Integer> list, int k, int n, int start) {
             if (k < 0 || n < 0) {return;}
             if (k == 0 && n == 0) {
-                res.add(new ArrayList(list));
+                res.add(new ArrayList<>(list));
             } else {
                 for (int i = start; i <= 9; i++) {
                     list.add(i);
