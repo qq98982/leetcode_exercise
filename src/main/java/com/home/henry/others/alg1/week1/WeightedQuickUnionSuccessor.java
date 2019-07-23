@@ -1,4 +1,4 @@
-package com.home.henry.others.alg1.week1.percolation;
+package com.home.henry.others.alg1.week1;
 
 public class WeightedQuickUnionSuccessor {
 
