@@ -59,4 +59,14 @@ public class GenRandomArray {
         System.out.println();
     }
 
+    public static void printArray(char[] arr) {
+        if (arr == null) {
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
 }
