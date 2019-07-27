@@ -24,7 +24,7 @@
 
 60 (重要250) string
 
-291 (重要250)
+291 (重要250) premium
 
 #### Enumeration
 
