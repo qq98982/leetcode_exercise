@@ -6,12 +6,12 @@ import java.util.Stack;
 
 /**
  * Given a binary tree, return the pre order traversal of its nodes' values.
- *  *      1
- *  *    2   3
- *  *  4   5
- *  * (a) Inorder (Left, Root, Right) : 4 2 5 1 3
- *  * (b) Preorder (Root, Left, Right) : 1 2 4 5 3
- *  * (c) Postorder (Left, Right, Root) : 4 5 2 3 1
+ * *      1
+ * *    2   3
+ * *  4   5
+ * * (a) Inorder (Left, Root, Right) : 4 2 5 1 3
+ * * (b) Preorder (Root, Left, Right) : 1 2 4 5 3
+ * * (c) Postorder (Left, Right, Root) : 4 5 2 3 1
  */
 public class BinaryTreePreorderTraversal_L144_001 {
 
@@ -33,6 +33,9 @@ public class BinaryTreePreorderTraversal_L144_001 {
         helper(res, root.right);
     }
 
+    /**
+     * 这个方法有些复杂了， 使用下面的那个更好
+     */
     public List<Integer> preorderTraversalIterative(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) {
@@ -54,4 +57,26 @@ public class BinaryTreePreorderTraversal_L144_001 {
         return res;
     }
 
+    /**
+     * 这个方法更好做题, 推荐这个
+     */
+    public List<Integer> preorderTraversalIterativeSimple(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Stack<TreeNode> stk = new Stack<>();
+        stk.push(root);
+        while (!stk.isEmpty()) {
+            TreeNode curr = stk.pop();
+            res.add(curr.val);
+            if (curr.right != null) {
+                stk.push(curr.right);
+            }
+            if (curr.left != null) {
+                stk.push(curr.left);
+            }
+        }
+        return res;
+    }
 }
