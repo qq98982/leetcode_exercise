@@ -37,6 +37,32 @@ public class BinaryTreeRightSideView_L199_030 {
     }
 
     /**
+     * 和上面一样， 就是方向换了，代码不同
+     */
+    public List<Integer> rightSideViewBFS2(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {return res;}
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode curr = queue.poll();
+                if (i == 0) {
+                    res.add(curr.val);
+                }
+                if (curr.right != null) {
+                    queue.offer(curr.right);
+                }
+                if (curr.left != null) {
+                    queue.offer(curr.left);
+                }
+            }
+        }
+        return res;
+    }
+
+    /**
      * 1.Each depth of the tree only select one node.
      * 2. View depth is current size of result list.
      */
