@@ -12,31 +12,38 @@ public class KthSmallestElementInABST_L230_038 {
     int result = Integer.MIN_VALUE;
 
     public int kthSmallest(TreeNode root, int k) {
-        helper(root, k);
+        count = k;
+        helper(root);
         return result;
     }
 
-    private void helper(TreeNode root, int k) {
-        if (root == null) {return;}
-        helper(root.left, k);
-        count++;
-        if (count == k) {result = root.val;}
-        helper(root.right, k);
+    private void helper(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        helper(root.left);
+        if (--count == 0) {
+            result = root.val;
+        }
+        helper(root.right);
     }
 
-    public int kthMsallestSec(TreeNode root, int k) {
+    public int kthSmallestSec(TreeNode root, int k) {
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        }
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
         int count = 0;
-        while (!stack.isEmpty() || p != null) {
-            if (p != null) {
-                stack.push(p);
-                p = p.left;
-            } else {
-                TreeNode node = stack.pop();
-                if (++count == k) {return node.val;}
-                p = node.right;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
+            root = stack.pop();
+            if (++count == k) {
+                return root.val;
+            }
+            root = root.right;
         }
         return Integer.MIN_VALUE;
     }
