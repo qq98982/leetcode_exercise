@@ -35,7 +35,7 @@ public class JumpGameII_L045_014 {
                 level++;
                 for (; i <= currMax; i++) {
                     maxNext = Math.max(currMax, nums[i] + i);
-                    if (maxNext > nums.length - 1) {
+                    if (maxNext >= nums.length - 1) {
                         return level;
                     }
                 }
