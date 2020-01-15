@@ -2,7 +2,8 @@ package com.home.henry.array_01;
 
 /**
  * 122. Best Time to Buy and Sell Stock II
- * 贪记的做法, 将每步为正的profit加起来就可以
+ * 每天可以任意买卖股票
+ * 贪心的做法, 将每步为正的profit加起来就可以
  * time O(n) space O(1)
  */
 public class BestTimeToBuyAndSellStockII_L122_023 {
