@@ -44,15 +44,18 @@ class FindPeakElement_L162_019 {
     public int findPeakElementBSII(int[] nums) {
         int start = 0;
         int end = nums.length - 1;
+        if (nums.length == 1) {
+            return 0;
+        }
         while (start + 1 < end) {
             int mid = (end - start) / 2 + start;
             if (nums[mid] > nums[mid + 1]) {
                 end = mid;
             } else {
-                start = mid + 1;
+                start = mid;
             }
         }
         if (nums[start] > nums[end]) {return start;}
-        return nums[end];
+        return end;
     }
 }
