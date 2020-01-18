@@ -9,8 +9,11 @@ import java.util.Deque;
  */
 public class TrappingRainWater_L042_029 {
 
-    class SolutionStack {
-        public int trap(int[] height) {
+    public static void main(String[] args) {
+        System.out.println(SolutionStack.trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}));
+    }
+    public static class SolutionStack {
+        public  static int trap(int[] height) {
             int n = height.length;
             Deque<Integer> stack = new ArrayDeque<>();
             int res = 0;
@@ -22,7 +25,7 @@ public class TrappingRainWater_L042_029 {
                     // 如果左边为空了, 没有边界, break
                     if (stack.isEmpty()) {break;}
                     // 要减去中间槽的高度
-                    int h = Math.min(height[stack.peek()], height[currIndex] - height[top]);
+                    int h = Math.min(height[stack.peek()] - height[top], height[currIndex] - height[top]);
                     int dist = currIndex - stack.peek() - 1;
                     res += dist * h;
                 }
