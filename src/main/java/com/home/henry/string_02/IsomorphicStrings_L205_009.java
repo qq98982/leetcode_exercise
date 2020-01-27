@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * 205. Isomorphic Strings
  * Given two strings s and t, determine if they are isomorphic.
  * Two strings are isomorphic if the characters in s can be replaced to get t.
  * All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
@@ -16,7 +17,7 @@ import java.util.Objects;
  */
 public class IsomorphicStrings_L205_009 {
 
-    public boolean isIsomorphic(String s, String t) {
+    public static boolean isIsomorphic(String s, String t) {
         Map<Object, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             if (!Objects.equals(map.put(s.charAt(i), i), map.put(t.charAt(i) + "", i))) {
@@ -55,5 +56,22 @@ public class IsomorphicStrings_L205_009 {
             }
         }
         return true;
+    }
+
+    public static boolean isIsomorphic4(String s, String t) {
+        Map<Character, StringBuilder> map = new HashMap<>();
+        Map<Character, StringBuilder> mapSec = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), new StringBuilder()).append(i));
+            mapSec.put(t.charAt(i), mapSec.getOrDefault(t.charAt(i), new StringBuilder()).append(i));
+            if (map.get(s.charAt(i)).length() != mapSec.get(t.charAt(i)).length()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isIsomorphic("add", "egg"));
     }
 }
