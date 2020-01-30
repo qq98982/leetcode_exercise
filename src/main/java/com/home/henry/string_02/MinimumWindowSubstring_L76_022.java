@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 76. Minimum Window Substring
+ *
+ * Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+ * Input: S = "ADOBECODEBANC", T = "ABC" Output: "BANC"
+ *
  * First is quick, second slower, but there is template for this type questions
  * Ref: https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem
  */
@@ -31,7 +36,7 @@ public class MinimumWindowSubstring_L76_022 {
         return (min == Integer.MAX_VALUE) ? "" : s.substring(from, from + min);
     }
 
-    public String minWindow2(String s, String t) {
+    public static String minWindow2(String s, String t) {
         if (s.length() < t.length()) {
             return "";
         }
@@ -58,12 +63,13 @@ public class MinimumWindowSubstring_L76_022 {
                     if (map.get(temp) > 0) {
                         count++;
                     }
+                    if (end - begin < len) {
+                        len = end - begin;
+                        head = begin;
+                    }
                 }
 
-                if (end - begin < len) {
-                    len = end - begin;
-                    head = begin;
-                }
+
                 begin++;
             }
         }
@@ -73,4 +79,7 @@ public class MinimumWindowSubstring_L76_022 {
         return s.substring(head, head + len);
     }
 
+    public static void main(String[] args) {
+        System.out.println(minWindow2("AABBCCDDCC", "ABCC"));
+    }
 }
