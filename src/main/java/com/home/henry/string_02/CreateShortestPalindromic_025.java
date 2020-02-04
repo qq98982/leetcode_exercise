@@ -1,50 +1,56 @@
 package com.home.henry.string_02;
 
 /**
+ * 214. Shortest Palindrome
  * 根据一个String, 生成一个最短的Palindrome, 比如abc12321 -> abc12321cba
  * Manachar算法, 时间复杂度为O(n)
  * 思路: 求出包含最后一个字母的最长的Palindrome, 然后加上这个Palindrome前面字母的倒序
  */
 public class CreateShortestPalindromic_025 {
 
-    public static String createShortestPalindrome(String str) {
-        char[] charArray = new char[str.length() * 2 + 1];
-        char[] c = str.toCharArray();
-        createManacherCharArray(charArray, c);
+    public static String createShortestPalindrome(String s) {
+        char[] ch = new char[s.length() * 2 + 1];
+        char[] c = s.toCharArray();
+        createManacherCharArray(ch, c);
 
-        // find max palindrome length including last letter
-        int len = findMaxPalindromeRightMax(charArray);
-        char[] res = new char[str.length() - len];
-        for (int i = 0; i < res.length; i++) {
-            res[res.length - 1 - i] = c[i];
-        }
-        return str + String.valueOf(res);
+        // find max palindrome length including first letter
+        int len = findMaxPalindromeLeftMax(ch);
+        String left = s.substring(len);
+        StringBuilder sb = new StringBuilder(left).reverse().append(s);
+        return sb.toString();
     }
 
-    private static int findMaxPalindromeRightMax(char[] charArray) {
-        int[] pArr = new int[charArray.length * 2 + 1];
+    private static int findMaxPalindromeLeftMax(char[] ch) {
+        int[] p = new int[ch.length];
         int R = -1;
         int C = -1;
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i != charArray.length; i++) {
-            pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
-            while (i + pArr[i] < charArray.length && i - pArr[i] > -1) {
-                if (charArray[i + pArr[i]] == charArray[i - pArr[i]]) {
-                    pArr[i]++;
+        for (int i = 0; i != ch.length; i++) {
+            p[i] = R > i ? Math.min(p[2 * C - i], R - i) : 1;
+            while (i + p[i] < ch.length && i - p[i] > -1) {
+                if (ch[i + p[i]] == ch[i - p[i]]) {
+                    p[i]++;
                 } else {
                     break;
                 }
             }
-            if (i + pArr[i] > R) {
-                R = i + pArr[i];
+            if (i + p[i] > R) {
+                R = i + p[i];
                 C = i;
             }
-            if (R == charArray.length) {
-                max = pArr[i];
-                break;
+        }
+        // The basic idea is to use Manacher algorithm.
+        // And after you get the dp[] array, add one more loop to search the array from right to
+        // left to find the first(longest) char whose palindrome length equal to its
+        // postion or position-1(remove the leading #).
+        // i - p[i] == 1 or == 0 说明是以开始位置为起点的最长palindrome, 另外, 是从最后位置起计算
+        for (int i = ch.length - 1; i >= 0; i--) {
+            int diff = p[i] - 1 - i;
+            if (diff == 0 || diff == 1) {
+                return p[i] - 1;
             }
         }
-        return max - 1;
+        return 0;
     }
 
     private static void createManacherCharArray(char[] res, char[] c) {
@@ -55,7 +61,9 @@ public class CreateShortestPalindromic_025 {
     }
 
     public static void main(String[] args) {
-        System.out.println("abc12321cba -> " + createShortestPalindrome("abc12321"));
+        System.out.println("abc12321cba -> " + createShortestPalindrome("12321cba"));
         System.out.println("abcba -> " + createShortestPalindrome("abcba"));
+        System.out.println("aaacecaaa -> " + createShortestPalindrome("aacecaaa"));
+        System.out.println("dcbabcd -> " + createShortestPalindrome("abcd"));
     }
 }
