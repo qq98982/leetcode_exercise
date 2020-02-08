@@ -19,7 +19,7 @@ import java.util.List;
  *   "()()()"
  * ]
  */
-public class GenerateParentheses_L022_34 {
+public class GenerateParentheses_L022_034 {
 
     static class Solution {
         public List<String> generateParenthesis(int n) {
