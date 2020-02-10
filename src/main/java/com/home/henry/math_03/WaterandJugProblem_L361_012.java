@@ -1,0 +1,41 @@
+package com.home.henry.math_03;
+
+/**
+ * 365. Water and Jug Problem
+ *
+ * You are given two jugs with capacities x and y litres. There is an infinite amount of water
+ * supply available. You need to determine whether it is possible to measure exactly z litres using these two jugs.
+ *
+ * If z liters of water is measurable, you must have z liters of water contained within one or
+ * both buckets by the end.
+ *
+ * Operations allowed:
+ *
+ * Fill any of the jugs completely with water.
+ * Empty any of the jugs.
+ * Pour water from one jug into another till the other jug is completely full or the first jug
+ * itself is empty.
+ *
+ * Input: x = 3, y = 5, z = 4 Output: True
+ * Input: x = 2, y = 6, z = 5 Output: False
+ *
+ * 使用了数学上的最大公约数的概念, 最大公约数是可以达到的数字, 有youtube相关使用matrix视频证明
+ */
+public class WaterandJugProblem_L361_012 {
+    static class Solution {
+        public boolean canMeasureWater(int x, int y, int z) {
+            if (x + y < z) {return false;}
+            if (x == z || y == z || x + y == z) {return true;}
+            return z % gcd(x, y) == 0;
+        }
+
+        private static int gcd(int x, int y) {
+            while (y != 0) {
+                int tmp = y;
+                y = x % y;
+                x = tmp;
+            }
+            return x;
+        }
+    }
+}
