@@ -10,9 +10,35 @@ package com.home.henry.linked_list_07;
 public class ReverseLinkedListII_L092_005 {
 
     static class Solution {
-        public ListNode reverseBetween(ListNode head, int m, int n) {
-            return null;
+        public static ListNode reverseBetween(ListNode head, int m, int n) {
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode pre = dummy;
+            for (int i = 0; i < m - 1; i++) {
+                pre = pre.next;
+            }
+            ListNode start = pre.next;
+            for (int i = 0; i < n - m; i++) {
+                if (start == null || start.next == null) {break;}
+                ListNode then = start.next;
+                start.next = then.next;
+                then.next = pre.next;
+                pre.next = then;
+            }
+            return dummy.next;
         }
     }
 
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        for (int i = 2; i < 7; i++) {
+            head.next = new ListNode(i);
+            head = head.next;
+        }
+        head = dummy.next;
+        ListNode listNode = Solution.reverseBetween(head, 2, 5);
+        System.out.println(listNode);
+    }
 }
