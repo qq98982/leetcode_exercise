@@ -8,6 +8,20 @@ public class ListNode {
 
     ListNode(int x) { val = x; }
 
+    ListNode(int[] a1) {
+        if (a1 == null || a1.length == 0) {
+            throw new IllegalArgumentException();
+        }
+        ListNode l1 = new ListNode(a1[0]);
+        val = a1[0];
+        next = l1;
+        for (int i = 1; i < a1.length; i++) {
+            l1.next = new ListNode(a1[i]);
+            l1 = l1.next;
+        }
+        next = next.next;
+    }
+
     @Override
     public String toString() {
         ListNode fast = this;
