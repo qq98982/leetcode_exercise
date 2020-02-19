@@ -1,5 +1,7 @@
 package com.home.henry.linked_list_07;
 
+import java.util.PriorityQueue;
+
 /**
  * 23. Merge k Sorted Lists
  *
@@ -44,6 +46,26 @@ public class MergeKSortedLists_L023_015 {
             if (l2 == null) {cur.next = l1;}
             return dummy.next;
         }
+
+        public static ListNode mergeKLists2(ListNode[] lists) {
+            if (lists == null || lists.length == 0) {return null;}
+            PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, (a, b) -> a.val - b.val);
+            for (ListNode node : lists) {
+                if (node != null) {
+                    queue.offer(node);
+                }
+            }
+            ListNode dummy = new ListNode(0);
+            ListNode cur = dummy;
+            while (!queue.isEmpty()) {
+                cur.next = queue.poll();
+                cur = cur.next;
+                if (cur.next != null) {
+                    queue.offer(cur.next);
+                }
+            }
+            return dummy.next;
+        }
     }
 
     public static void main(String[] args) {
@@ -52,6 +74,7 @@ public class MergeKSortedLists_L023_015 {
         ListNode n3 = new ListNode(new int[] { 8, 10, 12, 13, 14 });
         ListNode n4 = new ListNode(new int[] { 9, 18, 23, 78, 124 });
         ListNode[] listNodes = { n1, n2, n3, n4 };
-        System.out.println(Solution.mergeKLists(listNodes));
+        System.out.println(Solution.mergeKLists2(listNodes));
     }
+
 }
