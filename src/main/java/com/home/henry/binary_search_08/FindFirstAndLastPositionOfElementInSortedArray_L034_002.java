@@ -2,6 +2,7 @@ package com.home.henry.binary_search_08;
 
 /**
  * 34. Find First and Last Position of Element in Sorted Array
+ *
  * Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
  * Your algorithm's runtime complexity must be in the order of O(log n).
  * If the target is not found in the array, return [-1, -1].
@@ -49,6 +50,52 @@ public class FindFirstAndLastPositionOfElementInSortedArray_L034_002 {
             return end - 1;
         }
         return -1;
+    }
+
+    static class Solution {
+        public int[] searchRange(int[] nums, int target) {
+            int[] res = new int[]{-1, -1};
+            if (nums == null || nums.length == 0) {return res;}
+            if (target < nums[0] || target > nums[nums.length - 1]) {return res;}
+            // unknown: first target, end target
+            // data: sorted, maybe repeat nums in array, array length, array start and end
+            // target, maybe target not exist
+            // similar: binary search
+            int start = findStart(nums, target);
+            if (start == -1) {return res;}
+            int end = findEnd(nums, target);
+            return new int[]{start, end};
+        }
+
+        private static int findStart(int[] nums, int target) {
+            int start = 0, end = nums.length - 1;
+            while (start + 1 < end) {
+                int mid = (end - start) / 2 + start;
+                if (nums[mid] >= target) {
+                    end = mid;
+                } else {
+                    start = mid;
+                }
+            }
+            if (nums[start] == target) {return start;}
+            else if (nums[end] == target) {return end;}
+            else {return -1;}
+        }
+
+        private static int findEnd(int[] nums, int target) {
+            int start = 0, end = nums.length - 1;
+            while (start + 1 < end) {
+                int mid = (end - start) / 2 + start;
+                if (nums[mid] <= target) {
+                    start = mid;
+                } else {
+                    end = mid;
+                }
+            }
+            if (nums[end] == target) {return end;}
+            else if (nums[start] == target) {return start;}
+            else {return -1;}
+        }
     }
 
 }
