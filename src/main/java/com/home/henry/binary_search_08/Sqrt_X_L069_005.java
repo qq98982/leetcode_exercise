@@ -27,4 +27,33 @@ class Sqrt_X_L069_005 {
         return 0;
     }
 
+    static class Solution {
+        public static int mySqrt(int x) {
+            if (x < 2) {return x;}
+            int start = 0, end = x;
+            while (start + 1 < end) {
+                int mid = (end - start) / 2 + start;
+                if (mid == x / mid) {
+                    return mid;
+                }
+                if (mid < x / mid) {
+                    start = mid;
+                } else {
+                    end = mid;
+                }
+            }
+            if (end <= x / end) {
+                return end;
+            } else if (start <= x / start) {
+                return start;
+            } else {
+                return start - 1;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Solution.mySqrt(2147395599));
+    }
+
 }
