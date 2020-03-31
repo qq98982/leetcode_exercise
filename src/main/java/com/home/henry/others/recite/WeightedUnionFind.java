@@ -28,6 +28,7 @@ public class WeightedUnionFind {
     public int find(int p) {
         validate(p);
         while (p != parent[p]) {
+            // path compression
             parent[p] = parent[parent[p]];
             p = parent[p];
         }
@@ -43,6 +44,7 @@ public class WeightedUnionFind {
         int rootQ = find(q);
         if (rootP == rootQ) {return;}
         if (size[rootP] > size[rootQ]) {
+            // smaller tree added to the bigger one
             parent[rootQ] = rootP;
             size[rootP] += size[rootQ];
         } else {
