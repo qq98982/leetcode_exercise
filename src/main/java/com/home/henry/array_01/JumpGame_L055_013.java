@@ -11,6 +11,7 @@ package com.home.henry.array_01;
  * Input: [3,2,1,0,4] Output: false
  * Explanation: You will always arrive at index 3 no matter what. Its maximum
  *              jump length is 0, which makes it impossible to reach the last index.
+ * 贪心和dp都可以做, 贪心速度要快点, 要学习dp的思路
  */
 public class JumpGame_L055_013 {
 
@@ -22,6 +23,21 @@ public class JumpGame_L055_013 {
                 max = Math.max(max, nums[i] + i);
             }
             return true;
+        }
+
+        public boolean jump(int[] nums) {
+            boolean[] f = new boolean[nums.length];
+            f[0] = true;
+            for (int i = 1; i < nums.length; i++) {
+                f[i] = false;
+                for (int j = 0; j < i; j++) {
+                    if (f[j] && nums[j] + j >= i) {
+                        f[i] = true;
+                        break;
+                    }
+                }
+            }
+            return f[nums.length - 1];
         }
     }
 }
