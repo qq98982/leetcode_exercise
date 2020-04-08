@@ -25,7 +25,7 @@ public class LongestConsecutiveSequence_L128_031 {
 
             int res = Integer.MIN_VALUE;
             for (int i = 0; i < nums.length; i++) {
-                if (set.size() == 0) {
+                if (set.isEmpty()) {
                     // 加速从7ms到5ms
                     break;
                 }
