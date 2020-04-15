@@ -23,6 +23,17 @@ public class ReverseLinkedList {
             }
             return pre;
         }
+
+        public static ListNode rever(ListNode head) {
+            ListNode pre = null;
+            while (head != null) {
+                ListNode temp = head.next;
+                head.next = pre;
+                pre = head;
+                head = temp;
+            }
+            return pre;
+        }
     }
 
     static class SolutionRecursive {
@@ -36,7 +47,7 @@ public class ReverseLinkedList {
             }
             ListNode next = head.next;
             head.next = newHead;
-            return reverse(newHead, next);
+            return reverse(next, head);
         }
     }
 }
