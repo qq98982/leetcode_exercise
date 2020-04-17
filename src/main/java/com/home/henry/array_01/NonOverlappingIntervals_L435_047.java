@@ -30,6 +30,23 @@ public class NonOverlappingIntervals_L435_047 {
             }
             return intervals.length - count;
         }
+
+        public int eraseOverlapIntervalsSec(int[][] intervals) {
+            int count = 0;
+            if (intervals == null || intervals.length == 0) {return count;}
+            if (intervals[0] == null || intervals[0].length == 0) {return count;}
+            Arrays.sort(intervals, (x,y) -> Integer.compare(x[1], y[1]));
+            int max = intervals[0][1];
+            count = -1;
+            for (int[] val : intervals) {
+                if (val[0] < max) {
+                    count++;
+                } else {
+                    max = Math.max(max, val[1]);
+                }
+            }
+            return count;
+        }
     }
 
 }
