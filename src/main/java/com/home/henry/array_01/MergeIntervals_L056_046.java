@@ -15,21 +15,29 @@ import java.util.List;
  */
 public class MergeIntervals_L056_046 {
     static class Solution {
-        public int[][] merge(int[][] intervals) {
+        public static int[][] merge(int[][] intervals) {
             if (intervals == null || intervals.length <= 1) {return intervals;}
             Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));
             List<int[]> res = new ArrayList<>();
-            int[] newInterval = intervals[0];
-            res.add(newInterval);
-            for (int[] interval : intervals) {
-                if (interval[0] <= newInterval[1]) {
-                    newInterval[1] = Math.max(interval[1], newInterval[1]);
+            int[] initInterval = intervals[0];
+            res.add(initInterval);
+            for (int[] curr : intervals) {
+                if (curr[0] <= initInterval[1]) {
+                    initInterval[1] = Math.max(curr[1], initInterval[1]);
                 } else {
-                    newInterval = interval;
-                    res.add(newInterval);
+                    initInterval = curr;
+                    res.add(initInterval);
                 }
             }
             return res.toArray(new int[res.size()][]);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[][] arr = { { 2, 6 }, { 1, 3 }, { 8, 10 }, { 15, 18 } };
+        int[][] res = Solution.merge(arr);
+        for (int[] r : res) {
+            System.out.println(Arrays.toString(r));
         }
     }
 }
