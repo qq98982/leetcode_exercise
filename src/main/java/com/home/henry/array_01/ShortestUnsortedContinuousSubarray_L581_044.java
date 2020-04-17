@@ -34,5 +34,23 @@ public class ShortestUnsortedContinuousSubarray_L581_044 {
             }
             return end - first + 1;
         }
+
+        public static int findUnsortedSubArray(int[] nums) {
+            int len = nums.length, start = -1, end = -1, max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
+            for (int i = 0; i < nums.length; i++) {
+                max = Math.max(max, nums[i]); // from left to right, search current max
+                min = Math.min(min, nums[len - i - 1]); // from right to left, search current min
+                if (nums[i] < max) {
+                    end = i; // end找的是不受逆序影响的最大index
+                }
+                if (nums[len - i - 1] > min) {
+                    start = len - i - 1; // start找的是不受乱序影响的最小index
+                }
+            }
+            if (start == -1) {
+                return 0;
+            }
+            return end - start - 1;
+        }
     }
 }
