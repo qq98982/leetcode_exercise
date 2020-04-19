@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
 
 /**
  * 239. Sliding Window Maximum
+ *
  * Given an array nums, there is a sliding window of size k which is moving from the very left of the array to
  * the very right. You can only see the k numbers in the window. Each time the sliding window moves right by
  * one position. Return the max sliding window.
@@ -32,11 +33,14 @@ public class SlidingWindowMaximum_L239_049 {
                     deque.poll();
                 }
                 // remove smaller numbers in k range as they are useless
+                // 如果队列中的数都小于nums[i],其留下就没有意义.因为如果nums[i]最大,接下来的的k-1个数
+                // 要寻找最大的,所以除了nums[i],其他没有必要比较
                 while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
                     deque.pollLast();
                 }
-                // 加入(会重新排序), 所以这里offer或者offer last都可以
+                // 每次进入循环,要加入一个数
                 deque.offerLast(i);
+                // 注意边界, 加入到返回中
                 if ((i + 1) >= k && !deque.isEmpty()) {
                     res[i + 1 - k] = nums[deque.peek()];
                 }
