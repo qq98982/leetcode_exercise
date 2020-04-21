@@ -1,5 +1,8 @@
 package com.home.henry.array_01;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 3. Longest Substring Without Repeating Characters
  *
@@ -33,6 +36,33 @@ public class LongestSubstringWithoutRepeatingCharacters_L003_054 {
                 res = Math.max(res, end - begin);
             }
             return res;
+        }
+    }
+
+    static class SolutionTemplate {
+        public int lengthOfLongestSubstring(String s) {
+            if (s == null || s.length() == 0) {return 0;}
+            if (s.length() == 1) {return 1;}
+            Map<Character, Integer> map = new HashMap<>();
+            int start = 0, end = 0, count = 0, res = Integer.MIN_VALUE;
+            while (end < s.length()) {
+                char c = s.charAt(end);
+                map.put(c, map.getOrDefault(c, 0) + 1);
+                if (map.get(c) > 1) {
+                    count++;
+                }
+                end++;
+                while (count > 0) {
+                    char tempc = s.charAt(start);
+                    if (map.get(tempc) > 1) {
+                        count--;
+                    }
+                    map.put(tempc, map.get(tempc) - 1);
+                    start++;
+                }
+                res = Math.max(res, end - start);
+            }
+            return res == Integer.MAX_VALUE ? 0 : res;
         }
     }
 }
