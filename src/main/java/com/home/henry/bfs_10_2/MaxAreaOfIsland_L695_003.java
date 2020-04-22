@@ -1,4 +1,4 @@
-package com.home.henry.dfs_bfs_10;
+package com.home.henry.bfs_10_2;
 
 /**
  * 695. Max Area of Island

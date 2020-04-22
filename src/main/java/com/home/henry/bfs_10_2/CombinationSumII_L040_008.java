@@ -1,4 +1,4 @@
-package com.home.henry.dfs_bfs_10;
+package com.home.henry.bfs_10_2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
