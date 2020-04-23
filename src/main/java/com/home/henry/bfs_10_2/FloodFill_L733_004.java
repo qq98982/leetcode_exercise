@@ -16,6 +16,7 @@ public class FloodFill_L733_004 {
         if (sr < 0 || sr >= image.length || sc < 0 || sc >= image[0].length || image[sr][sc] != color) {
             return;
         }
+        if (image[sr][sc] == newColor) {return;}
         image[sr][sc] = newColor;
         fill(image, sr + 1, sc, color, newColor);
         fill(image, sr - 1, sc, color, newColor);
