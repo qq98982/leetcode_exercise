@@ -11,9 +11,6 @@ import java.util.List;
  * Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
  *
  *
- *
- * Example:
- *
  * Input:
  * board = [
  *   ['o','a','a','n'],
@@ -24,7 +21,6 @@ import java.util.List;
  * words = ["oath","pea","eat","rain"]
  *
  * Output: ["eat","oath"]
- *
  *
  * Note:
  *
@@ -58,12 +54,12 @@ public class WordSearchII_L212_012 {
             if (n == word.length()) {return true;}
             if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || visited[row][col]
                 || board[row][col] != word.charAt(n)) {return false;}
-            visited[row][col] = true;
+            board[row][col] = '*';
             boolean res = exist(board, visited, word, row + 1, col, n + 1) ||
                           exist(board, visited, word, row - 1, col, n + 1) ||
                           exist(board, visited, word, row, col + 1, n + 1) ||
                           exist(board, visited, word, row, col - 1, n + 1);
-            visited[row][col] = false;
+            board[row][col] = word.charAt(n);
             return res;
         }
     }
