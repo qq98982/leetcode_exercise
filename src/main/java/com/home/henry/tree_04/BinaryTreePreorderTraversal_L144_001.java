@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Stack;
 
 /**
+ * 144. Binary Tree Preorder Traversal
+ *
  * Given a binary tree, return the pre order traversal of its nodes' values.
  * *      1
  * *    2   3
@@ -34,31 +36,7 @@ public class BinaryTreePreorderTraversal_L144_001 {
     }
 
     /**
-     * 这个方法有些复杂了， 使用下面的那个更好
-     */
-    public List<Integer> preorderTraversalIterative(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        if (root == null) {
-            return res;
-        }
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        TreeNode node = root;
-        while (!stack.isEmpty()) {
-            res.add(node.val);
-            if (node.right != null) {
-                stack.push(node.right);
-            }
-            node = node.left;
-            if (node == null && !stack.isEmpty()) {
-                node = stack.pop();
-            }
-        }
-        return res;
-    }
-
-    /**
-     * 这个方法更好做题, 推荐这个
+     * iterative pre order
      */
     public List<Integer> preorderTraversalIterativeSimple(TreeNode root) {
         List<Integer> res = new ArrayList<>();
