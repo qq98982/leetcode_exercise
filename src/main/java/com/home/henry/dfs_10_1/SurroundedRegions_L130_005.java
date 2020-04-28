@@ -1,11 +1,11 @@
-package com.home.henry.bfs_10_2;
+package com.home.henry.dfs_10_1;
 
 /**
  * 130. Surrounded Regions
  * Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
  * A region is captured by flipping all 'O's into 'X's in that surrounded region.
  */
-public class SurroundedRegions_130 {
+public class SurroundedRegions_L130_005 {
 
     public void solve(char[][] board) {
         if (board.length == 0) {return;}
