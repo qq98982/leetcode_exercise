@@ -9,7 +9,9 @@ import java.util.Stack;
  * 113. Path Sum II
  * Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
  * Note: A leaf is a node with no children.
- * 推荐第二个用ArrayList的解法
+ *
+ * 从上到下, 就要考虑pre order
+ * 推荐第二个用ArrayList的解法, 和back tracking结合的
  */
 public class PathSumII_L113_021 {
 
