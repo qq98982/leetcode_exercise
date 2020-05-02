@@ -1,9 +1,7 @@
 package com.home.henry.tree_04;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * 113. Path Sum II
@@ -11,31 +9,31 @@ import java.util.Stack;
  * Note: A leaf is a node with no children.
  *
  * 从上到下, 就要考虑pre order
- * 推荐第二个用ArrayList的解法, 和back tracking结合的
+ * 第一个用的是每次新生成的list, 所以最后不用remove
+ * 第二个用pre和back tracking结合的
  */
 public class PathSumII_L113_021 {
 
-    public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        List<List<Integer>> res = new LinkedList<>();
-        helper(res, root, sum, new Stack<Integer>());
-        return res;
-    }
-
-    private void helper(List<List<Integer>> res, TreeNode root, int sum, Stack<Integer> history) {
-        if(root == null) {return;}
-        history.push(root.val);
-        if(root.left == null && root.right == null && root.val == sum) {
-            List<Integer> list = new ArrayList<>();
-            for (int x : history) {
-                list.add(x);
-            }
-            res.add(list);
+    static class Solution {
+        public List<List<Integer>> pathSum(TreeNode root, int sum) {
+            List<List<Integer>> res = new ArrayList<>();
+            if (root == null) {return res;}
+            helper(res, root, sum, new ArrayList<>());
+            return res;
         }
-        helper(res, root.left, sum - root.val, history);
-        helper(res, root.right, sum - root.val, history);
-        history.pop();
-    }
 
+        private void helper(List<List<Integer>> res, TreeNode root, int sum, List<Integer> list) {
+            if (root == null) {return;}
+            list.add(root.val);
+            if (root.left == null && root.right == null) {
+                if (sum - root.val == 0) {
+                    res.add(list);
+                }
+            }
+            helper(res, root.left, sum - root.val, new ArrayList<Integer>(list));
+            helper(res, root.right, sum - root.val, new ArrayList<Integer>(list));
+        }
+    }
 
     public List<List<Integer>> pathSumII(TreeNode root, int sum) {
         List<List<Integer>> res = new ArrayList<>();
@@ -53,6 +51,6 @@ public class PathSumII_L113_021 {
         }
         helper2(res, root.left, sum - root.val, list);
         helper2(res, root.right, sum - root.val, list);
-        list.remove(list.size() -1);
+        list.remove(list.size() - 1);
     }
 }
