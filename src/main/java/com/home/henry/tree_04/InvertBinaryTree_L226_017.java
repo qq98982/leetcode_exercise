@@ -35,6 +35,16 @@ public class InvertBinaryTree_L226_017 {
         return root;
     }
 
+    public TreeNode invertTree3(TreeNode root) {
+        if (root == null) {return null;}
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
+    }
+
     public TreeNode invertTree2(TreeNode root) {
         if (root == null) {return root;}
         Queue<TreeNode> queue = new LinkedList<>();
