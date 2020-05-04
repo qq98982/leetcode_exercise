@@ -30,6 +30,10 @@ public class MinimumDepthBinaryTree_L111_014 {
         return Math.min(left, right) + 1;
     }
 
+    /**
+     * 假设有一个右节点, 左边为空, 右边有深度, 那么这个右节点如果和左边的节点比较时, 应该选取的是max
+     * 如果是选min,那么这个右节点就是0+1, 左节点也是0+1, 是错误的
+     */
     public int minDepthClean(TreeNode root) {
         if (root == null) {return 0;}
         if (root.left == null || root.right == null) {
