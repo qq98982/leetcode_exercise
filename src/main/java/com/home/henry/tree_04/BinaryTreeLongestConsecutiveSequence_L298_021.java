@@ -2,6 +2,9 @@ package com.home.henry.tree_04;
 
 /**
  * 	298. Binary Tree Longest Consecutive Sequence
+ *
+ * 	Given a Binary Tree find the length of the longest path which comprises of nodes with consecutive values in
+ * 	increasing order. Every node is considered as a path of length 1.
  */
 public class BinaryTreeLongestConsecutiveSequence_L298_021 {
     static class Solution {
