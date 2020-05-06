@@ -7,7 +7,18 @@ import java.util.Queue;
 
 /**
  * 199. Binary Tree Right Side View
+ *
  * Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+ *
+ * Input: [1,2,3,null,5,null,4]
+ * Output: [1, 3, 4]
+ * Explanation:
+ *
+ *    1            <---
+ *  /   \
+ * 2     3         <---
+ *  \     \
+ *   5     4       <---
  */
 public class BinaryTreeRightSideView_L199_030 {
     /**
@@ -63,8 +74,9 @@ public class BinaryTreeRightSideView_L199_030 {
     }
 
     /**
-     * 1.Each depth of the tree only select one node.
+     * 1. Each depth of the tree only select one node.
      * 2. View depth is current size of result list.
+     * 可以看成是pre order的反方向
      */
     public List<Integer> rightSideViewSec(TreeNode root) {
         List<Integer> res = new ArrayList<>();
