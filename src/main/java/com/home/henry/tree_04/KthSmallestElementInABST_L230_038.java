@@ -80,4 +80,27 @@ public class KthSmallestElementInABST_L230_038 {
         }
     }
 
+    /*
+    再来看一种分治法的思路，由于 BST 的性质，可以快速定位出第k小的元素是在左子树还是右子树，首先计算出左子树的结点个数总和 cnt，
+    如果k小于等于左子树结点总和 cnt，说明第k小的元素在左子树中，直接对左子结点调用递归即可。如果k大于 cnt+1，
+    说明目标值在右子树中，对右子结点调用递归函数，注意此时的k应为 k-cnt-1，应为已经减少了 cnt+1 个结点。如果k正好等于 cnt+1，
+    说明当前结点即为所求，返回当前结点值即可
+     */
+    static class SolutionDC {
+        public int kthSmallest(TreeNode root, int k) {
+            int count = count(root.left);
+            if (k <= count) {
+                return kthSmallest(root.left, k);
+            } else if (k > count + 1) {
+                return kthSmallest(root.right, k - count - 1);
+            }
+            return root.val;
+        }
+
+        private int count(TreeNode root) {
+            if (root == null) {return 0;}
+            return count(root.left) + count(root.right) + 1;
+        }
+    }
+
 }
