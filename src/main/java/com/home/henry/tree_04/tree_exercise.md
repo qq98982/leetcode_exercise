@@ -1,13 +1,4 @@
-116 important
-
-117 important
-
-314 important
-
-96 important
-
-105 出现少, 但是可以练习in order和pre order
-
+#### basic
 144
  
 94 589 590
@@ -16,10 +7,10 @@
 
 102 107(bfs) 429 872 987
 
-#### pre order
-100 101 (重要250) 226 (重要250) (pre order + bfs) 257 (重要250) 112 (重要250) 113 (重要250) 437 129 298 (重要250)
+#### pre order 从上到下是pre order
+100(dual pre) 101 (重要250 dual pre) 226 (重要250) (pre order + bfs) 257 (重要250) 112  (重要250) 113 (重要250) 437 129 298 (重要250) 111(双pre)
   
-#### post order
+#### post order 和层数相关是post order
 104 (重要250) 110 (重要250) 124 (重要250) 250 366 337 (重要250) 111 (重要250) 572 965
 
 298 (重要250) premium
@@ -32,28 +23,46 @@
 
 337 (重要250) (post order + pre order) 968 979
 
+#### BFS
 103(bfs)
+
+107(bfs)
 
 199(bfs + pre order)
 
-98 (重要250) 530
+#### BST 一般是in order 或者 pre order
 
-235 (重要250) 236 (重要250)
+98 (重要250) pre 530
 
-108 (重要250)
+235 (重要250) pre 236 (重要250) post
 
-109
+108 (重要250) bs
 
-173 (重要250)
+109 bs
 
-230 (重要250)
+173 (重要250) in order
+
+230 (重要250) in order
 
 297 (重要250) 449
 
-285 (重要250)
+285 (重要250) in
 
-270 (重要250)
+270 (重要250) pre 
 
-272
+272 in 
 
-99
+99 in
+
+#### other important
+
+116 important
+
+117 important
+
+314 important
+
+96 important
+
+105 出现少, 但是可以练习in order和pre order
+
