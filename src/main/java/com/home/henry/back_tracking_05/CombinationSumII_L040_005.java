@@ -6,7 +6,9 @@ import java.util.List;
 
 /**
  * 40. Combination Sum II
- * Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+ *
+ * Given a collection of candidate numbers (candidates) and a target number (target), find all unique
+ * combinations in candidates where the candidate numbers sums to target.
  * Each number in candidates may only be used once in the combination.
  * Note:
  * All numbers (including target) will be positive integers.
@@ -20,6 +22,7 @@ import java.util.List;
  */
 public class CombinationSumII_L040_005 {
 
+    // 为了解决重复的情况，我们可以先把数组先排序, 其他和39一样
     static class Solution {
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
             List<List<Integer>> res = new ArrayList<>();
@@ -35,8 +38,10 @@ public class CombinationSumII_L040_005 {
                 res.add(new ArrayList<>(list));
             } else {
                 for (int i = index; i < nums.length; i++) {
+                    //跳过重复的数字
                     if (i != index && nums[i] == nums[i - 1]) {continue;}
                     list.add(nums[i]);
+                    //i -> i + 1 ，因为每个数字只能用一次，所以下次遍历的时候不从自己开始
                     helper(res, list, nums, target - nums[i], i + 1);
                     list.remove(list.size() - 1);
                 }
