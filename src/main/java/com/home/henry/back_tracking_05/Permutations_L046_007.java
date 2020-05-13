@@ -5,10 +5,11 @@ import java.util.List;
 
 /**
  * 46. Permutations
- Given a collection of distinct integers, return all possible permutations.
- Example:
- Input: [1,2,3]
- Output: [ [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1] ]
+ *
+ *  Given a collection of distinct integers, return all possible permutations.
+ *  Example:
+ *  Input: [1,2,3]
+ *  Output: [ [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1] ]
  */
 public class Permutations_L046_007 {
 
@@ -44,11 +45,11 @@ public class Permutations_L046_007 {
     static class SolutionSec {
         public List<List<Integer>> permute(int[] nums) {
             List<List<Integer>> res = new ArrayList<>();
-            helperSec(res, 0, nums);
+            helper(res, 0, nums);
             return res;
         }
 
-        private void helperSec(List<List<Integer>> res, int index, int[] nums) {
+        private void helper(List<List<Integer>> res, int index, int[] nums) {
             if (index == nums.length) {
                 List<Integer> list = new ArrayList<>();
                 for (int num : nums) {
@@ -59,7 +60,7 @@ public class Permutations_L046_007 {
             }
             for (int i = index; i < nums.length; i++) {
                 swap(nums, index, i);
-                helperSec(res, index + 1, nums);
+                helper(res, index + 1, nums);
                 swap(nums, index, i);
             }
         }
