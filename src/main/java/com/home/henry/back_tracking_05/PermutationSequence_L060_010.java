@@ -5,9 +5,14 @@ import java.util.List;
 
 /**
  * 60. Permutation Sequence
+ *
  * 找到第k个permutation, 先计算出来每组permutation的数目, 然后再根据这个找到合适的数字
+ * 不能用bf找到全部的permutation.根据k找到对应的factor个数,算出index,然后加入
+ * 后面还要删除当前加过的值.
+ * 为了好算,k要-1.
  */
 public class PermutationSequence_L060_010 {
+
     static class Solution {
 
         public String getPermutation(int n, int k) {
