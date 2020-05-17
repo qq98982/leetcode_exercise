@@ -5,11 +5,11 @@ import java.util.Stack;
 /**
  * 155. Min Stack
  */
-public class MinStack_155_001 {
+public class MinStack_L155_001 {
     private Stack<Integer> stack;
     private int min;
 
-    MinStack_155_001(){
+    MinStack_L155_001() {
         this.stack = new Stack<>();
     }
 

@@ -64,12 +64,6 @@ public class ArrayQuadruplet {
         return aa;
     }
 
-    public static void main(String[] args) {
-//        int[] s = findArrayQuadruplet(new int[]{4,4,4,4}, 16);
-//        System.out.println(Arrays.toString(s));
-    }
-
-
 
     /**
      function findArrayQuadruplet(arr, s):

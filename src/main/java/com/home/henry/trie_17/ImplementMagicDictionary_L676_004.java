@@ -3,12 +3,12 @@ package com.home.henry.trie_17;
 /**
  * 676. Implement Magic Dictionary
  */
-public class ImplementMagicDictionary_676_004 {
+public class ImplementMagicDictionary_L676_004 {
 
     private TrieNode root;
 
     /** Initialize your data structure here. */
-    public ImplementMagicDictionary_676_004() {
+    public ImplementMagicDictionary_L676_004() {
         root = new TrieNode();
     }
 

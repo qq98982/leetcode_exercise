@@ -6,7 +6,7 @@ package com.home.henry.dp_06;
  * Some of the rooms are guarded by demons, so the knight loses health (negative integers) upon entering these rooms; other rooms are either empty (0's) or contain magic orbs that increase the knight's health (positive integers).
  * In order to reach the princess as quickly as possible, the knight decides to move only rightward or downward in each step.
  */
-public class DungeonGame_L_174_007 {
+public class DungeonGame_L174_007 {
 
     public int calculateMinimumHP(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) { return 0; }

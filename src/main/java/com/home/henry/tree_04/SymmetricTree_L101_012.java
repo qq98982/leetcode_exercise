@@ -27,7 +27,7 @@ import java.util.Stack;
  *
  * Follow up: Solve it both recursively and iteratively.
  */
-public class SymmetricTree_L101_12 {
+public class SymmetricTree_L101_012 {
     static class Solution {
         public boolean isSymmetric(TreeNode root) {
             if (root == null) {return true;}

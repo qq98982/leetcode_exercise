@@ -18,7 +18,7 @@ import java.util.Map;
  *
  * Input: s = "wordgoodgoodgoodbestword", words = ["word","good","best","word"] Output: []
  */
-public class SubstringWithConcatenationOfAllWords_L30 {
+public class SubstringWithConcatenationOfAllWords_L030 {
 
     class Solution {
         public List<Integer> findSubstring(String s, String[] words) {

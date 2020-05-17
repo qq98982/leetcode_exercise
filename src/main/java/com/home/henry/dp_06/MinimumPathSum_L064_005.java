@@ -5,7 +5,7 @@ package com.home.henry.dp_06;
  * Note: You can only move either down or right at any point in time.
  * i = 0 是第一行, j = 0 是第一列
  */
-public class MinimumPathSum_L64_005 {
+public class MinimumPathSum_L064_005 {
 
     public int minPathSum(int[][] grid) {
         for (int i = 0; i < grid.length; i++) {

@@ -12,7 +12,7 @@ import java.util.Map;
  * First is quick, second slower, but there is template for this type questions
  * Ref: https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem
  */
-public class MinimumWindowSubstring_L76_022 {
+public class MinimumWindowSubstring_L076_022 {
 
     public String minWindow(String s, String t) {
         int[] cnt = new int[128];

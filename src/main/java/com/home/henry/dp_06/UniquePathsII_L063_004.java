@@ -13,7 +13,7 @@ package com.home.henry.dp_06;
  * ]
  * Output: 2
  */
-public class UniquePathsII_63_004 {
+public class UniquePathsII_L063_004 {
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         // width = obstacleGrid[0].length

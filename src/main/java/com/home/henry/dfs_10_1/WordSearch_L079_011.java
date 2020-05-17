@@ -28,7 +28,7 @@ package com.home.henry.dfs_10_1;
  * 1 <= board[i].length <= 200
  * 1 <= word.length <= 10^3
  */
-public class WordSearch_L79_011 {
+public class WordSearch_L079_011 {
 
     class Solution {
         public boolean exist(char[][] board, String word) {

@@ -5,7 +5,7 @@ package com.home.henry.dp_06;
  * The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
  * How many possible unique paths are there?
  */
-public class UniquePaths_62_003 {
+public class UniquePaths_L062_003 {
 
     public int uniquePaths(int m, int n) {
         int[] res = new int[n];

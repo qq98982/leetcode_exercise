@@ -5,7 +5,7 @@ package com.home.henry.dp_06;
  * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
  * Input: 3 Output: 3
  */
-public class ClimbingStairs_L70_001 {
+public class ClimbingStairs_L070_001 {
 
     public int climbStairs(int n) {
         if (n <= 1) {

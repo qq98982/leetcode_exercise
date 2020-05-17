@@ -7,9 +7,10 @@ package com.home.henry.dfs_10_1;
  * Given an integer n, return the number of distinct solutions to the n-queens puzzle.
  * Input: 4 Output: 2
  */
-public class N_QueensII_L52_009 {
+public class N_QueensII_L052_009 {
     static class Solution {
         private int res = 0;
+
         public int totalNQueens(int n) {
             if (n <= 0) {return res;}
             helper(new int[n], 0);

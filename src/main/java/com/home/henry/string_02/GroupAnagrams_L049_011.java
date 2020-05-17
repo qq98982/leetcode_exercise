@@ -9,7 +9,7 @@ import java.util.Map;
  * Given an array of strings, group anagrams together.
  * 注意 res.addAll(map.values())这个方法, 也可以使用 List<List<String>> res = new ArrayList<>(map.values());
  */
-public class GroupAnagrams_L49_011 {
+public class GroupAnagrams_L049_011 {
 
     public List<List<String>> groupAnagrams(String[] strs) {
         if (null == strs || strs.length == 0) {
@@ -45,7 +45,7 @@ public class GroupAnagrams_L49_011 {
     }
 
     public static void main(String[] args) {
-        GroupAnagrams_L49_011 g = new GroupAnagrams_L49_011();
+        GroupAnagrams_L049_011 g = new GroupAnagrams_L049_011();
         String[] s = new String[] { "eat", "tea", "tan", "ate", "nat", "bat" };
         final List<List<String>> lists = g.groupAnagrams(s);
         for (List<String> list : lists) {

@@ -8,7 +8,7 @@ package com.home.henry.dp_06;
  * Example 1: Input: coins = [1, 2, 5], amount = 11 Output: 3
  * Explanation: 11 = 5 + 5 + 1 Example 2: Input: coins = [2], amount = 3 Output: -1
  */
-public class CoinChange_322_014 {
+public class CoinChange_L322_014 {
 
     public int coinChange(int[] coins, int amount) {
         int[] f = new int[amount + 1];

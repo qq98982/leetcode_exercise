@@ -31,7 +31,7 @@ import java.util.List;
  * ]
  * Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
  */
-public class NQueens_L51_008 {
+public class NQueens_L051_008 {
 
     static class Solution {
         public static List<List<String>> solveNQueens(int n) {

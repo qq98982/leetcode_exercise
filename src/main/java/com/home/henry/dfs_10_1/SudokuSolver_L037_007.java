@@ -14,7 +14,7 @@ import java.util.Arrays;
  * Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
  * Empty cells are indicated by the character '.'.
  */
-public class SudokuSolver_L37_007 {
+public class SudokuSolver_L037_007 {
     static class Solution {
         public static void solveSudoku(char[][] board) {
             if (board == null || board.length == 0) {return;}

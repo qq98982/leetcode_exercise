@@ -20,6 +20,17 @@ public class HIndex_L274_008 {
         return n;
     }
 
+    public int hindex(int[] citation) {
+        Arrays.sort(citation);
+        int n = 0;
+        for (int i = citation.length - 1, j = 1; i >= 0 && j <= citation.length; j++, i--) {
+            if (citation[i] >= j) {
+                n++;
+            }
+        }
+        return n;
+    }
+
     /**
      * Java bucket sort O(n) solution with detail explanation
      * This type of problems always throw me off, but it just takes some getting used to. The idea behind it is some bucket sort mechanisms.
@@ -32,6 +43,7 @@ public class HIndex_L274_008 {
      * Which will be our h-index result. The reason to scan from the end of the array is that we are looking for the greatest h-index.
      * For example, given array [3,0,6,5,1], we have 6 buckets to contain how many papers have the corresponding index.
      */
+
     public int hIndex2(int[] citations) {
         int n = citations.length;
         int[] buckets = new int[n + 1];

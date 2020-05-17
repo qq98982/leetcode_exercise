@@ -10,7 +10,7 @@ package com.home.henry.tree_04;
  * its next right node, just like in Figure B. The serialized output is in level order as connected by the next
  * pointers, with '#' signifying the end of each level.
  */
-public class PopulatingNextPointersEachNodeII_L117045 {
+public class PopulatingNextPointersEachNodeII_L117_045 {
 
     class Node {
         public int val;

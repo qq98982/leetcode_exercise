@@ -22,7 +22,7 @@ import java.util.Stack;
  *    /
  *   3
  */
-public class RecoverBinarySearchTree_L99_040 {
+public class RecoverBinarySearchTree_L099_040 {
 
     /**
      * 第一种做法用的是iterator, 使用了in order的模板

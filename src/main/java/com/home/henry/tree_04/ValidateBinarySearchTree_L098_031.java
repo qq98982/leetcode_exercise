@@ -31,7 +31,7 @@ import java.util.Stack;
  * Explanation: The root node's value is 5 but its right child's value is 4.
  * template for in order tree: https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
  */
-public class ValidateBinarySearchTree_L98_031 {
+public class ValidateBinarySearchTree_L098_031 {
 
     public boolean isValidBST(TreeNode root) {
         if (root == null) {return true;}
