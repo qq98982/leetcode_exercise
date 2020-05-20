@@ -4,7 +4,18 @@ import java.util.Stack;
 
 /**
  * 852. Peak Index in a Mountain Array
- * 第一种用stack实现, 较容易, 另一种用binary search
+ *
+ * Let's call an array A a mountain if the following properties hold:
+ *
+ * A.length >= 3
+ * There exists some 0 < i < A.length - 1 such that A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
+ * Given an array that is definitely a mountain, return any i such that A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1].
+ *
+ * Input: [0,1,0] Output: 1
+ *
+ * Input: [0,2,1,0] Output: 1
+ *
+ * 第一种用stack实现, 较容易, 另一种用binary search, 第三个也是binary search
  */
 public class PeakIndexInAMountainArray_L852_011 {
 
@@ -43,5 +54,18 @@ public class PeakIndexInAMountainArray_L852_011 {
             }
         }
         return Integer.MIN_VALUE;
+    }
+
+    public int peakIndexInMountainArray3(int[] A) {
+        int start = 0, end = A.length - 1;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (A[mid] < A[mid + 1]) {
+                start = mid;
+            } else {
+                end = mid;
+            }
+        }
+        return A[start] > A[end] ? start : end;
     }
 }
