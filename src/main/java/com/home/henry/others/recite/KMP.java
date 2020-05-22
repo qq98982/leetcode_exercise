@@ -10,16 +10,16 @@ public class KMP {
      前缀的意思是这个字符串从第一个字母算, 不加最后一个, 后缀是不加第一个字符,从最后一个字母开始算
      第5个位置上前缀后缀完全相同的是a, 第6个是a b, 第7个是a b c
      */
-    private static int[] getNextArray(char[] th) {
+    public static int[] getNextArray(char[] sc) {
         // 如果长度为1, 返回-1
-        if (th.length == 1) {return new int[] { -1 };}
-        int[] next = new int[th.length];
+        if (sc.length == 1) {return new int[] { -1 };}
+        int[] next = new int[sc.length];
         next[0] = -1;
         next[1] = 0;
-        // pos 指的是正常向后走的位置index, cn指的是最大前缀的位置的后一个index
+        // pos 指的是正常向后走的位置index, cn(current next)指的是最大前缀的位置的后一个index
         int pos = 2, cn = 0;
         while (pos < next.length) {
-            if (th[pos - 1] == th[cn]) {
+            if (sc[pos - 1] == sc[cn]) {
                 // 如果最大前缀的后一个位置的值和i - 1的值一样,那么i位置的值应该+1
                 next[pos++] = ++cn;
             } else if (cn > 0) {
@@ -35,33 +35,52 @@ public class KMP {
         return next;
     }
 
-    public static int getIndexOf(String s1, String s2) {
-        if (s1.isEmpty() || s2.isEmpty() || s1.length() < s2.length()) {return -1;}
-        char[] ch = s1.toCharArray();
-        char[] th = s2.toCharArray();
-        // 获取辅助数组
-        int[] p = getNextArray(th);
-        // ci是ch长数组的index, ti是th短数组的index
-        int ci = 0, ti = 0;
-        while (ci < ch.length && ti < th.length) {
-            // 如果是相同, index都走一步
-            if (ch[ci] == th[ti]) {
-                ci++;
-                ti++;
-            } else if (p[ti] == -1) {
-                // 如果是辅助数组的值已经走到-1了, 长数组的++, 准备下一个循环中匹配后一个字母
-                ci++;
+    public int[] getNext(char[] sc) {
+        if (sc.length == 1) {return new int[] { -1 };}
+        int[] next = new int[sc.length];
+        next[0] = -1;
+        next[1] = 0;
+        int pos = 2, cn = 0;
+        while (pos < next.length) {
+            if (sc[pos - 1] == sc[cn]) {
+                next[pos++] = ++cn;
+            } else if (cn > 0) {
+                cn = next[cn];
             } else {
-                // 如果没有匹配到, 那么要用到辅助数组中的跳跃, 更新第二个数组的index, 在下个循环中继续匹配
-                ti = p[ti];
+                next[pos++] = 0;
             }
         }
-        return ti == th.length ? ci - ti : -1;
+        return next;
+    }
+
+    public static int getIndexOf(String s1, String s2) {
+        if (s1.isEmpty() || s2.isEmpty() || s1.length() < s2.length()) {return -1;}
+        char[] fc = s1.toCharArray();
+        char[] sc = s2.toCharArray();
+        // 获取辅助数组
+        int[] p = getNextArray(sc);
+        // ci是ch长数组的index, ti是th短数组的index
+        int fi = 0, si = 0;
+        while (fi < fc.length && si < sc.length) {
+            // 如果是相同, index都走一步
+            if (fc[fi] == sc[si]) {
+                fi++;
+                si++;
+            } else if (p[si] == -1) {
+                // 如果是辅助数组的值已经走到-1了, 长数组的++, 准备下一个循环中匹配后一个字母
+                fi++;
+            } else {
+                // 如果没有匹配到, 那么要用到辅助数组中的跳跃, 更新第二个数组的index, 在下个循环中继续匹配
+                si = p[si];
+            }
+        }
+        return si == sc.length ? fi - si : -1;
     }
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(getNextArray("abaaababa".toCharArray())));
-        System.out.println(getIndexOf("abcde","bc"));
-        System.out.println(getIndexOf("abcdef","de"));
+        System.out.println(Arrays.toString(getNextArray("aaaa".toCharArray())));
+        System.out.println(getIndexOf("abcde", "bc"));
+        System.out.println(getIndexOf("abcdef", "de"));
     }
 }
