@@ -8,6 +8,7 @@ import java.util.Set;
 
 /**
  * 15. 3Sum
+ *
  * time: O(n^2) space: O(n)
  * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
  * Find all unique triplets in the array which gives the sum of zero.
@@ -25,15 +26,15 @@ public class ThreeSum_L015_017 {
             Arrays.sort(nums);
             for (int i = 0; i < nums.length - 2; i++) {
                 if (i > 0 && nums[i] == nums[i - 1]) {continue;}
-                int low = i + 1, high = nums.length - 1, sum = 0 - nums[i];
+                int low = i + 1, high = nums.length - 1;
                 while (low < high) {
-                    if (nums[low] + nums[high] == sum) {
+                    if (nums[i] + nums[low] + nums[high] == 0) {
                         res.add(Arrays.asList(nums[low], nums[high], nums[i]));
                         while (low < high && nums[low] == nums[low + 1]) { low++;}
                         while (low < high && nums[high] == nums[high - 1]) {high--;}
                         low++;
                         high--;
-                    } else if (nums[low] + nums[high] < sum) {
+                    } else if (nums[i] + nums[low] + nums[high] < 0) {
                         low++;
                     } else {
                         high--;
