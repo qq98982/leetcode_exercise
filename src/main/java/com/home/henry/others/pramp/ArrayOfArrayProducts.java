@@ -9,6 +9,8 @@ public class ArrayOfArrayProducts {
      *
      * input:  arr = [2, 7, 3, 4]
      * output: [84, 24, 56, 42] # by calculating: [7*3*4, 2*3*4, 2*7*4, 2*7*3]
+     *
+     * 全部乘起来以后再除的方法不行，　比如有[2,7,0,3,4]　所以要用两个arr记录左右分别的乘积
      */
     static class Solution {
         private static final int[] EMPTY = new int[0];
