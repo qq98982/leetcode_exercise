@@ -40,6 +40,9 @@ public class FindCommonCharacters_L1002_040 {
             }
             for (int i = 0; i < 26; i++) {
                 while (count[i]-- > 0) {
+                    // 不用String.valueOf()加入到list也可以
+                    // char c = (char)('a' + i);
+                    // res.add(c + "");
                     res.add(String.valueOf(i + 'a'));
                 }
             }
