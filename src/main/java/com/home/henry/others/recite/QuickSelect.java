@@ -13,6 +13,9 @@ public class QuickSelect {
             int start = 0, end = nums.length - 1;
             while (true) {
                 int p = partition(nums, start, end);
+                if (p == -1) {
+                    return -1;
+                }
                 if (p + 1 == k) {
                     return nums[p];
                 } else if (p + 1 > k) {
@@ -24,6 +27,9 @@ public class QuickSelect {
         }
 
         private static int partition(int[] nums, int start, int end) {
+            if (start >= nums.length || end < 0) {
+                return -1;
+            }
             if (start == end) {return start;}
             int num = nums[start];
             int i = start, j = end + 1;
@@ -51,7 +57,7 @@ public class QuickSelect {
     public static void main(String[] args) {
         int[] arr = { 10, 9, 11, 12, 15, 8, 2, 7 };
         System.out.println(Arrays.toString(arr));
-        System.out.println(Solution.select(arr, 6));
+        System.out.println(Solution.select(arr, 22));
         System.out.println(Arrays.toString(arr));
     }
 }
