@@ -11,6 +11,8 @@ package com.home.henry.array_01;
  *
  * Input: nums = [4,5,6,7,0,1,2], target = 0 Output: 4
  * Input: nums = [4,5,6,7,0,1,2], target = 3 Output: -1
+ *
+ * 这个用的是binary search方法, 下面是两种解法, 推荐第二种(left + 1 < right)
  */
 public class SearchInRotatedSortedArray_L033_016 {
 
@@ -48,7 +50,7 @@ public class SearchInRotatedSortedArray_L033_016 {
 
     static class Solution2 {
         // at least ons part is sorted
-        public int search(int[] nums, int target) {
+        public static int search(int[] nums, int target) {
             if (nums == null || nums.length == 0) {
                 return -1;
             }
@@ -80,5 +82,14 @@ public class SearchInRotatedSortedArray_L033_016 {
             }
             return -1;
         }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = { 4, 5, 6, 7, 0, 1, 2 };
+        System.out.println("4 -> " + Solution2.search(nums, 0));
+        System.out.println("-1 -> " + Solution2.search(nums, 3));
+        System.out.println("0 -> " + Solution2.search(new int[] { 1, 3, 5 }, 1));
+        System.out.println("5 -> " + Solution2.search(new int[] { 4, 5, 6, 7, 0, 1, 2 }, 1));
+        System.out.println("-1 -> " + Solution2.search(new int[] { 1, 3 }, 2));
     }
 }
