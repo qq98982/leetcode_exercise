@@ -6,7 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 49. Group Anagrams
+ *
  * Given an array of strings, group anagrams together.
+ * Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+ * Output: [ ["ate","eat","tea"], ["nat","tan"], ["bat"] ]
+ *
+ * Note:
+ * All inputs will be in lowercase.
+ * The order of your output does not matter.
+ *
  * 注意 res.addAll(map.values())这个方法, 也可以使用 List<List<String>> res = new ArrayList<>(map.values());
  */
 public class GroupAnagrams_L049_011 {
