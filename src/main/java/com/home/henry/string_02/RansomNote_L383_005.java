@@ -34,4 +34,23 @@ public class RansomNote_L383_005 {
         }
         return true;
     }
+
+    class Solution {
+        public boolean canConstruct(String ransomNote, String magazine) {
+            if (ransomNote.length() > magazine.length()) {return false;}
+            int[] ch = new int[26];
+            for (char c : magazine.toCharArray()) {
+                ch[c - 'a']++;
+            }
+            for (char c : ransomNote.toCharArray()) {
+                ch[c - 'a']--;
+            }
+            for (int n : ch) {
+                if (n < 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 }
