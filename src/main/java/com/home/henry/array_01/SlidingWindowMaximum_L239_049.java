@@ -75,4 +75,26 @@ public class SlidingWindowMaximum_L239_049 {
             return res;
         }
     }
+
+    class Solution2 {
+        public int[] maxSlidingWindow(int[] nums, int k) {
+            if (nums == null || nums.length == 0) {return new int[] {};}
+            int[] res = new int[nums.length - k + 1];
+            LinkedList<Integer> queue = new LinkedList<>();
+            int index = 0;
+            for (int i = 0; i < nums.length; i++) {
+                while (!queue.isEmpty() && nums[i] >= nums[queue.peekLast()]) {
+                    queue.pollLast();
+                }
+                queue.addLast(i);
+                if (queue.peekFirst() == i - k) {
+                    queue.pollFirst();
+                }
+                if (i >= k - 1) {
+                    res[index++] = nums[queue.peekFirst()];
+                }
+            }
+            return res;
+        }
+    }
 }
