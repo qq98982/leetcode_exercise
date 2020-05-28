@@ -2,9 +2,12 @@ package com.home.henry.trie_17;
 
 /**
  * 211. Add and Search Word - Data structure design
+ *
  * Ternary Search Trie/ Ternary Search Tree
  * A TST avoid the heavy space requirement of the traditional Trie while still keeping many of its
  * advantages.
+ *
+ * 3路trie和普通的trie结构, 推荐3路trie
  */
 public class AddAndSearchWord_L211_001 {
 
@@ -39,11 +42,6 @@ public class AddAndSearchWord_L211_001 {
         }
         return curr;
     }
-
-    /** Initialize your data structure here. */
-//    public WordDictionary() {
-//
-//    }
 
     /** Adds a word into the data structure. */
     public void addWord(String word) {
@@ -81,4 +79,62 @@ public class AddAndSearchWord_L211_001 {
         }
     }
 
+    static class Solution {
+        class WordDictionary {
+
+            /** Initialize your data structure here. */
+            class Trie {
+                Trie[] children;
+                boolean isComplete = false;
+
+                public Trie() {
+                    children = new Trie[26];
+                }
+            }
+
+            Trie root;
+
+            public WordDictionary() {
+                root = new Trie();
+            }
+
+            /** Adds a word into the data structure. */
+            public void addWord(String word) {
+
+                Trie curr = root;
+
+                for (char c : word.toCharArray()) {
+                    Trie childNode = curr.children[c - 'a'];
+                    if (childNode == null) {
+                        childNode = new Trie();
+                        curr.children[c - 'a'] = childNode;
+                    }
+                    curr = childNode;
+                }
+                curr.isComplete = true;
+            }
+
+            /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
+            public boolean search(String word) {
+                char[] ch = word.toCharArray();
+                return find(ch, root, 0);
+            }
+
+            private boolean find(char[] ch, Trie curr, int pos) {
+
+                if (pos == ch.length) { return curr.isComplete; }
+                if (pos > ch.length) { return false; }
+
+                if (ch[pos] == '.') {
+                    for (int i = 0; i < 26; i++) {
+                        if (curr.children[i] != null && find(ch, curr.children[i], pos + 1)) { return true; }
+                    }
+                } else {
+                    return curr.children[ch[pos] - 'a'] != null && find(ch, curr.children[ch[pos] - 'a'],
+                                                                        pos + 1);
+                }
+                return false;
+            }
+        }
+    }
 }
