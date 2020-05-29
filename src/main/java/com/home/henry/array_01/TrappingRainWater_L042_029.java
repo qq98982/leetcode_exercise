@@ -20,12 +20,12 @@ public class TrappingRainWater_L042_029 {
             int currIndex = 0;
             while (currIndex < n) {
                 while (!stack.isEmpty() && height[currIndex] > height[stack.peek()]) {
-                    // top是中间的空槽部分
-                    int top = stack.pop();
+                    // bottom是中间的空槽部分
+                    int bottom = stack.pop();
                     // 如果左边为空了, 没有边界, break
                     if (stack.isEmpty()) {break;}
-                    // 要减去中间槽的高度
-                    int h = Math.min(height[stack.peek()] - height[top], height[currIndex] - height[top]);
+                    // 看是左边和右边的哪个小就取哪个计算高度
+                    int h = Math.min(height[stack.peek()] - height[bottom], height[currIndex] - height[bottom]);
                     int dist = currIndex - stack.peek() - 1;
                     res += dist * h;
                 }
