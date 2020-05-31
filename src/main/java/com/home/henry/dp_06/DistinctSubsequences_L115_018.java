@@ -36,31 +36,40 @@ package com.home.henry.dp_06;
  * subsequences, so dp[i][j] = dp[i-1][j].
  * We match those two characters, in this way. dp[i][j] = dp[i-1][j-1];
  * Thus, including both two case, dp[i][j] = dp[i-1][j] + dp[i-1][j-1]
+ * 双序列, 9c dp视频中有讲解
  */
 public class DistinctSubsequences_L115_018 {
 
     static class Solution {
-
-        public int numDistinct(String s, String t) {
-
-            int m = t.length(), n = s.length();
-            int[][] dp = new int[n + 1][m + 1];
-            for (int i = 1; i < m + 1; i++) {
-                dp[0][i] = 0;
-            }
-            // ""是要有1的
-            for (int i = 0; i < n + 1; i++) {
-                dp[i][0] = 1;
-            }
-            for (int j = 1; j < m + 1; j++) {
-                for (int i = 1; i < n + 1; i++) {
-                    dp[i][j] = dp[i - 1][j];
+        public static int numDistinct(String s, String t) {
+            int m = s.length(), n = t.length();
+            int[][] f = new int[m + 1][n + 1];
+            // f[i][j]是t前j个字符[0..j-1]在A前i个字符[0..i-1]中出现多少次
+            // 转移方程 f[i][j] = f[i-1][j-1]|A[i-1]=B[i-1] + f[i-1][j]
+            for (int i = 0; i <= m; i++) {
+                for (int j = 0; j <= n; j++) {
+                    // t是空, t在s中出现的次数是1 非常重要
+                    if (j == 0) {
+                        f[i][j] = 1;
+                        continue;
+                    }
+                    // s是空而t不是空, t在s中出现的次数为0
+                    // 这个和上面的不能换位置
+                    if (i == 0) {
+                        f[i][j] = 0;
+                        continue;
+                    }
+                    f[i][j] = f[i - 1][j];
                     if (s.charAt(i - 1) == t.charAt(j - 1)) {
-                        dp[i][j] += dp[i - 1][j - 1];
+                        f[i][j] += f[i - 1][j - 1];
                     }
                 }
             }
-            return dp[n][m];
+            return f[m][n];
         }
+    }
+
+    public static void main(String[] args) {
+        assert Solution.numDistinct("rabbbit", "rabbit") == 3;
     }
 }
