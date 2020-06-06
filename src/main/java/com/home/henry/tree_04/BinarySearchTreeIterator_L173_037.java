@@ -1,5 +1,8 @@
 package com.home.henry.tree_04;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -28,6 +31,7 @@ import java.util.Stack;
  * Calling next() will return the next smallest number in the BST.
  *
  * 这道题主要就是考二叉树的中序遍历的非递归形式，需要额外定义一个栈来辅助，二叉搜索树的建树规则就是左<根<右，用中序遍历即可从小到大取出所有节点。
+ * 如果用递归, dfs注意一下cast
  */
 public class BinarySearchTreeIterator_L173_037 {
 
@@ -50,7 +54,10 @@ public class BinarySearchTreeIterator_L173_037 {
             }
 
             private void pushAll(TreeNode node) {
-                for (; node != null; stack.push(node), node = node.left) {}
+                while (node != null) {
+                    stack.push(node);
+                    node = node.left;
+                }
             }
         }
     }
@@ -92,6 +99,34 @@ public class BinarySearchTreeIterator_L173_037 {
         /** @return whether we have a next smallest number */
         public boolean hasNext() {
             return !stack.isEmpty();
+        }
+    }
+
+    static class BSTIterator {
+        List<Integer> list;
+        Iterator itor;
+
+        public BSTIterator(TreeNode root) {
+            list = new ArrayList<>();
+            dfs(root);
+            itor = list.iterator();
+        }
+
+        private void dfs(TreeNode root) {
+            if (root == null) {return;}
+            dfs(root.left);
+            list.add(root.val);
+            dfs(root.right);
+        }
+
+        /** @return the next smallest number */
+        public int next() {
+            return (int) itor.next();
+        }
+
+        /** @return whether we have a next smallest number */
+        public boolean hasNext() {
+            return itor.hasNext();
         }
     }
 }
