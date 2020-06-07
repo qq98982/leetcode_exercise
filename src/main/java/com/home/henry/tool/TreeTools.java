@@ -3,18 +3,9 @@ package com.home.henry.tool;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class TreeTools {
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
+import com.home.henry.tree_04.TreeNode;
 
-        TreeNode(int val) {
-            this.val = val;
-            left = null;
-            right = null;
-        }
-    }
+public class TreeTools {
 
     public static String treeStr(TreeNode root) {
         if (root == null) {return "null";}
