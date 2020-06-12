@@ -40,23 +40,24 @@ public class FriendCircles_L547_002 {
         // 因为是相互关系, 所以只需要访问一次就可以, 否则就会重复计算
         boolean[] visited = new boolean[M.length];
         int res = 0;
-        for (int i = 0; i < M.length; i++) {
-            // 如果没有访问过, 对其进行dfs遍历
-            if (!visited[i]) {
-                dfs(M, visited, i);
+        for (int person = 0; person < M.length; person++) {
+            // 如果当前这个人没有访问过, 对其进行dfs遍历, 完成后+1
+            if (!visited[person]) {
+                dfs(M, visited, person);
                 res++;
             }
         }
         return res;
     }
 
-    private static void dfs(int[][] M, boolean[] visited, int i) {
-        // 从这一行的第一个开始, 到结束
-        for (int j = 0; j < M.length; j++) {
-            // 如果是关联并没有访问过, 将其更改为访问过, 并对其进行dfs访问
-            if (M[i][j] == 1 && visited[j] == false) {
-                visited[j] = true;
-                dfs(M, visited, j);
+    private static void dfs(int[][] M, boolean[] visited, int person) {
+        // person是当前的人, other是新的人
+        for (int other = 0; other < M.length; other++) {
+            // 如果是关联并没有访问过这个新的人, 将其更改为访问过, 并对其进行dfs访问
+            if (M[person][other] == 1 && !visited[other]) {
+                visited[other] = true;
+                // 对这个新找到的人进行dfs
+                dfs(M, visited, other);
             }
         }
     }
