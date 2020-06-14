@@ -14,6 +14,7 @@ public class ArrayOfArrayProducts {
      */
     static class Solution {
         private static final int[] EMPTY = new int[0];
+
         static int[] arrayOfArrayProducts(int[] arr) {
             if (arr == null || arr.length == 0) {return EMPTY;}
             if (arr.length == 1) {return arr;}
@@ -21,12 +22,16 @@ public class ArrayOfArrayProducts {
             int[] right = new int[arr.length];
             left[0] = 1;
             right[arr.length - 1] = 1;
+            // [8, 10, 2]
+            // left = [1, 8, 80]
             for (int i = 1; i < arr.length; i++) {
                 left[i] = left[i - 1] * arr[i - 1];
             }
+            // right = [20, 2, 1]
             for (int i = arr.length - 2; i >= 0; i--) {
                 right[i] = right[i + 1] * arr[i + 1];
             }
+            // result = [20, 16, 80]
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = left[i] * right[i];
             }
@@ -35,7 +40,6 @@ public class ArrayOfArrayProducts {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(Solution.arrayOfArrayProducts(new int[]{2,7,3,4})));
-
+        System.out.println(Arrays.toString(Solution.arrayOfArrayProducts(new int[] { 2, 7, 3, 4 })));
     }
 }
