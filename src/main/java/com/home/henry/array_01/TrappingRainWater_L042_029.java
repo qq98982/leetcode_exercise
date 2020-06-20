@@ -5,20 +5,23 @@ import java.util.Deque;
 
 /**
  * 42. Trapping Rain Water
+ *        +
+ *    +   ++ +
+ *  + ++ ++++++
  * two pointer或者用单调递减栈的方法, 还有其他几种方法
  */
 public class TrappingRainWater_L042_029 {
 
-    public static void main(String[] args) {
-        System.out.println(SolutionStack.trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}));
-    }
     public static class SolutionStack {
         public  static int trap(int[] height) {
-            int n = height.length;
-            Deque<Integer> stack = new ArrayDeque<>();
             int res = 0;
+            int n = height.length;
+            // 少于3个, 就不会形成水坑
+            if (n < 3) {return res;}
+            Deque<Integer> stack = new ArrayDeque<>();
             int currIndex = 0;
             while (currIndex < n) {
+                // 右边要进来的比左边高了, 这个while完成后,最高的就是这个要进来的
                 while (!stack.isEmpty() && height[currIndex] > height[stack.peek()]) {
                     // bottom是中间的空槽部分
                     int bottom = stack.pop();
@@ -50,5 +53,27 @@ public class TrappingRainWater_L042_029 {
             }
             return res;
         }
+
+        public int trap2(int[] height) {
+            int l = 0, r = height.length - 1;
+            int res = 0;
+            int leftMax = 0, rightMax = 0;
+            while (l < r) {
+                leftMax = Math.max(leftMax, height[l]);
+                rightMax = Math.max(rightMax, height[r]);
+                if (leftMax < rightMax) {
+                    res += leftMax - height[l];
+                    l++;
+                } else {
+                    res += rightMax - height[r];
+                    r--;
+                }
+            }
+            return res;
+        }
+    }
+
+    public static void main(String[] args) {
+        assert SolutionStack.trap(new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 }) == 6;
     }
 }
