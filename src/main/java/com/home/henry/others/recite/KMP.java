@@ -13,44 +13,26 @@ public class KMP {
     public static int[] getNextArray(char[] sc) {
         // 如果长度为1, 返回-1
         if (sc.length == 1) {return new int[] { -1 };}
-        int[] next = new int[sc.length];
-        next[0] = -1;
-        next[1] = 0;
+        int[] p = new int[sc.length];
+        p[0] = -1;
+        p[1] = 0;
         // pos 指的是正常向后走的位置index, cn(current next)指的是最大前缀的位置的后一个index
         int pos = 2, cn = 0;
-        while (pos < next.length) {
+        while (pos < p.length) {
             if (sc[pos - 1] == sc[cn]) {
-                // 如果最大前缀的后一个位置的值和i - 1的值一样,那么i位置的值应该+1
-                next[pos++] = ++cn;
+                // 如果最大前缀的后一个位置的值和pos - 1的值一样,那么cn位置的值应该+1
+                p[pos++] = ++cn;
             } else if (cn > 0) {
                 // 如果没有匹配上,更新cn值, 最后cn会为0(如果后面持续匹配不上)
                 // 在这个分支中没有更新pos, 只更新cn, 所以出最后会匹配到cn为0, 就不走这个if了
                 // 0位置的值是0
-                cn = next[cn];
+                cn = p[cn];
             } else {
                 // 如果匹配不上,前后缀又没有一样的,那么就是0
-                next[pos++] = 0;
+                p[pos++] = 0;
             }
         }
-        return next;
-    }
-
-    public int[] getNext(char[] sc) {
-        if (sc.length == 1) {return new int[] { -1 };}
-        int[] next = new int[sc.length];
-        next[0] = -1;
-        next[1] = 0;
-        int pos = 2, cn = 0;
-        while (pos < next.length) {
-            if (sc[pos - 1] == sc[cn]) {
-                next[pos++] = ++cn;
-            } else if (cn > 0) {
-                cn = next[cn];
-            } else {
-                next[pos++] = 0;
-            }
-        }
-        return next;
+        return p;
     }
 
     public static int getIndexOf(String s1, String s2) {
@@ -80,7 +62,7 @@ public class KMP {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(getNextArray("abaaababa".toCharArray())));
         System.out.println(Arrays.toString(getNextArray("aaaa".toCharArray())));
-        System.out.println(getIndexOf("abcde", "bc"));
-        System.out.println(getIndexOf("abcdef", "de"));
+        assert getIndexOf("abcde", "bc") == 1;
+        assert getIndexOf("abcdef", "de") == 3;
     }
 }
