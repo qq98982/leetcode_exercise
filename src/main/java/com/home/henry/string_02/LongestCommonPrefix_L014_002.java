@@ -1,5 +1,7 @@
 package com.home.henry.string_02;
 
+import com.home.henry.tool.GenerateRandomStringArray;
+
 /**
  * 14. Longest Common Prefix
  *
@@ -12,10 +14,12 @@ package com.home.henry.string_02;
  * Explanation: There is no common prefix among the input strings.
  *
  * Note: All given inputs are in lowercase letters a-z.
+ *
+ * 后一种方法要好点
  */
 public class LongestCommonPrefix_L014_002 {
 
-    public String longestCommonPrefix(String[] strs) {
+    public static String longestCommonPrefix(String[] strs) {
         if (null == strs || strs.length == 0) {
             return "";
         }
@@ -26,5 +30,30 @@ public class LongestCommonPrefix_L014_002 {
             }
         }
         return res;
+    }
+
+    public static String longestCommonPrefix2(String[] strs) {
+        if (strs == null || strs.length == 0) {return "";}
+        int len = Integer.MAX_VALUE;
+        for (String str : strs) {
+            len = Math.min(str.length(), len);
+        }
+        if (len == 0) {return "";}
+        String str = strs[0];
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < len; i++) {
+            for (int j = 1; j < strs.length; j++) {
+                if (strs[j].charAt(i) != str.charAt(i)) {
+                    return sb.toString();
+                }
+            }
+            sb.append(str.charAt(i));
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String[] strings = GenerateRandomStringArray.generateStringArray();
+        assert longestCommonPrefix(strings).equals(longestCommonPrefix2(strings));
     }
 }
