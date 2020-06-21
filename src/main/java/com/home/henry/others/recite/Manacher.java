@@ -4,7 +4,7 @@ public class Manacher {
     /**
      * 对进来的string进行处理, 变成#a#b#c#这种
      */
-    private char[] process(char[] chs) {
+    private static char[] process(char[] chs) {
         char[] ch = new char[chs.length * 2 + 1];
         int index = 0;
         for (int i = 0; i < ch.length; i++) {
@@ -13,7 +13,7 @@ public class Manacher {
         return ch;
     }
 
-    public String manacher(String str) {
+    public static String manacher(String str) {
         char[] chs = str.toCharArray();
         char[] ch = process(chs);
         // C是中心点, R是右边界
@@ -43,9 +43,13 @@ public class Manacher {
             }
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = start - max + 2; i < start + max; i++) {
+        for (int i = start - max + 2; i < start + max; i += 2) {
             sb.append(ch[i]);
         }
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(manacher("abbcba"));
     }
 }
