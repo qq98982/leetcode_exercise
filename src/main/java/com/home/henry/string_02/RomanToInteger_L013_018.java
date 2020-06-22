@@ -2,23 +2,33 @@ package com.home.henry.string_02;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
- * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
- * For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+ * 13. Roman to Integer
  *
- * Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+ * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+ * For example, two is written as II in Roman numeral, just two one's added together.
+ * Twelve is written as, XII, which is simply X + II. The number twenty seven is written
+ * as XXVII, which is XX + V + II.
+ *
+ * Roman numerals are usually written largest to smallest from left to right.
+ * However, the numeral for four is not IIII. Instead, the number four is written as IV.
+ * Because the one is before the five we subtract it making four. The same principle
+ * applies to the number nine, which is written as IX. There are six instances where subtraction is used:
  *
  * I can be placed before V (5) and X (10) to make 4 and 9.
  * X can be placed before L (50) and C (100) to make 40 and 90.
  * C can be placed before D (500) and M (1000) to make 400 and 900.
- * Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
+ * Given a roman numeral, convert it to an integer. Input is guaranteed
+ * to be within the range from 1 to 3999.
+ *
  * 非常好的做法, 放入map中, 根据规律找到prev比当前大的时候要减去2倍的prev
  */
 public class RomanToInteger_L013_018 {
 
-    public int romanToInt(String s) {
-        if (null == s || s.length() == 0) {
+    public static int romanToInt(String s) {
+        if (null == s || s.isEmpty()) {
             return 0;
         }
         Map<Character, Integer> map = new HashMap<>();
@@ -44,4 +54,11 @@ public class RomanToInteger_L013_018 {
         return total;
     }
 
+    public static void main(String[] args) {
+        assert Objects.equals(romanToInt("III"), 3);
+        assert Objects.equals(romanToInt("IV"), 4);
+        assert Objects.equals(romanToInt("IX"), 9);
+        assert Objects.equals(romanToInt("LVIII"), 58);
+        assert Objects.equals(romanToInt("MCMXCIV"), 1994);
+    }
 }
