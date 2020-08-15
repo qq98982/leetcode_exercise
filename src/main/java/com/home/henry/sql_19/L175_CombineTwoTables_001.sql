@@ -44,6 +44,11 @@
 #
 # FirstName, LastName, City, State
 # --
+# insert into Person (PersonId, LastName, FirstName) values ('1', 'Wang', 'Allen')
+# insert into Person (PersonId, LastName, FirstName) values ('2', 'Lin', 'lee')
+
+# insert into Address (AddressId, PersonId, City, State) values ('1', '2', 'New York City', 'New York')
+# insert into Address (AddressId, PersonId, City, State) values ('2', '1', 'Mexico City', 'Mexico')
 
 
 SELECT
