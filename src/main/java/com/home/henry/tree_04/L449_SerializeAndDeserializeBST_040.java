@@ -3,6 +3,7 @@ package com.home.henry.tree_04;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * 449. Serialize and Deserialize BST
@@ -64,4 +65,59 @@ public class L449_SerializeAndDeserializeBST_040 {
         }
     }
 
+    /**
+     * BST的特点是节点的左小于当前值, 右边的节点的值大于当前值
+     *      5
+     *    4   6
+     *  1       8
+     * 举例可以用先序的5 4 1 6 8代表
+     */
+    static class Solution {
+
+        // Encodes a tree to a single string.
+        public String serialize(TreeNode root) {
+            if (root == null) {return "";}
+            StringBuilder stringBuilder = new StringBuilder();
+            Stack<TreeNode> stack = new Stack<>();
+            stack.push(root);
+            // 先序遍历, 空值在这里取掉, 只保存现有节点
+            while (!stack.isEmpty()) {
+                TreeNode curr = stack.pop();
+                stringBuilder.append(curr.val + " ");
+                if (curr.right != null) { stack.push(curr.right);}
+                if (curr.left != null) {stack.push(curr.left);}
+            }
+            return stringBuilder.toString();
+        }
+
+        // Decodes your encoded data to tree.
+        public TreeNode deserialize(String data) {
+            if (data == "") {return null;}
+            String[] str = data.split(" ");
+            Queue<Integer> queue = new LinkedList<>();
+            // 将所有的元素加入到当前的queue中
+            for (String s : str) {
+                queue.offer(Integer.parseInt(s));
+            }
+            // 得到最终结果
+            return getNode(queue);
+        }
+
+        private TreeNode getNode(Queue<Integer> queue) {
+            if (queue.isEmpty()) { return null;}
+            // 将根节点分离出来
+            TreeNode root = new TreeNode(queue.poll());
+            Queue<Integer> smallQueue = new LinkedList<>();
+            // 如果是小于root节点, 加入到small queue中, 其他的就是大于root的就留在了正常queue中
+            while (!queue.isEmpty() && queue.peek() < root.val) {
+                smallQueue.offer(queue.poll());
+            }
+            // root的左节点就是递归调用, 将small queue中的加入进去
+            root.left = getNode(smallQueue);
+            // root的右节点也是递归调用, 作用到比root大的值所在的queue
+            root.right = getNode(queue);
+            // 最后返回root完成
+            return root;
+        }
+    }
 }
