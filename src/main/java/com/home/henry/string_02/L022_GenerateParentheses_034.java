@@ -35,7 +35,9 @@ public class L022_GenerateParentheses_034 {
             if (left > 0) {
                 genResult(res, prefix + "(", left - 1, right);
             }
-            // 如果有"(()))", left=2,right=3这个情况,那么是不能再向后匹配的, 所以必须是要right>=left
+            /* 如果有"(()))", prefix left=2, pre right=3这个情况,是错的, 也是不能再向后right-1匹配的
+               所以必须是要pre left >= pre right -> right < left
+             */
             if (right > left) {
                 genResult(res, prefix + ")", left, right - 1);
             }
