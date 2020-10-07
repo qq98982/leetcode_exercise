@@ -19,17 +19,19 @@ public class L383_RansomNote_005 {
         if (null == ransomNote || null == magazine || magazine.length() < ransomNote.length()) {
             return false;
         }
-        int[] c = new int[26];
+        int[] ch = new int[26];
         char[] m = magazine.toCharArray();
-        for (int i = 0; i < m.length; i++) {
-            c[m[i] - 'a']++;
+        int mLen = m.length;
+        for (int i = 0; i < mLen; i++) {
+            ch[m[i] - 'a']++;
         }
         char[] r = ransomNote.toCharArray();
-        for (int i = 0; i < r.length; i++) {
-            if (c[r[i] - 'a'] == 0) {
+        int rLen = r.length;
+        for (int i = 0; i < rLen; i++) {
+            ch[r[i] - 'a']--;
+            // 如果发现不够就提前结束了
+            if (ch[r[i] - 'a'] < 0) {
                 return false;
-            } else {
-                c[r[i] - 'a']--;
             }
         }
         return true;
