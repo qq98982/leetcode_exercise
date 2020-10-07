@@ -57,7 +57,7 @@ public class L102_BinaryTreeLevelOrderTraversal_006 {
 
     private void levelOrderHelper(List<List<Integer>> res, TreeNode root, int level) {
         if (root == null) { return;}
-        if (level >= res.size()) {
+        if (level == res.size()) {
             res.add(new ArrayList<>());
         }
         res.get(level).add(root.val);
