@@ -1,6 +1,7 @@
 package com.home.henry.stack_pq_11;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * 769. Max Chunks To Make Sorted
@@ -23,14 +24,13 @@ import java.util.Stack;
  * We can split into two chunks, such as [1, 0], [2, 3, 4].
  * However, splitting into [1, 0], [2], [3], [4] is the highest number of chunks possible.
  *
- * 单调栈
+ * 单调递增栈最大个数就是结果
  */
 public class L769_MaxChunksToMakeSorted_003 {
 
-    class Solution {
-        public int maxChunksToSorted(int[] arr) {
-            if (arr == null || arr.length == 0) {return 0;}
-            Stack<Integer> stack = new Stack<>();
+    public static class Solution {
+        public static int maxChunksToSorted(int[] arr) {
+            Deque<Integer> stack = new ArrayDeque<>();
             for (int num : arr) {
                 int largest = num;
                 while (!stack.isEmpty() && stack.peek() > num) {
@@ -38,12 +38,7 @@ public class L769_MaxChunksToMakeSorted_003 {
                 }
                 stack.push(largest);
             }
-            int count = 0;
-            while (!stack.isEmpty()) {
-                stack.pop();
-                count++;
-            }
-            return count;
+            return stack.size();
         }
     }
 }

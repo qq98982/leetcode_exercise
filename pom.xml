@@ -6,6 +6,22 @@
   <groupId>leetcode</groupId>
   <artifactId>leetcode_exercise</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <dependencies>
+    <dependency>
+      <groupId>edu.princeton</groupId>
+      <artifactId>cs-algs4</artifactId>
+      <scope>system</scope>
+      <version>1.0</version>
+      <systemPath>${basedir}/lib/algs4.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.6.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -17,22 +33,12 @@
           <target>11</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+      </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>edu.princeton</groupId>
-      <artifactId>cs-algs4</artifactId>
-      <scope>system</scope>
-      <version>1.0</version>
-      <systemPath>${basedir}/lib/algs4.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.6.2</version>
-    </dependency>
-  </dependencies>
-
 
 </project>
