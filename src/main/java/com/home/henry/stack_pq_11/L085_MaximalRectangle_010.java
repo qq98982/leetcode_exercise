@@ -1,6 +1,7 @@
 package com.home.henry.stack_pq_11;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * 85. Maximal Rectangle
@@ -21,7 +22,7 @@ import java.util.Stack;
 public class L085_MaximalRectangle_010 {
 
     static class Solution {
-        public int maximalRectangle(char[][] matrix) {
+        public static int maximalRectangle(char[][] matrix) {
             if (matrix == null || matrix.length == 0) {return 0;}
             if (matrix[0] == null || matrix[0].length == 0) {return 0;}
             int[] height = new int[matrix[0].length + 1];
@@ -43,7 +44,7 @@ public class L085_MaximalRectangle_010 {
         }
 
         public static int area(int[] height) {
-            Stack<Integer> stack = new Stack<>();
+            Deque<Integer> stack = new ArrayDeque<>();
             int res = 0;
             for (int i = 0; i < height.length; i++) {
                 int h = height[i];
