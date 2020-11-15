@@ -8,12 +8,11 @@
   <version>1.0-SNAPSHOT</version>
   <dependencies>
     <dependency>
-      <groupId>edu.princeton</groupId>
-      <artifactId>cs-algs4</artifactId>
-      <scope>system</scope>
+      <groupId>edu.princeton.cs.algs4</groupId>
+      <artifactId>algs4</artifactId>
       <version>1.0</version>
-      <systemPath>${basedir}/lib/algs4.jar</systemPath>
     </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
@@ -21,7 +20,13 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
+  <repositories>
+    <repository>
+      <id>org.coursera.algs4</id>
+      <name>Algs4 coursera course custom repository</name>
+      <url>https://raw.github.com/slok/algs4-mvn-repo/master</url>
+    </repository>
+  </repositories>
   <build>
     <plugins>
       <plugin>
