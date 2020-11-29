@@ -23,7 +23,7 @@ import java.util.Stack;
  * Follow up: Recursive solution is trivial, could you do it iteratively?
  */
 public class L145_BinaryTreePostorderTraversal_005 {
-    public List<Integer> postorderTraversal(TreeNode root) {
+    public static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new LinkedList<>();
         if (null == root) {
             return res;
@@ -43,17 +43,40 @@ public class L145_BinaryTreePostorderTraversal_005 {
         return res;
     }
 
+    // 这个方法也很好
+    static class SolutionTwoStack {
+        public static void postOrderIteration(TreeNode head) {
+            if (head == null) {return;}
+            Stack<TreeNode> s1 = new Stack<>();
+            Stack<TreeNode> s2 = new Stack<>();
+            s1.push(head);
+            while (!s1.isEmpty()) {
+                TreeNode curr = s1.pop();
+                s2.push(curr);
+                if (curr.left != null) {
+                    s1.push(curr.left);
+                }
+                if (curr.right != null) {
+                    s1.push(curr.right);
+                }
+            }
+            while (!s2.isEmpty()) {
+                System.out.println(s2.pop());
+            }
+        }
+    }
+
     /**
      * Tree post order recursive
      */
-    public List<Integer> postRecursive(TreeNode root) {
+    public static List<Integer> postRecursive(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) {return res;}
         helper(res, root);
         return res;
     }
 
-    private void helper(List<Integer> res, TreeNode root) {
+    private static void helper(List<Integer> res, TreeNode root) {
         if (root == null) {return;}
         helper(res, root.left);
         helper(res, root.right);
@@ -64,7 +87,7 @@ public class L145_BinaryTreePostorderTraversal_005 {
      * double stacks iterative
      */
     static class Solution {
-        public List<Integer> postorderTraversal(TreeNode root) {
+        public static List<Integer> postorderTraversal(TreeNode root) {
             List<Integer> res = new ArrayList<>();
             if (root == null) {return res;}
             Stack<Integer> visited = new Stack<>();
