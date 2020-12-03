@@ -14,6 +14,7 @@ import java.util.List;
  *    [1,2,1],
  *   [1,3,3,1],
  *  [1,4,6,4,1]
+ *  第一个要简洁, 第二个要好理解点
  */
 public class L118_PascalsTriangle_075 {
     static class Solution {
@@ -26,6 +27,26 @@ public class L118_PascalsTriangle_075 {
                     row.set(j, row.get(j) + row.get(j + 1));
                 }
                 allrows.add(new ArrayList<>(row));
+            }
+            return allrows;
+        }
+    }
+
+    static class Solution2 {
+        public static List<List<Integer>> generate(int numRows) {
+            List<List<Integer>> allrows = new ArrayList<>();
+            if (numRows == 0) {return allrows;}
+            allrows.add(new ArrayList<>());
+            allrows.get(0).add(1);
+            for (int i = 1; i < numRows; i++) {
+                List<Integer> row = new ArrayList<>();
+                List<Integer> prerow = allrows.get(i - 1);
+                row.add(1);
+                for (int j = 1; j < i; j++) {
+                    row.add(prerow.get(j - 1) + prerow.get(j));
+                }
+                row.add(1);
+                allrows.add(row);
             }
             return allrows;
         }
