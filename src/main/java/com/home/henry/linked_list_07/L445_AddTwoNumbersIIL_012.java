@@ -16,7 +16,7 @@ import java.util.Stack;
  *
  * Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4) Output: 7 -> 8 -> 0 -> 7
  */
-public class AddTwoNumbersIIL445_012 {
+public class L445_AddTwoNumbersIIL_012 {
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null) {
             return l1 == null ? l2 : l1;

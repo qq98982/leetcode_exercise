@@ -17,7 +17,7 @@ import java.util.Set;
  * 第一个用的是双指针, 要记注
  * 第二个方法用的是set, 也是双指针, 可以参考
  */
-public class L015.jav_Thre {
+public class L015_ThreeSum {
     static class Solutoin {
         public List<List<Integer>> threeSum(int[] nums) {
             List<List<Integer>> res = new ArrayList<>();
