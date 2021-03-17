@@ -30,7 +30,7 @@ import com.home.henry.tree_04.TreeNode;
  *     /     /       \                 \
  *    2     1         2                 3
  */
-public class L095.jav_UniqueBinarySearchTre {
+public class L095_UniqueBinarySearchTreesII {
     /**
      * 分治的思想去解题, 左边和右边的分别求来, 然后再循环分别以左右子树加入到res中, 最后返回
      */
