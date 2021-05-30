@@ -22,3 +22,11 @@
 # +---------------------+
 
 SELECT MAX(Salary) AS SecondHighestSalary FROM Employee WHERE Salary <(SELECT MAX(Salary) FROM Employee);
+
+# 第二个方法更好
+SELECT IFNULL(
+    NULL,
+    (SELECT DISTINCT Salary FROM Employee
+     ORDER BY Salary DESC limit 1 OFFSET 1)
+ )
+AS SecondHighestSalary

@@ -12,14 +12,17 @@ public class L322_CoinChange_014 {
 
     public int coinChange(int[] coins, int amount) {
         int[] f = new int[amount + 1];
+        // 边界条件
         f[0] = 0;
         int n = coins.length;
-        int i, j;
-        for (i = 1; i <= amount; i++) {
-            f[i] = Integer.MAX_VALUE;
-            for (j = 0; j < n; j++) {
-                if (i >= coins[j] && f[i - coins[j]] != Integer.MAX_VALUE) {
-                    f[i] = Math.min(f[i - coins[j]] + 1, f[i]);
+        int amountNum ;
+        for (amountNum = 1; amountNum <= amount; amountNum++) {
+            f[amountNum] = Integer.MAX_VALUE;
+            // 去算每个硬币
+            for (int singleCoin = 0; singleCoin < n; singleCoin++) {
+                // 如果可以拼出来(!= Integer.MAX_VALUE),前面的条件可以看做是不越界
+                if (amountNum >= coins[singleCoin] && f[amountNum - coins[singleCoin]] != Integer.MAX_VALUE) {
+                    f[amountNum] = Math.min(f[amountNum - coins[singleCoin]] + 1, f[amountNum]);
                 }
             }
         }
