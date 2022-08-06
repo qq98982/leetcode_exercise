@@ -54,12 +54,12 @@ public class L107_BinaryTreeLevelOrderTraversalII_007 {
             List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode curr = queue.poll();
-                if (curr != null && curr.left != null) {
+                list.add(curr.val);
+                if (curr.left != null) {
                     queue.offer(curr.left);
                 }
-                if (curr != null && curr.right != null) {
+                if (curr.right != null) {
                     queue.offer(curr.right);
-                    list.add(curr.val);
                 }
             }
             res.add(0, list);
