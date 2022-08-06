@@ -1,5 +1,6 @@
 package com.home.henry.tree_04;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 /**
@@ -49,7 +50,7 @@ public class L872_Leaf_SimilarTrees_009 {
     }
 
     // 一个生成二叉树叶子节点的迭代器
-    class LeafIterator {
+    class LeafIterator implements Iterator {
         // 模拟递归过程
         private Stack<TreeNode> stk = new Stack<>();
 
@@ -57,10 +58,12 @@ public class L872_Leaf_SimilarTrees_009 {
             stk.push(root);
         }
 
+        @Override
         public boolean hasNext() {
             return !stk.isEmpty();
         }
 
+        @Override
         public TreeNode next() {
             while (!stk.isEmpty()) {
                 TreeNode cur = stk.pop();
