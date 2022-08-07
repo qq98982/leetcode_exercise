@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 590. N-ary Tree Postorder Traversal
+ *
  * Given an n-ary tree, return the postorder traversal of its nodes' values.
  */
 public class L590_N_AryTreePostorderTraversal_004 {
