@@ -2,6 +2,7 @@ package com.home.henry.tree_04;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 589. N-ary Tree Preorder Traversal
@@ -32,4 +33,21 @@ public class L589_N_aryTreePreorderTraversal_003 {
         }
     }
 
+    /**
+     * 使用iterator
+     */
+    public List<Integer> preorderIterator(Node root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {return res;}
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node node = stack.pop();
+            res.add(node.val);
+            for (int i = node.children.size() - 1; i >= 0; i--) {
+                stack.push(node.children.get(i));
+            }
+        }
+        return res;
+    }
 }
