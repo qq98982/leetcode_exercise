@@ -22,7 +22,7 @@ import java.util.Stack;
  * Output: [3,2,1]
  * Follow up: Recursive solution is trivial, could you do it iteratively?
  */
-public class L145_BinaryTreePostorderTraversal_005 {
+public class L145_BinaryTreePostorderTraversal_004 {
     public static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new LinkedList<>();
         if (null == root) {

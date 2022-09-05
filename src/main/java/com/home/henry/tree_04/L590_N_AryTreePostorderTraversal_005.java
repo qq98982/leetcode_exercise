@@ -10,7 +10,7 @@ import java.util.Stack;
  * <p>
  * Given an n-ary tree, return the postorder traversal of its nodes' values.
  */
-public class L590_N_AryTreePostorderTraversal_004 {
+public class L590_N_AryTreePostorderTraversal_005 {
     public List<Integer> postorder(Node root) {
         List<Integer> res = new ArrayList<>();
         helper(res, root);
