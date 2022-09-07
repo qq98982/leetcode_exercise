@@ -46,30 +46,30 @@ public class L987_VerticalOrderTraversalBinaryTree_009 {
             // 取出的时候第一个是最前面的列
             for (TreeMap<Integer, Queue<Integer>> tq : map.values()) {
                 list.add(new ArrayList<>());
-                for (Queue<Integer> nodes : tq.values()) {
-                    // 取的时候不用管层数, 只管取出来当前列的所有就可以
-                    while (!nodes.isEmpty()) {
+                for (Queue<Integer> queue : tq.values()) {
+                    // 取的时候不用管具体层数, 只管取出来当前列的所有就可以
+                    while (!queue.isEmpty()) {
                         // list在这里是依次填入的
-                        list.get(list.size() - 1).add(nodes.poll());
+                        list.get(list.size() - 1).add(queue.poll());
                     }
                 }
             }
             return list;
         }
 
-        private static void dfs(TreeNode root, int vertical, int level,
+        private static void dfs(TreeNode root, int horizon, int level,
                                 TreeMap<Integer, TreeMap<Integer, Queue<Integer>>> map) {
             if (root == null) {return;}
-            if (!map.containsKey(vertical)) {
-                map.put(vertical, new TreeMap<>());
+            if (!map.containsKey(horizon)) {
+                map.put(horizon, new TreeMap<>());
             }
-            if (!map.get(vertical).containsKey(level)) {
-                map.get(vertical).put(level, new PriorityQueue<>());
+            if (!map.get(horizon).containsKey(level)) {
+                map.get(horizon).put(level, new PriorityQueue<>());
             }
-            map.get(vertical).get(level).offer(root.val);
+            map.get(horizon).get(level).offer(root.val);
             // 放入的时候要关注层数, 取的时候不用关注具体层数
-            dfs(root.left, vertical - 1, level + 1, map);
-            dfs(root.right, vertical + 1, level + 1, map);
+            dfs(root.left, horizon - 1, level + 1, map);
+            dfs(root.right, horizon + 1, level + 1, map);
         }
     }
 
