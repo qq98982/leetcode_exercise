@@ -3,7 +3,6 @@ package com.home.henry.binary_search_08;
 /**
  * 704. Binary Search
  * 使用迭代的第二种写法
- * https://labuladong.github.io/algo/2/20/29/
  */
 public class L704_BinarySearch_003 {
 
@@ -59,9 +58,9 @@ public class L704_BinarySearch_003 {
             }
         }
         // 此时 left - 1 索引越界
-        if (left - 1 < 0) {return -1;}
+        if (right < 0) {return -1;}
         // 判断一下 nums[left] 是不是 target
-        return nums[left - 1] == target ? (left - 1) : -1;
+        return nums[right] == target ? right : -1;
     }
 
     public int search(int[] nums, int target) {
