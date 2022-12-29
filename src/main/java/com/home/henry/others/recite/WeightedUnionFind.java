@@ -48,7 +48,7 @@ public class WeightedUnionFind {
             parent[rootQ] = rootP;
             size[rootP] += size[rootQ];
         } else {
-            parent[rootP] += rootQ;
+            parent[rootP] = rootQ;
             size[rootQ] += size[rootP];
         }
         count--;

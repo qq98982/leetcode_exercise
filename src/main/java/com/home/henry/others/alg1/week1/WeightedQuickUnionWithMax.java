@@ -1,8 +1,14 @@
 package com.home.henry.others.alg1.week1;
 
+/**
+ * Union-find with specific canonical element.
+ *
+ * Add a method find() to the union-find data type so that find(i) returns the largest element in the connected
+ * component containing i. The operations, union(), connected(), and find() should all take logarithmic time or better.
+ */
 public class WeightedQuickUnionWithMax {
-    private int[] id;
-    private int[] sz;
+    private int[] parent;
+    private int[] size;
     private int[] max;
     private int count;
 
@@ -10,21 +16,21 @@ public class WeightedQuickUnionWithMax {
         if (n < 1) {
             throw new IllegalArgumentException();
         }
-        this.id = new int[n];
-        this.sz = new int[n];
+        this.parent = new int[n];
+        this.size = new int[n];
         this.count = n;
         this.max = new int[n];
         for (int i = 0; i < n; i++) {
-            id[i] = i;
-            sz[i] = 1;
+            parent[i] = i;
+            size[i] = 1;
             max[i] = i;
         }
     }
 
     private int root(int i) {
-        while (i != id[i]) {
-            id[i] = id[id[i]];
-            i = id[i];
+        while (i != parent[i]) {
+            parent[i] = parent[parent[i]];
+            i = parent[i];
         }
         return i;
     }
@@ -43,12 +49,12 @@ public class WeightedQuickUnionWithMax {
 
         if (pRoot == qRoot) {return;}
         int max = Math.max(this.max[pRoot], this.max[qRoot]);
-        if (sz[pRoot] < sz[qRoot]) {
-            id[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
+        if (size[pRoot] < size[qRoot]) {
+            parent[pRoot] = qRoot;
+            size[qRoot] += size[pRoot];
         } else {
-            id[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+            parent[qRoot] = pRoot;
+            size[pRoot] += size[qRoot];
         }
         this.max[pRoot] = max;
         this.max[qRoot] = max;

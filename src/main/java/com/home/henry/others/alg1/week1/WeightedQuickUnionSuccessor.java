@@ -1,20 +1,28 @@
 package com.home.henry.others.alg1.week1;
 
+/**
+ * Successor with delete.
+ * Given a set of n integers  S = { 0, 1, ... , n-1 }
+ * S={0,1,...,n−1} and a sequence of requests of the following form:
+ * Remove x from S
+ * Find the successor of x: the smallest y in S such that y >= x.
+ * design a data type so that all operations (except construction)  take logarithmic time or better in the worst case.
+ */
 public class WeightedQuickUnionSuccessor {
 
-    private int[] id, mArray, sz;
+    private int[] parent, mArray, size;
 
     private int count;
 
     WeightedQuickUnionSuccessor(int n) {
-        this.id = new int[n];
-        this.sz = new int[n];
+        this.parent = new int[n];
+        this.size = new int[n];
         this.mArray = new int[n];
         this.count = n;
         for (int i = 0; i < n; i++) {
-            id[i] = i;
+            parent[i] = i;
             mArray[i] = i;
-            sz[i] = 1;
+            size[i] = 1;
         }
     }
 
@@ -27,12 +35,12 @@ public class WeightedQuickUnionSuccessor {
         int qRoot = root(q);
         if (pRoot == qRoot) {return;}
         int max = Math.max(mArray[pRoot], mArray[qRoot]);
-        if (sz[pRoot] > sz[qRoot]) {
-            id[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+        if (size[pRoot] > size[qRoot]) {
+            parent[qRoot] = pRoot;
+            size[pRoot] += size[qRoot];
         } else {
-            id[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
+            parent[pRoot] = qRoot;
+            size[qRoot] += size[pRoot];
         }
         mArray[pRoot] = max;
         mArray[qRoot] = max;
@@ -44,9 +52,9 @@ public class WeightedQuickUnionSuccessor {
     }
 
     private int root(int i) {
-        while (i != id[i]) {
-            id[i] = id[id[i]];
-            i = id[i];
+        while (i != parent[i]) {
+            parent[i] = parent[parent[i]];
+            i = parent[i];
         }
         return i;
     }
