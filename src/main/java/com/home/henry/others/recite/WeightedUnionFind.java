@@ -18,14 +18,14 @@ public class WeightedUnionFind {
         return count;
     }
 
-    public void validate(int p) {
+    private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p > n) {
             throw new IllegalArgumentException();
         }
     }
 
-    public int find(int p) {
+    private int find(int p) {
         validate(p);
         while (p != parent[p]) {
             // path compression
