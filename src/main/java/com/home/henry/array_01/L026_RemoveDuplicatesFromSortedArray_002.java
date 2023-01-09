@@ -9,7 +9,7 @@ package com.home.henry.array_01;
  * in [0,0,1,1,1,2,2,3,3,4], out 5
  * 因为是sorted array, 所以index为i - 1的和前一个比较, 同样使用了++技巧, 并且注意count和index从1开始计算
  */
-public class L26_RemoveDuplicatesFromSortedArray_002 {
+public class L026_RemoveDuplicatesFromSortedArray_002 {
 
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) {

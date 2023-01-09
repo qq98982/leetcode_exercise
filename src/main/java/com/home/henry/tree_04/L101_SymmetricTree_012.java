@@ -28,34 +28,39 @@ import java.util.Stack;
  * Follow up: Solve it both recursively and iteratively.
  */
 public class L101_SymmetricTree_012 {
-    static class Solution {
-        public boolean isSymmetric(TreeNode root) {
+    public static class Solution {
+        public static boolean isSymmetric(TreeNode root) {
             if (root == null) {return true;}
             return isMirror(root.left, root.right);
         }
-
-        private boolean isMirror(TreeNode p, TreeNode q) {
+        static boolean isMirror(TreeNode p, TreeNode q) {
             if (p == null && q == null) {return true;}
             if (p == null || q == null) {return false;}
-            return (p.val == q.val) && isMirror(p.left, q.right) && isMirror(p.right, q.left);
+            if (p.val != q.val) {return false;}
+            return isMirror(p.left, q.right) && isMirror(p.right, q.left);
         }
+
     }
 
-    static class Solution2 {
-        public boolean isSymetric(TreeNode root) {
+    /**
+     * single stack
+     */
+    public static class Solution2 {
+        public static boolean isSymmetric(TreeNode root) {
             if (root == null) {return true;}
-            Stack<TreeNode> stack = new Stack<>();
-            stack.push(root.left);
-            stack.push(root.right);
-            while (!stack.isEmpty()) {
-                TreeNode n1 = stack.pop();
-                TreeNode n2 = stack.pop();
-                if (n1 == null && n2 == null) {continue;}
-                if (n1 == null || n2 == null || n1.val != n2.val) {return false;}
-                stack.push(n1.left);
-                stack.push(n2.right);
-                stack.push(n1.right);
-                stack.push(n2.left);
+            Stack<TreeNode> p = new Stack<>();
+            p.push(root.left);
+            p.push(root.right);
+            while (!p.isEmpty()) {
+                TreeNode n1 = p.pop();
+                TreeNode n2 = p.pop();
+                if (n2 == null && n1 == null) {continue;}
+                if (n1 == null || n2 == null) {return false;}
+                if (n2.val != n1.val) {return false;}
+                p.push(n1.left);
+                p.push(n2.right);
+                p.push(n1.right);
+                p.push(n2.left);
             }
             return true;
         }

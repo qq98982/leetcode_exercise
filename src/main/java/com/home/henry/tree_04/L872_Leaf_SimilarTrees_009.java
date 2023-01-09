@@ -34,8 +34,8 @@ public class L872_Leaf_SimilarTrees_009 {
         return r.toString();
     }
 
-    class Solution {
-        public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+    public static class Solution {
+        public static boolean leafSimilar(TreeNode root1, TreeNode root2) {
             LeafIterator it1 = new LeafIterator(root1);
             LeafIterator it2 = new LeafIterator(root2);
             // 逐一对比叶子节点
@@ -50,7 +50,7 @@ public class L872_Leaf_SimilarTrees_009 {
     }
 
     // 一个生成二叉树叶子节点的迭代器
-    class LeafIterator implements Iterator {
+    static class LeafIterator implements Iterator {
         // 模拟递归过程
         private Stack<TreeNode> stk = new Stack<>();
 

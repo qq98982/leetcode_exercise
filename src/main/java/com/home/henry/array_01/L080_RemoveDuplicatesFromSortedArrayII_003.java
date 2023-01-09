@@ -7,7 +7,7 @@ package com.home.henry.array_01;
  * Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
  * in [1,1,1,2,2,3], out 5    in [0,0,1,1,1,1,2,3,3], out 7
  */
-public class L80_RemoveDuplicatesFromSortedArrayII_003 {
+public class L080_RemoveDuplicatesFromSortedArrayII_003 {
 
     public int removeDuplicates(int[] nums) {
         if(nums == null || nums.length == 0) {

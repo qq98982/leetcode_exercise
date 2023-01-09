@@ -14,8 +14,8 @@ package com.home.henry.dp_06;
  */
 public class L740_DeleteAndEarn_012 {
 
-    static class Solution {
-        public int deleteAndEarn(int[] nums) {
+    public static class Solution {
+        public static int deleteAndEarn(int[] nums) {
             int[] bucket = new int[10001];
             for(int num: nums) {
                 bucket[num] += num;

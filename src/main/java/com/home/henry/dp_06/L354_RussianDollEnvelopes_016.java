@@ -14,8 +14,8 @@ import java.util.Arrays;
  * 9c dp video 4
  */
 public class L354_RussianDollEnvelopes_016 {
-    class Solution {
-        public int maxEnvelopes(int[][] envelopes) {
+    public static class Solution {
+        public static int maxEnvelopes(int[][] envelopes) {
             if (envelopes == null || envelopes.length == 0) {
                 return 0;
             }

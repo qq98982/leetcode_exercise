@@ -35,39 +35,36 @@ public class L063_UniquePathsII_004 {
         return res[length - 1];
     }
 
-    class Solution {
-        public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+    public int uniquePathsWithObstacles2(int[][] obstacleGrid) {
+        int m = obstacleGrid.length;
+        if (m == 0) {return 0;}
+        int n = obstacleGrid[0].length;
+        if (n == 0) {return 0;}
+        if (obstacleGrid[0][0] == 1) {return 0;}
 
-            int m = obstacleGrid.length;
-            if (m == 0) {return 0;}
-            int n = obstacleGrid[0].length;
-            if (n == 0) {return 0;}
-            if (obstacleGrid[0][0] == 1) {return 0;}
-
-            int[][] f = new int[m][n];
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (obstacleGrid[i][j] == 1) {
-                        f[i][j] = 0;
+        int[][] f = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (obstacleGrid[i][j] == 1) {
+                    f[i][j] = 0;
+                } else {
+                    // 这里要初始化
+                    if (i == 0 && j == 0) {
+                        f[i][j] = 1;
                     } else {
-                        // 这里要初始化
-                        if (i == 0 && j == 0) {
-                            f[i][j] = 1;
-                        } else {
-                            // 这里这样写是为了减少判断的复杂度
-                            f[i][j] = 0;
-                            if (i >= 1) {
-                                f[i][j] += f[i - 1][j];
-                            }
-                            if (j >= 1) {
-                                f[i][j] += f[i][j - 1];
-                            }
+                        // 这里这样写是为了减少判断的复杂度
+                        f[i][j] = 0;
+                        if (i >= 1) {
+                            f[i][j] += f[i - 1][j];
+                        }
+                        if (j >= 1) {
+                            f[i][j] += f[i][j - 1];
                         }
                     }
                 }
             }
-            return f[m - 1][n - 1];
         }
+        return f[m - 1][n - 1];
     }
 
 }

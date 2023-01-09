@@ -22,7 +22,7 @@ package com.home.henry.dp_06;
  * 典型的双序列dp, 可以看九章的dp视频
  */
 public class L1143_LongestCommonSubsequence_010 {
-    static class Solution {
+    public static class Solution {
         public static int longestCommonSubsequence(String text1, String text2) {
             if (text1 == null || text2 == null) {return 0;}
             char[] a = text1.toCharArray();

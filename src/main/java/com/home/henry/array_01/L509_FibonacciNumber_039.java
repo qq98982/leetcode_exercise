@@ -5,8 +5,8 @@ package com.home.henry.array_01;
  * 使用old, curr, now更好理解
  */
 public class L509_FibonacciNumber_039 {
-    static class Solution {
-        public int fib(int N) {
+    public static class Solution {
+        public static int fib(int N) {
             if (N == 0 || N == 1) {return N;}
             int one = 0, two = 1, sum = one + two;
             for (int i = 3; i <= N; i++) {
@@ -16,7 +16,7 @@ public class L509_FibonacciNumber_039 {
             }
             return sum;
         }
-        public int fib2(int N) {
+        public static int fib2(int N) {
             if (N <= 1) {return N;}
             int old = 1, curr = 1, now = 1;
             for (int i = 3; i <= N; i++) {

@@ -45,7 +45,7 @@ public class L144_BinaryTreePreorderTraversal_001 {
     /**
      * iterative pre order
      */
-    public List<Integer> preorderTraversalIterativeSimple(TreeNode root) {
+    public static List<Integer> preorderTraversalIterativeSimple(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) {
             return res;

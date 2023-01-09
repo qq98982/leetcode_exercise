@@ -17,6 +17,13 @@ public class GenRandomArray {
         return arr;
     }
 
+    public static int[] generateRandomArray(int maxSize) {
+        int[] arr = new int[(int) ((maxSize + 1) * Math.random())];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) (Integer.MAX_VALUE * Math.random()) - (int) ((Integer.MAX_VALUE - 1) * Math.random());
+        }
+        return arr;
+    }
     // for test
     public static int[] copyArray(int[] arr) {
         if (arr == null) {

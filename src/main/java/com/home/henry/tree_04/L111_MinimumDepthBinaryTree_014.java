@@ -17,6 +17,8 @@ package com.home.henry.tree_04;
  *     /  \
  *    15   7
  * return its minimum depth = 2.
+ * Input: root = [3,9,20,null,null,15,7] Output: 2
+ * Input: root = [2,null,3,null,4,null,5,null,6] Output: 5
  */
 public class L111_MinimumDepthBinaryTree_014 {
 

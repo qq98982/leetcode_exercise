@@ -31,8 +31,8 @@ package com.home.henry.dp_06;
  * 题解里使用的是min(dp[n-1][0],dp[n-1][1],dp[n-1][2])
  */
 public class L256_Paint_House_020 {
-    class Solution {
-        public int minCost(int[][] costs) {
+    public static class Solution {
+        public static int minCost(int[][] costs) {
             if (costs == null || costs.length == 0) { return 0; }
             int n = costs.length;
             int[][] dp = new int[n][3];

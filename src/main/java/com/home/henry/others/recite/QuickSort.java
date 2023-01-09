@@ -7,7 +7,7 @@ public class QuickSort {
         sort(arr, 0, arr.length - 1);
     }
 
-    public static void sort(int[] arr, int start, int end) {
+    private static void sort(int[] arr, int start, int end) {
         if (start >= end) {return;}
         // 找出partition的点
         int j = partition(arr, start, end);
