@@ -38,11 +38,11 @@ public class GenRandomArray {
 
     // for test
     public static boolean isEqual(int[] arr1, int[] arr2) {
-        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) {
-            return false;
-        }
         if (arr1 == null && arr2 == null) {
             return true;
+        }
+        if (arr1 == null || arr2 == null) {
+            return false;
         }
         if (arr1.length != arr2.length) {
             return false;
@@ -75,5 +75,10 @@ public class GenRandomArray {
         }
         System.out.println();
     }
-
+    public static boolean isSorted(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {return false;}
+        }
+        return true;
+    }
 }

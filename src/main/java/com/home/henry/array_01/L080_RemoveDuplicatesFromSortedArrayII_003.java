@@ -10,15 +10,15 @@ package com.home.henry.array_01;
 public class L080_RemoveDuplicatesFromSortedArrayII_003 {
 
     public int removeDuplicates(int[] nums) {
-        if(nums == null || nums.length == 0) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
-        if(nums.length <= 2) {
+        if (nums.length <= 2) {
             return nums.length;
         }
         int count = 2;
-        for(int i = 2; i < nums.length; i++) {
-            if(nums[count - 2] != nums[i]) {
+        for (int i = 2; i < nums.length; i++) {
+            if (nums[count - 2] != nums[i]) {
                 nums[count++] = nums[i];
             }
         }

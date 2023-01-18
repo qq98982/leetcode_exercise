@@ -9,8 +9,8 @@ package com.home.henry.array_01;
  * Input: s = 7, nums = [2,3,1,2,4,3] Output: 2
  * Explanation: the subarray [4,3] has the minimal length under the problem constraint.
  *
- * Follow up:
- * If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
+ * Follow up: Squaring each element and sorting the new array is very trivial, could you
+ * find an O(n) solution using a different approach?
  *
  * 这个题目是找出一个连续的数组, 和加起来 >=s, 这个数组的数目最小的个数是多少
  *
@@ -21,52 +21,54 @@ package com.home.henry.array_01;
  * 然后继续下一个继续找
  */
 public class L209_MinimumSizeSubarraySum_051 {
-    static class Solution {
-        public int minSubArrayLen(int s, int[] nums) {
-            int sum = 0, left = 0, res = Integer.MAX_VALUE;
-            for (int i = 0; i < nums.length; i++) {
-                sum += nums[i];
-                while (left <= i && sum >= s) {
-                    res = Math.min(res, i - left + 1);
-                    sum -= nums[left++];
-                    if (res == 1) {return 1;}
-                }
+    /**
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(1)
+     */
+    public int minSubArrayLen(int s, int[] nums) {
+        int sum = 0, left = 0, res = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            while (sum >= s && left <= i) {
+                res = Math.min(res, i - left + 1);
+                sum -= nums[left++];
+                // 优化
+                if (res == 1) {return res;}
             }
-            return res == Integer.MAX_VALUE ? 0 : res;
         }
+        return res == Integer.MAX_VALUE ? 0 : res;
     }
 
     /**
      * 二分法, 生成一个nums.length+1长度的数组, 做为相加使用
      * 利用了相加和为递增的特点, 进行二分查找
      * time: O(nlogn) space: O(n)
+     * 这个方法不用看
      */
-    static class SolutionBS {
-        public int minSubArrayLen(int s, int[] nums) {
-            if (nums == null || nums.length == 0) {return 0;}
-            int[] sums = new int[nums.length + 1];
-            for (int i = 1; i < sums.length; i++) {
-                sums[i] = sums[i - 1] + nums[i - 1];
-            }
-            int minLen = Integer.MAX_VALUE;
-            for (int i = 0; i < sums.length; i++) {
-                int end = binarySearch(i + 1, sums.length - 1, sums[i] + s, sums);
-                if (end == sums.length) {break;}
-                minLen = Math.min(minLen, end - i);
-            }
-            return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    public int minSubArrayLenBS(int s, int[] nums) {
+        if (nums == null || nums.length == 0) {return 0;}
+        int[] sums = new int[nums.length + 1];
+        for (int i = 1; i < sums.length; i++) {
+            sums[i] = sums[i - 1] + nums[i - 1];
         }
+        int minLen = Integer.MAX_VALUE;
+        for (int i = 0; i < sums.length; i++) {
+            int end = binarySearch(i + 1, sums.length - 1, sums[i] + s, sums);
+            if (end == sums.length) {break;}
+            minLen = Math.min(minLen, end - i);
+        }
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    }
 
-        private int binarySearch(int start, int end, int target, int[] sums) {
-            while (start <= end) {
-                int mid = (end - start) / 2 + start;
-                if (sums[mid] >= target) {
-                    end = mid - 1;
-                } else {
-                    start = mid + 1;
-                }
+    private int binarySearch(int start, int end, int target, int[] sums) {
+        while (start <= end) {
+            int mid = (end - start) / 2 + start;
+            if (sums[mid] >= target) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
             }
-            return start;
         }
+        return start;
     }
 }

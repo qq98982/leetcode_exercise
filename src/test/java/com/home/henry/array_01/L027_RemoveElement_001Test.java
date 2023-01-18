@@ -21,7 +21,7 @@ class L027_RemoveElement_001Test {
         int resOne = 4;
         assertEquals(resOne, l027RemoveElement001UnderTest.removeElement(numsOne, 3));
         int[] numsOneNew = new int[resOne];
-        System.arraycopy(numsOne,0,numsOneNew,0,resOne);
+        System.arraycopy(numsOne, 0, numsOneNew, 0, resOne);
         for (int i = 0; i < numsOneNew.length; i++) {
             Assertions.assertTrue(numsOneNew[i] != 3);
         }
@@ -29,11 +29,11 @@ class L027_RemoveElement_001Test {
 
     @Test
     void testRemoveElement2() {
-        int[] numsOne = { 3,2,2,3 };
+        int[] numsOne = { 3, 2, 2, 3 };
         int resOne = 2;
         assertEquals(resOne, l027RemoveElement001UnderTest.removeElement(numsOne, 3));
         int[] numsOneNew = new int[resOne];
-        System.arraycopy(numsOne,0,numsOneNew,0,resOne);
+        System.arraycopy(numsOne, 0, numsOneNew, 0, resOne);
         for (int i = 0; i < numsOneNew.length; i++) {
             Assertions.assertTrue(numsOneNew[i] != 3);
         }
@@ -41,11 +41,11 @@ class L027_RemoveElement_001Test {
 
     @Test
     void testRemoveElement3() {
-        int[] numsOne = { 0,1,2,2,3,0,4,2 };
+        int[] numsOne = { 0, 1, 2, 2, 3, 0, 4, 2 };
         int resOne = 5;
         assertEquals(resOne, l027RemoveElement001UnderTest.removeElement(numsOne, 2));
         int[] numsOneNew = new int[resOne];
-        System.arraycopy(numsOne,0,numsOneNew,0,resOne);
+        System.arraycopy(numsOne, 0, numsOneNew, 0, resOne);
         for (int i = 0; i < numsOneNew.length; i++) {
             Assertions.assertTrue(numsOneNew[i] != 2);
         }
