@@ -21,6 +21,11 @@ import java.util.Stack;
  *
  * Output: [3,2,1]
  * Follow up: Recursive solution is trivial, could you do it iteratively?
+ *
+ * 1,2,3,4,null,null,5,null,6,null,null,7,8
+ * pre: 1 2 4 6 7 8 3 5
+ * in: 4 7 6 8 2 1 3 5
+ * post: 7 8 6 4 2 5 3 1
  */
 public class L145_BinaryTreePostorderTraversal_004 {
     public static List<Integer> postorderTraversal(TreeNode root) {

@@ -15,26 +15,24 @@ import java.util.Set;
  */
 public class L349_IntersectionOfTwoArrays_039_3 {
 
-    class Solution {
-        // save to set
-        // check another array if it is in set, if, save to res, delete it in old set
-        // change another set to array
-        public int[] intersection(int[] nums1, int[] nums2) {
-            if (nums1 == null || nums2 == null || nums1.length == 0 || nums2.length == 0) {
-                return new int[]{};
-            }
-            Set<Integer> set = new HashSet<>();
-            for (int n : nums1) {
-                set.add(n);
-            }
-            Set<Integer> res = new HashSet<>();
-            for (int n : nums2) {
-                if (set.contains(n)) {
-                    res.add(n);
-                    set.remove(n);
-                }
-            }
-            return res.stream().mapToInt(i -> i).toArray();
+    // save to set
+    // check another array if it is in set, if, save to res
+    // change res to array
+    public int[] intersection(int[] nums1, int[] nums2) {
+        if (nums1 == null || nums2 == null || nums1.length == 0 || nums2.length == 0) {
+            return new int[] {};
         }
+        Set<Integer> set = new HashSet<>();
+        for (int n : nums1) {
+            set.add(n);
+        }
+        Set<Integer> res = new HashSet<>();
+        for (int n : nums2) {
+            if (set.contains(n)) {
+                res.add(n);
+            }
+        }
+        // sorted is not a must, only for test
+        return res.stream().mapToInt(i -> i).sorted().toArray();
     }
 }
