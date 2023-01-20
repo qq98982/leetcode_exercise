@@ -27,30 +27,26 @@ public class L094_BinaryTreeInorderTraversal_002 {
         }
 
         private static void helper(List<Integer> res, TreeNode node) {
-            while (true) {
-                if (null != node) {
-                    helper(res, node.left);
-                    res.add(node.val);
-                    node = node.right;
-                    continue;
-                }
-                return;
+            if (null != node) {
+                helper(res, node.left);
+                res.add(node.val);
+                helper(res, node.right);
             }
         }
     }
 
     public static class Solution {
         public static List<Integer> inorderTraversal(TreeNode root) {
-            final List<Integer> res = new ArrayList<>();
+            List<Integer> res = new ArrayList<>();
             if (root == null) {return res;}
-            final Stack<TreeNode> stk = new Stack<>();
             TreeNode curr = root;
-            while (curr != null || !stk.isEmpty()) {
+            Stack<TreeNode> stack = new Stack<>();
+            while (!stack.isEmpty() || curr != null) {
                 if (curr != null) {
-                    stk.push(curr);
+                    stack.push(curr);
                     curr = curr.left;
                 } else {
-                    curr = stk.pop();
+                    curr = stack.pop();
                     res.add(curr.val);
                     curr = curr.right;
                 }
