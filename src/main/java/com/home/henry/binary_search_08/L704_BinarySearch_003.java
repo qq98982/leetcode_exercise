@@ -2,6 +2,12 @@ package com.home.henry.binary_search_08;
 
 /**
  * 704. Binary Search
+ *
+ * Given an array of integers nums which is sorted in ascending order, and an integer target,
+ * write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+ *
+ * You must write an algorithm with O(log n) runtime complexity.
+ *
  * 使用迭代的第二种写法
  */
 public class L704_BinarySearch_003 {

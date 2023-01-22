@@ -26,6 +26,9 @@ public class L242_ValidAnagram_011 {
         }
         for (char c : tch) {
             bucket[c - 'a']--;
+            if (bucket[c - 'a'] < 0) {
+                return false;
+            }
         }
         for (int n : bucket) {
             if (n != 0) {return false;}
