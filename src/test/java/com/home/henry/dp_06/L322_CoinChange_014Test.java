@@ -18,5 +18,12 @@ class L322_CoinChange_014Test {
     void testCoinChange() {
         assertEquals(3, l322CoinChange014UnderTest.coinChange(new int[] { 1,2,5 }, 11));
         assertEquals(-1, l322CoinChange014UnderTest.coinChange(new int[] { 2 }, 3));
+        assertEquals(0, l322CoinChange014UnderTest.coinChange(new int[] { 0 }, 0));
+    }
+    @Test
+    void testCoinChange2() {
+        assertEquals(3, l322CoinChange014UnderTest.coinChange2(new int[] { 1,2,5 }, 11));
+        assertEquals(-1, l322CoinChange014UnderTest.coinChange2(new int[] { 2 }, 3));
+        assertEquals(0, l322CoinChange014UnderTest.coinChange2(new int[] { 0 }, 0));
     }
 }

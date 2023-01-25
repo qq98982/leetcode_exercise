@@ -2,12 +2,15 @@ package com.home.henry.dp_06;
 
 /**
  * 322. Coin Change
+ *
  * You are given coins of different denominations and a total amount of money amount. Write a function to
  * compute the fewest number of coins that you need to make up that amount. If that amount of money cannot
  * be made up by any combination of the coins, return -1.
- * Example 1: Input: coins = [1, 2, 5], amount = 11 Output: 3
+ *
+ * Input: coins = [1, 2, 5], amount = 11 Output: 3
  * Explanation: 11 = 5 + 5 + 1
- * Example 2: Input: coins = [2], amount = 3 Output: -1
+ *
+ * Input: coins = [2], amount = 3 Output: -1
  */
 public class L322_CoinChange_014 {
 
@@ -33,4 +36,22 @@ public class L322_CoinChange_014 {
         return f[amount];
     }
 
+    /**
+     * 和上面方法一样，更简洁
+     * amount+1相当于MAX
+     */
+    public int coinChange2(int[] coins, int amount) {
+        int[] f = new int[amount + 1];
+        for (int i = 0; i < f.length; i++) {
+            f[i] = amount + 1;
+        }
+        f[0] = 0;
+        for (int i = 1; i < f.length; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (i - coins[j] < 0) {continue;}
+                f[i] = Math.min(f[i], 1 + f[i - coins[j]]);
+            }
+        }
+        return f[amount] == amount + 1 ? -1 : f[amount];
+    }
 }
