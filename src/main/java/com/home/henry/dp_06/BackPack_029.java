@@ -6,6 +6,15 @@ package com.home.henry.dp_06;
  */
 public class BackPack_029 {
     public int backPack29(int m, int[] weights, int[] values) {
-        return 0;
+        int[] f = new int[m + 1];
+        f[0] = 1;
+        for (int i = 1; i <= m; i++) {
+            for (int j = 0; j < weights.length; j++) {
+                if (i > weights[j]) {
+                    f[i] = Math.max(f[i], f[i - weights[j]] + values[j]);
+                }
+            }
+        }
+        return f[m];
     }
 }
