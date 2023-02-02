@@ -36,25 +36,20 @@ public class RobinKarp {
 
         // 31^m target最高位的31方
         int power = 1;
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < target.length(); i++) {
             power = (power * 31) % BASE;
         }
-        int hashCode = 0;
+        int sourceHashCode = 0;
         for (int i = 0; i < source.length(); i++) {
-            hashCode = (hashCode * 31 + source.charAt(i)) % BASE;
-            // continue是优化，如果不确定可以不做
-            if (i < m - 1) {
-                continue;
-            }
-            // abcd - a
+            sourceHashCode = (sourceHashCode * 31 + source.charAt(i)) % BASE;
+            if (i < m - 1) {continue;}
             if (i >= m) {
-                hashCode -= (source.charAt(i - m) * power) % BASE;
-                if (hashCode < 0) {
-                    hashCode += BASE;
+                sourceHashCode = (sourceHashCode - source.charAt(i - m) * power) % BASE;
+                if (sourceHashCode < 0) {
+                    sourceHashCode += BASE;
                 }
             }
-            // double check
-            if (hashCode == targetHashCode) {
+            if (sourceHashCode == targetHashCode) {
                 if (source.substring(i - m + 1, i + 1).equals(target)) {
                     return i - m + 1;
                 }
