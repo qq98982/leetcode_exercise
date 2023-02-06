@@ -17,5 +17,6 @@ class BackPack_026Test {
     @Test
     void testBackPackV() {
         assertEquals(2, backPack026UnderTest.backPack26(new int[] { 1, 2, 3, 3, 7 }, 7));
+        assertEquals(5, backPack026UnderTest.backPack26(new int[] { 1, 1, 1, 1, 1 }, 1));
     }
 }

@@ -52,31 +52,31 @@ public class L872_Leaf_SimilarTrees_009 {
     // 一个生成二叉树叶子节点的迭代器
     static class LeafIterator implements Iterator {
         // 模拟递归过程
-        private Stack<TreeNode> stk = new Stack<>();
+        private Stack<TreeNode> stack = new Stack<>();
 
         public LeafIterator(TreeNode root) {
-            stk.push(root);
+            stack.push(root);
         }
 
         @Override
         public boolean hasNext() {
-            return !stk.isEmpty();
+            return !stack.isEmpty();
         }
 
         @Override
         public TreeNode next() {
-            while (!stk.isEmpty()) {
-                TreeNode cur = stk.pop();
+            while (!stack.isEmpty()) {
+                TreeNode cur = stack.pop();
                 if (cur.left == null && cur.right == null) {
                     // 发现一个叶子结点
                     return cur;
                 }
                 // 先入栈 root.right
                 if (cur.right != null) {
-                    stk.push(cur.right);
+                    stack.push(cur.right);
                 }
                 if (cur.left != null) {
-                    stk.push(cur.left);
+                    stack.push(cur.left);
                 }
             }
             return null;

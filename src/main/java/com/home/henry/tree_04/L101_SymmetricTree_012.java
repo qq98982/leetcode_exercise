@@ -28,41 +28,37 @@ import java.util.Stack;
  * Follow up: Solve it both recursively and iteratively.
  */
 public class L101_SymmetricTree_012 {
-    public static class Solution {
-        public static boolean isSymmetric(TreeNode root) {
-            if (root == null) {return true;}
-            return isMirror(root.left, root.right);
-        }
-        static boolean isMirror(TreeNode p, TreeNode q) {
-            if (p == null && q == null) {return true;}
-            if (p == null || q == null) {return false;}
-            if (p.val != q.val) {return false;}
-            return isMirror(p.left, q.right) && isMirror(p.right, q.left);
-        }
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null) {return true;}
+        return isMirror(root.left, root.right);
+    }
 
+    private boolean isMirror(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {return true;}
+        if (p == null || q == null) {return false;}
+        if (p.val != q.val) {return false;}
+        return isMirror(p.left, q.right) && isMirror(p.right, q.left);
     }
 
     /**
      * single stack
      */
-    public static class Solution2 {
-        public static boolean isSymmetric(TreeNode root) {
-            if (root == null) {return true;}
-            Stack<TreeNode> p = new Stack<>();
-            p.push(root.left);
-            p.push(root.right);
-            while (!p.isEmpty()) {
-                TreeNode n1 = p.pop();
-                TreeNode n2 = p.pop();
-                if (n2 == null && n1 == null) {continue;}
-                if (n1 == null || n2 == null) {return false;}
-                if (n2.val != n1.val) {return false;}
-                p.push(n1.left);
-                p.push(n2.right);
-                p.push(n1.right);
-                p.push(n2.left);
-            }
-            return true;
+    public boolean isSymmetric2(TreeNode root) {
+        if (root == null) {return true;}
+        Stack<TreeNode> p = new Stack<>();
+        p.push(root.left);
+        p.push(root.right);
+        while (!p.isEmpty()) {
+            TreeNode n1 = p.pop();
+            TreeNode n2 = p.pop();
+            if (n2 == null && n1 == null) {continue;}
+            if (n1 == null || n2 == null) {return false;}
+            if (n2.val != n1.val) {return false;}
+            p.push(n1.left);
+            p.push(n2.right);
+            p.push(n1.right);
+            p.push(n2.left);
         }
+        return true;
     }
 }

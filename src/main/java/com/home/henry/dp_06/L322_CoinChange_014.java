@@ -19,7 +19,7 @@ public class L322_CoinChange_014 {
         // 边界条件
         f[0] = 0;
         int n = coins.length;
-        int amountNum ;
+        int amountNum;
         for (amountNum = 1; amountNum <= amount; amountNum++) {
             f[amountNum] = Integer.MAX_VALUE;
             // 去算每个硬币
@@ -46,10 +46,11 @@ public class L322_CoinChange_014 {
             f[i] = amount + 1;
         }
         f[0] = 0;
-        for (int i = 1; i < f.length; i++) {
+        for (int i = 1; i <= amount; i++) {
             for (int j = 0; j < coins.length; j++) {
-                if (i - coins[j] < 0) {continue;}
-                f[i] = Math.min(f[i], 1 + f[i - coins[j]]);
+                if (i >= coins[j]) {
+                    f[i] = Math.min(f[i], f[i - coins[j]] + 1);
+                }
             }
         }
         return f[amount] == amount + 1 ? -1 : f[amount];

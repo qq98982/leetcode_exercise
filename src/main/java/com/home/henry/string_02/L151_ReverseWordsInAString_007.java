@@ -14,13 +14,10 @@ public class L151_ReverseWordsInAString_007 {
             return "";
         }
         s = s.trim();
-        String[] str = s.split(" ");
+        String[] str = s.split("\\s+");
         StringBuilder sb = new StringBuilder();
         for (int i = str.length - 1; i >= 0; i--) {
-            if (str[i].trim().isEmpty()) {
-                continue;
-            }
-            sb.append(str[i].trim()).append(' ');
+            sb.append(str[i]).append(' ');
         }
         return sb.toString().trim();
     }

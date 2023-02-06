@@ -12,35 +12,27 @@ import java.util.Map;
  */
 public class L003_LongestSubstringWithoutRepeatingCharacters_022 {
 
-    static class Solution {
-        public static int lengthOfLongestSubstring(String s) {
-            Map<Character, Integer> map = new HashMap<>();
-            int begin = 0, end = 0, count = 0, res = 0;
-            while (end < s.length()) {
-                char c = s.charAt(end);
-                map.put(c, map.getOrDefault(c, 0) + 1);
-                if (map.get(c) > 1) {
-                    count++;
-                }
-                end++;
-                while (count > 0) {
-                    char tmp = s.charAt(begin);
-                    if (map.get(tmp) > 1) {
-                        count--;
-                    }
-                    map.put(tmp, map.get(tmp) - 1);
-                    begin++;
-                }
-                res = Math.max(res, end - begin);
+    public static int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        int begin = 0, end = 0, count = 0, res = 0;
+        while (end < s.length()) {
+            char c = s.charAt(end);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            if (map.get(c) > 1) {
+                count++;
             }
-            return res;
+            end++;
+            while (count > 0) {
+                char tmp = s.charAt(begin);
+                if (map.get(tmp) > 1) {
+                    count--;
+                }
+                map.put(tmp, map.get(tmp) - 1);
+                begin++;
+            }
+            res = Math.max(res, end - begin);
         }
-    }
-
-    public static void main(String[] args) {
-        assert (Solution.lengthOfLongestSubstring("pkwwkew") == 3);
-        assert (Solution.lengthOfLongestSubstring("bbbbb") == 1);
-        assert (Solution.lengthOfLongestSubstring("abcabcbb") == 3);
+        return res;
     }
 
 }

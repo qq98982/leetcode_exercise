@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import com.home.henry.tool.TreeTools;
-
 /**
  * 144. Binary Tree Preorder Traversal
  *
@@ -37,11 +35,6 @@ public class L144_BinaryTreePreorderTraversal_001 {
         helper(res, root.right);
     }
 
-    public static void main(String[] args) {
-        TreeNode treeNode = TreeTools.strTreeNodes("1 4 5 2 3 6");
-        System.out.println(preorderTraversal(treeNode));
-    }
-
     /**
      * iterative pre order
      */
@@ -50,16 +43,16 @@ public class L144_BinaryTreePreorderTraversal_001 {
         if (root == null) {
             return res;
         }
-        Stack<TreeNode> stk = new Stack<>();
-        stk.push(root);
-        while (!stk.isEmpty()) {
-            TreeNode curr = stk.pop();
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode curr = stack.pop();
             res.add(curr.val);
             if (curr.right != null) {
-                stk.push(curr.right);
+                stack.push(curr.right);
             }
             if (curr.left != null) {
-                stk.push(curr.left);
+                stack.push(curr.left);
             }
         }
         return res;

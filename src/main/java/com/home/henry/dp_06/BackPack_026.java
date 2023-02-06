@@ -2,6 +2,8 @@ package com.home.henry.dp_06;
 
 /**
  * 一个数组中的数字(正整数)，组成target可以有多少种方式，每个数字使用一次
+ *
+ * 一维dp数组的两个for循环先后循序一定是先遍历物品，再遍历背包容量。
  */
 public class BackPack_026 {
     public int backPack26(int[] nums, int target) {

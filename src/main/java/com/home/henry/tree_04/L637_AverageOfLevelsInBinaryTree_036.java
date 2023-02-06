@@ -25,9 +25,9 @@ import java.util.Queue;
  */
 public class L637_AverageOfLevelsInBinaryTree_036 {
     public static List<Double> averageOfLevels(TreeNode root) {
-        List<Double> result = new ArrayList<>();
+        List<Double> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
-        if (root == null) {return result;}
+        if (root == null) {return res;}
         queue.add(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
@@ -38,9 +38,9 @@ public class L637_AverageOfLevelsInBinaryTree_036 {
                 if (node.left != null) {queue.offer(node.left);}
                 if (node.right != null) {queue.offer(node.right);}
             }
-            result.add(sum / size);
+            res.add(sum / size);
         }
-        return result;
+        return res;
     }
 
     public static class SolutionDFS {

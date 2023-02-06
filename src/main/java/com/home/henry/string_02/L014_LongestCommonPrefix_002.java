@@ -52,8 +52,4 @@ public class L014_LongestCommonPrefix_002 {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        String[] strings = GenerateRandomStringArray.generateStringArray();
-        assert longestCommonPrefix(strings).equals(longestCommonPrefix2(strings));
-    }
 }

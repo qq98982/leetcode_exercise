@@ -13,7 +13,7 @@ public class NumToChineseNumber {
         return sb.toString().trim();
     }
 
-    static String[] lessThanTen = { "", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
+    private static String[] lessThanTen = { "", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
 
     private static StringBuilder helper(int num) {
         StringBuilder sb = new StringBuilder();
