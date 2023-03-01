@@ -22,14 +22,16 @@ public class L206_ReverseLinkedList_001 {
      */
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) {return head;}
-        ListNode pre = null;
-        while (head != null) {
-            ListNode temp = head.next;
-            head.next = pre;
-            pre = head;
-            head = temp;
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode temp;
+        while (curr != null) {
+            temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
         }
-        return pre;
+        return prev;
     }
 
     public ListNode reverseListRecursive(ListNode head) {
@@ -38,8 +40,8 @@ public class L206_ReverseLinkedList_001 {
 
     private ListNode reverse(ListNode head, ListNode newHead) {
         if (head == null) {return newHead;}
-        ListNode next = head.next;
+        ListNode curr = head.next;
         head.next = newHead;
-        return reverse(next, head);
+        return reverse(curr, head);
     }
 }
