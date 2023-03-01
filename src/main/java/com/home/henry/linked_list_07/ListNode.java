@@ -2,15 +2,15 @@ package com.home.henry.linked_list_07;
 
 public class ListNode {
 
-    int val;
+    Integer val;
 
     ListNode next;
 
-    ListNode(int x) { val = x; }
+    ListNode(int x) {val = x;}
 
     ListNode(int[] a1) {
         if (a1 == null || a1.length == 0) {
-            throw new IllegalArgumentException();
+            return;
         }
         ListNode l1 = new ListNode(a1[0]);
         val = a1[0];
@@ -22,8 +22,18 @@ public class ListNode {
         next = next.next;
     }
 
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+
+    ListNode() {}
+
     @Override
     public String toString() {
+        if (this == null) {
+            return "";
+        }
         ListNode fast = this;
         ListNode slow = this;
         boolean circle = false;

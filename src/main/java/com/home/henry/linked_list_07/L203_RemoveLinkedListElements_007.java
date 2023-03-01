@@ -8,39 +8,40 @@ package com.home.henry.linked_list_07;
  * Input:  1->2->6->3->4->5->6, val = 6 Output: 1->2->3->4->5
  */
 public class L203_RemoveLinkedListElements_007 {
-    static class Solution {
-        public static ListNode removeElements(ListNode head, int val) {
-            ListNode dummy = new ListNode(0);
-            dummy.next = head;
-            ListNode pre = dummy;
-            while (head != null) {
-                if (head.val != val) {
-                    pre = pre.next;
-                    head = head.next;
-                } else {
-                    pre.next = head.next;
-                    head = pre.next;
-                }
-            }
-            return dummy.next;
-        }
-
-        public static ListNode removeElements2(ListNode head, int val) {
-            if (head == null) { return null; }
-            head.next = removeElements2(head.next, val);
-            return head.val == val ? head.next : head;
-        }
-
-        // 这个更容易理解点
-        public static ListNode removeElements3(ListNode head, int val) {
-            if (head == null) { return null; }
-            ListNode next = removeElements3(head.next, val);
-            if (head.val == val) {
-                return next;
-            }
-            head.next = next;
+    public static ListNode removeElements(ListNode head, int val) {
+        if (head == null) {
             return head;
         }
+        // 因为删除可能涉及到头节点，所以设置dummy节点，统一操作
+        ListNode dummy = new ListNode(-1, head);
+        ListNode pre = dummy;
+        ListNode cur = head;
+        while (cur != null) {
+            if (cur.val == val) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
+            }
+            cur = cur.next;
+        }
+        return dummy.next;
+    }
+
+    public static ListNode removeElements2(ListNode head, int val) {
+        if (head == null) {return null;}
+        head.next = removeElements2(head.next, val);
+        return head.val == val ? head.next : head;
+    }
+
+    // 这个更容易理解点
+    public static ListNode removeElements3(ListNode head, int val) {
+        if (head == null) {return null;}
+        ListNode next = removeElements3(head.next, val);
+        if (head.val == val) {
+            return next;
+        }
+        head.next = next;
+        return head;
     }
 
     public static void main(String[] args) {
@@ -53,7 +54,7 @@ public class L203_RemoveLinkedListElements_007 {
             head = head.next;
         }
         System.out.println(curr);
-        ListNode listNode = Solution.removeElements(curr, 6);
+        ListNode listNode = removeElements(curr, 6);
         System.out.println(listNode);
     }
 }
