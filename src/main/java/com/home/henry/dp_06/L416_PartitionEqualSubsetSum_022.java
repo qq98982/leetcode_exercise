@@ -28,7 +28,9 @@ public class L416_PartitionEqualSubsetSum_022 {
         for (int i = 0; i < nums.length; i++) {
             for (int j = target; j >= nums[i]; j--) {
                 // 物品 i 的重量是 nums[i]，其价值也是 nums[i]
-                dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i]);
+                if (j >= nums[i]) {
+                    dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i]);
+                }
             }
         }
         return dp[target] == target;
