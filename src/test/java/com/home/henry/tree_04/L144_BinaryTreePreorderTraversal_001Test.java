@@ -5,28 +5,35 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.home.henry.tool.TreeTools;
 
 class L144_BinaryTreePreorderTraversal_001Test {
+    private L144_BinaryTreePreorderTraversal_001 treePreorderTraversal;
+
+    @BeforeEach
+    void setUp() {
+        treePreorderTraversal = new L144_BinaryTreePreorderTraversal_001();
+    }
 
     @Test
     void testPreorderTraversalIterativeSimple() {
         final TreeNode root = TreeTools.strTreeNodes("1,null,2,3");
 
         final List<Integer> result =
-                L144_BinaryTreePreorderTraversal_001.preorderTraversalIterativeSimple(root);
+                treePreorderTraversal.preorderTraversalIterativeSimple(root);
 
         assertEquals(List.of(1, 2, 3), result);
         assertTrue(
-                L144_BinaryTreePreorderTraversal_001.preorderTraversalIterativeSimple(
+                treePreorderTraversal.preorderTraversalIterativeSimple(
                         TreeTools.strTreeNodes("")).isEmpty());
         assertEquals(List.of(1),
-                     L144_BinaryTreePreorderTraversal_001.preorderTraversalIterativeSimple(
+                     treePreorderTraversal.preorderTraversalIterativeSimple(
                              TreeTools.strTreeNodes("1")));
-        assertEquals(List.of(1,2,4,5,3),
-                     L144_BinaryTreePreorderTraversal_001.preorderTraversalIterativeSimple(
+        assertEquals(List.of(1, 2, 4, 5, 3),
+                     treePreorderTraversal.preorderTraversalIterativeSimple(
                              TreeTools.strTreeNodes("1 2 3 4 5")));
     }
 
@@ -35,17 +42,17 @@ class L144_BinaryTreePreorderTraversal_001Test {
         final TreeNode root = TreeTools.strTreeNodes("1,null,2,3");
 
         final List<Integer> result =
-                L144_BinaryTreePreorderTraversal_001.preorderTraversal(root);
+                treePreorderTraversal.preorderTraversal(root);
 
         assertEquals(List.of(1, 2, 3), result);
         assertTrue(
-                L144_BinaryTreePreorderTraversal_001.preorderTraversal(
+                treePreorderTraversal.preorderTraversal(
                         TreeTools.strTreeNodes("")).isEmpty());
         assertEquals(List.of(1),
-                     L144_BinaryTreePreorderTraversal_001.preorderTraversal(
+                     treePreorderTraversal.preorderTraversal(
                              TreeTools.strTreeNodes("1")));
-        assertEquals(List.of(1,2,4,5,3),
-                     L144_BinaryTreePreorderTraversal_001.preorderTraversal(
+        assertEquals(List.of(1, 2, 4, 5, 3),
+                     treePreorderTraversal.preorderTraversal(
                              TreeTools.strTreeNodes("1 2 3 4 5")));
     }
 }

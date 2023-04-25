@@ -17,7 +17,7 @@ import java.util.Stack;
  */
 public class L144_BinaryTreePreorderTraversal_001 {
 
-    public static List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) {
             return res;
@@ -26,7 +26,7 @@ public class L144_BinaryTreePreorderTraversal_001 {
         return res;
     }
 
-    private static void helper(List<Integer> res, TreeNode root) {
+    private void helper(List<Integer> res, TreeNode root) {
         if (root == null) {
             return;
         }
@@ -38,7 +38,7 @@ public class L144_BinaryTreePreorderTraversal_001 {
     /**
      * iterative pre order
      */
-    public static List<Integer> preorderTraversalIterativeSimple(TreeNode root) {
+    public List<Integer> preorderTraversalIterativeSimple(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) {
             return res;
