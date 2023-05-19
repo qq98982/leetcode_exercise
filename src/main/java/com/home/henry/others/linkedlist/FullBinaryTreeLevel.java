@@ -39,6 +39,18 @@ public class FullBinaryTreeLevel {
         return node;
     }
 
+    public static TreeNode buildTree(int depth) {
+        TreeNode root = new TreeNode(0);
+        if (depth == 0) {
+            return root;
+        }
+        int[] num = new int[(int) (Math.pow(2, depth) - 1)];
+        for (int i = 0; i < num.length; i++) {
+            num[i] = i;
+        }
+        return buildTree(root, num, 0);
+    }
+
     public static void main(String[] args) {
         int depth = 5;
         TreeNode<Integer> root = buildTree(depth);
@@ -84,17 +96,7 @@ public class FullBinaryTreeLevel {
         return left != null ? left : findTree(root.right, num);
     }
 
-    private static TreeNode buildTree(int depth) {
-        TreeNode root = new TreeNode(0);
-        if (depth == 0) {
-            return root;
-        }
-        int[] num = new int[(int) (Math.pow(2, depth) - 1)];
-        for (int i = 0; i < num.length; i++) {
-            num[i] = i;
-        }
-        return buildTree(root, num, 0);
-    }
+
 
     private static void printTree(TreeNode root) {
         if (root == null) {

@@ -1,6 +1,8 @@
 package com.home.henry.tree_04;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -14,24 +16,27 @@ import java.util.Stack;
 public class L872_Leaf_SimilarTrees_009 {
 
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-        if (root1 == null || root2 == null) {
-            return false;
+        if (root1 == null || root2 == null) {return true;}
+        List<Integer> list1 = new LinkedList<>();
+        List<Integer> list2 = new LinkedList<>();
+        helper(root1, list1);
+        helper(root2, list2);
+        if (list1.size() != list2.size()) {return false;}
+        for (int i = 0; i < list1.size(); i++) {
+            if (list1.get(i) != list2.get(i)) {
+                return false;
+            }
         }
-        StringBuilder r1 = new StringBuilder();
-        StringBuilder r2 = new StringBuilder();
-        String res1 = traverse(root1, r1);
-        String res2 = traverse(root2, r2);
-        return res1.equals(res2);
+        return true;
     }
 
-    private String traverse(TreeNode root, StringBuilder r) {
-        if (root == null) { return ""; }
-        if (root.left == null && root.right == null) {
-            r.append(root.val).append("-");
+    private void helper(TreeNode t1, List<Integer> list) {
+        if (t1 == null) {return;}
+        if (t1.left == null && t1.right == null) {
+            list.add(t1.val);
         }
-        traverse(root.left, r);
-        traverse(root.right, r);
-        return r.toString();
+        helper(t1.left, list);
+        helper(t1.right, list);
     }
 
     public static class Solution {

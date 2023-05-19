@@ -38,7 +38,6 @@ class L872_Leaf_SimilarTrees_009Test {
 
         assertTrue(result);
 
-        assertFalse(L872_Leaf_SimilarTrees_009.Solution.leafSimilar(TreeTools.strTreeNodes("1,2,3"),
-                                                                 TreeTools.strTreeNodes("1,3,2")));
+        assertFalse(L872_Leaf_SimilarTrees_009.Solution.leafSimilar(TreeTools.strTreeNodes("1,2,3"), TreeTools.strTreeNodes("1,3,2")));
     }
 }

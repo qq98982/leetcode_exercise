@@ -16,18 +16,26 @@ class L063_UniquePathsII_004Test {
 
     @Test
     void testUniquePathsWithObstacles1() {
-        final int[][] obstacleGrid = { { 0, 0, 0}, { 0, 1, 0}, { 0, 0, 0} };
-
-        final int result = l063UniquePathsII004UnderTest.uniquePathsWithObstacles2(obstacleGrid);
-
-        assertEquals(2, result);
+        assertEquals(1, l063UniquePathsII004UnderTest.uniquePathsWithObstacles(
+                new int[][] { { 0, 1 }, { 0, 0 } }));
+        assertEquals(2, l063UniquePathsII004UnderTest.uniquePathsWithObstacles(
+                new int[][] { { 0, 0, 0 }, { 0, 1, 0 }, { 0, 0, 0 } }));
+        assertEquals(0, l063UniquePathsII004UnderTest.uniquePathsWithObstacles(
+                new int[][] { { 1, 0 } }));
+        assertEquals(0, l063UniquePathsII004UnderTest.uniquePathsWithObstacles(
+                new int[][] { { 0, 0 }, { 1, 1 }, { 0, 0 } }));
     }
+
     @Test
     void testUniquePathsWithObstacles2() {
-        final int[][] obstacleGrid = { { 0, 1}, { 0, 0} };
 
-        final int result = l063UniquePathsII004UnderTest.uniquePathsWithObstacles2(obstacleGrid);
-
-        assertEquals(1, result);
+        assertEquals(1, l063UniquePathsII004UnderTest.uniquePathsWithObstacles2(
+                new int[][] { { 0, 1 }, { 0, 0 } }));
+        assertEquals(2, l063UniquePathsII004UnderTest.uniquePathsWithObstacles2(
+                new int[][] { { 0, 0, 0 }, { 0, 1, 0 }, { 0, 0, 0 } }));
+        assertEquals(0, l063UniquePathsII004UnderTest.uniquePathsWithObstacles2(
+                new int[][] { { 1, 0 } }));
+        assertEquals(0, l063UniquePathsII004UnderTest.uniquePathsWithObstacles2(
+                new int[][] { { 0, 0 }, { 1, 1 }, { 0, 0 } }));
     }
 }

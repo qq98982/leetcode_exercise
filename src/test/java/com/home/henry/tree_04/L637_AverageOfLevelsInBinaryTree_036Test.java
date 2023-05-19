@@ -14,5 +14,6 @@ class L637_AverageOfLevelsInBinaryTree_036Test {
     void testAverageOfLevels() {
         assertEquals(List.of(3.0, 14.5, 11.0), L637_AverageOfLevelsInBinaryTree_036.averageOfLevels(TreeTools.strTreeNodes("3,9,20,null,null,15,7")));
         assertEquals(List.of(3.0, 14.5, 11.0), L637_AverageOfLevelsInBinaryTree_036.averageOfLevels(TreeTools.strTreeNodes("3,9,20,15,7")));
+        assertEquals(List.of(2147483647.00000, 2147483647.00000), L637_AverageOfLevelsInBinaryTree_036.averageOfLevels(TreeTools.strTreeNodes("2147483647,2147483647,2147483647")));
     }
 }
