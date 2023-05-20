@@ -58,43 +58,40 @@ public class FullBinaryTreeLevel {
         List<Integer> list = new ArrayList<>();
         findPathFunc(root, 9, 27, list);
         System.out.println(list);
+
+        List<Integer> list2 = new ArrayList<>();
+        findPathFunc(root, 15, 3, list2);
+        System.out.println(list2);
     }
 
-    private static List<Integer> findPathFunc(TreeNode<Integer> root, int first, int end, List<Integer> list) {
+    private static void findPathFunc(TreeNode<Integer> root, int first, int end, List<Integer> list) {
         TreeNode<Integer> firstNode = findValue(root, first);
         TreeNode<Integer> endNode = findValue(root, end);
-        if (firstNode == null || endNode == null) {return list;}
+        if (firstNode == null || endNode == null) {return;}
 
-        List<Integer> left = findPath(firstNode.prev, new ArrayList<>());
-        List<Integer> right = findPath(endNode.prev, new ArrayList<>());
+        List<Integer> left = findPath(firstNode, new ArrayList<>());
         if (left.contains(end)) {
-            List<Integer> newList = new ArrayList<>();
-            newList.add(first);
             for (int i = 0; i < left.size(); i++) {
-                newList.add(left.get(i));
+                list.add(left.get(i));
                 if (left.get(i) == end) {
-                    return newList;
+                    return;
                 }
             }
         }
+        List<Integer> right = findPath(endNode.prev, new ArrayList<>());
         if (right.contains(first)) {
-            List<Integer> newList = new ArrayList<>();
-            newList.add(end);
             for (int i = right.size() - 1; i >= 0 ; i--) {
-                newList.add(left.get(i));
+                list.add(left.get(i));
                 if (left.get(i) == first) {
-                    Collections.reverse(newList);
-                    return newList;
+                    Collections.reverse(list);
+                    return;
                 }
             }
         }
         Collections.reverse(right);
-        list.add(first);
         list.addAll(left);
         list.add(0);
         list.addAll(right);
-        list.add(end);
-        return list;
     }
 
     private static List<Integer> findPath(TreeNode<Integer> prev, List<Integer> list) {
