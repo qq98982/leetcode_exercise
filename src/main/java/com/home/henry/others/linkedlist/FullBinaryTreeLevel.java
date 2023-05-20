@@ -61,12 +61,33 @@ public class FullBinaryTreeLevel {
     }
 
     private static List<Integer> findPathFunc(TreeNode<Integer> root, int first, int end, List<Integer> list) {
-        TreeNode<Integer> firstNode = findTree(root, first);
-        TreeNode<Integer> endNode = findTree(root, end);
+        TreeNode<Integer> firstNode = findValue(root, first);
+        TreeNode<Integer> endNode = findValue(root, end);
         if (firstNode == null || endNode == null) {return list;}
 
         List<Integer> left = findPath(firstNode.prev, new ArrayList<>());
         List<Integer> right = findPath(endNode.prev, new ArrayList<>());
+        if (left.contains(end)) {
+            List<Integer> newList = new ArrayList<>();
+            newList.add(first);
+            for (int i = 0; i < left.size(); i++) {
+                newList.add(left.get(i));
+                if (left.get(i) == end) {
+                    return newList;
+                }
+            }
+        }
+        if (right.contains(first)) {
+            List<Integer> newList = new ArrayList<>();
+            newList.add(end);
+            for (int i = right.size() - 1; i >= 0 ; i--) {
+                newList.add(left.get(i));
+                if (left.get(i) == first) {
+                    Collections.reverse(newList);
+                    return newList;
+                }
+            }
+        }
         Collections.reverse(right);
         list.add(first);
         list.addAll(left);
@@ -85,15 +106,15 @@ public class FullBinaryTreeLevel {
         return list;
     }
 
-    private static TreeNode findTree(TreeNode<Integer> root, int num) {
+    private static TreeNode findValue(TreeNode<Integer> root, int num) {
         if (root == null) {
             return null;
         }
         if (root.val == num) {
             return root;
         }
-        TreeNode left = findTree(root.left, num);
-        return left != null ? left : findTree(root.right, num);
+        TreeNode left = findValue(root.left, num);
+        return left != null ? left : findValue(root.right, num);
     }
 
 
