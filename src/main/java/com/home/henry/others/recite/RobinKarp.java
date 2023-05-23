@@ -1,5 +1,7 @@
 package com.home.henry.others.recite;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * Robin Karp版本的查找字符串
  */

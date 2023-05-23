@@ -23,36 +23,18 @@ package com.home.henry.tree_04;
  */
 public class L108_ConvertSortedArrayToBinarySearchTree_035 {
 
-    public TreeNode sortedArrayToBST(int[] num) {
-        if (num.length == 0) {return null;}
-        TreeNode head = helper(num, 0, num.length - 1);
-        return head;
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if (nums.length == 0) {return null;}
+        return helper(nums, 0, nums.length - 1);
     }
 
-    private TreeNode helper(int[] num, int low, int high) {
-        if (low > high) {
-            return null;
-        }
-        int mid = low + (high - low) / 2;
-        TreeNode node = new TreeNode(num[mid]);
-        node.left = helper(num, low, mid - 1);
-        node.right = helper(num, mid + 1, high);
-        return node;
-    }
-
-    static class Solution {
-        public static TreeNode sortedArrayToBST(int[] nums) {
-            return helper(nums, 0, nums.length - 1);
-        }
-
-        private static TreeNode helper(int[] nums, int start, int end) {
-            if (start < 0 || end > nums.length - 1) {return null;}
-            int mid = start + (end - start) / 2;
-            TreeNode midT = new TreeNode(mid);
-            midT.left = helper(nums, start, mid - 1);
-            midT.right = helper(nums, mid + 1, end);
-            return midT;
-        }
+    private static TreeNode helper(int[] nums, int start, int end) {
+        if (start > end) {return null;}
+        int mid = start + (end - start) / 2;
+        TreeNode midTreeNode = new TreeNode(nums[mid]);
+        midTreeNode.left = helper(nums, start, mid - 1);
+        midTreeNode.right = helper(nums, mid + 1, end);
+        return midTreeNode;
     }
 
 }

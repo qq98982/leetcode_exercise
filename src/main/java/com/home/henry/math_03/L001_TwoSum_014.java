@@ -13,17 +13,15 @@ import java.util.Map;
  * Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
  */
 public class L001_TwoSum_014 {
-    static class Solution {
-        public int[] twoSum(int[] nums, int target) {
-            Map<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < nums.length; i++) {
-                if (map.containsKey(target - nums[i])) {
-                    int x = map.get(target - nums[i]);
-                    return new int[] { x, i };
-                }
-                map.put(nums[i], i);
+    // 这里有顺序问题，不能走两遍for循环
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[] { map.get(target - nums[i]), i };
             }
-            return new int[] { 0, 0 };
+            map.put(nums[i], i);
         }
+        return new int[] { 0, 0 };
     }
 }

@@ -22,11 +22,15 @@ class L107_BinaryTreeLevelOrderTraversalII_007Test {
     void testLevelOrderBottom() {
         assertEquals(List.of(List.of(15,7),List.of(9,20),List.of(3)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottom(
                 TreeTools.strTreeNodes("3,9,20,null,null,15,7")));
+        assertEquals(List.of(List.of(4,5),List.of(2,3),List.of(1)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottom(
+                TreeTools.strTreeNodes("1,2,3,4,5")));
     }
 
     @Test
     void testLevelOrderBottomBFS() {
         assertEquals(List.of(List.of(15,7),List.of(9,20),List.of(3)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottomBFS(
                 TreeTools.strTreeNodes("3,9,20,null,null,15,7")));
+        assertEquals(List.of(List.of(4,5),List.of(2,3),List.of(1)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottomBFS(
+                TreeTools.strTreeNodes("1,2,3,4,5")));
     }
 }

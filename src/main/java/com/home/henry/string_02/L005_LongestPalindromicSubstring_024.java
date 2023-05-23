@@ -1,5 +1,7 @@
 package com.home.henry.string_02;
 
+import java.util.Arrays;
+
 /**
  * 5. Longest Palindromic Substring
  *
@@ -10,46 +12,105 @@ package com.home.henry.string_02;
 public class L005_LongestPalindromicSubstring_024 {
 
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 2) {return s;}
-        char[] c = s.toCharArray();
-        char[] helper = new char[c.length * 2 + 1];
-        int index = 0;
-        for (int i = 0; i != helper.length; i++) {
-            if ((i & 1) == 0) {
-                helper[i] = '#';
-            } else {
-                helper[i] = c[index++];
-            }
-        }
-        int max = Integer.MIN_VALUE;
-        int R = -1;
-        int C = -1;
-        int start = 0;
-        int[] pArr = new int[helper.length];
-
-        for (int i = 0; i != helper.length; i++) {
-            pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
-            while (i + pArr[i] < helper.length && i - pArr[i] > -1) {
-                if (helper[i + pArr[i]] == helper[i - pArr[i]]) {
-                    pArr[i]++;
+        // change s to an array with '#'s
+        char[] ch = preHandle(s);
+        int[] p = new int[ch.length];
+        int C = -1, R = -1, start = 0, max = Integer.MIN_VALUE;
+        for (int i = 0; i < ch.length; i++) {
+            p[i] = R > i ? Math.min(p[2 * C - i], R - i) : 1;
+            while (i - p[i] > -1 && i + p[i] < ch.length) {
+                if (ch[i - p[i]] == ch[i + p[i]]) {
+                    p[i]++;
                 } else {
                     break;
                 }
             }
-            if (i + pArr[i] > R) {
-                R = i + pArr[i];
+            if (i + p[i] > R) {
+                R = i + p[i];
                 C = i;
             }
-            if (pArr[i] > max) {
-                max = pArr[i];
-                start = 2 * C - i;
+            if (p[i] > max) {
+                max = p[i];
+                start = i;
             }
         }
         StringBuilder sb = new StringBuilder();
         for (int i = start - max + 2; i < start + max; i += 2) {
-            sb.append(helper[i]);
+            sb.append(ch[i]);
         }
         return sb.toString();
+    }
+
+    private static char[] preHandle(String s) {
+        char[] c = s.toCharArray();
+        char[] res = new char[c.length * 2 + 1];
+        int index = 0;
+        for (int i = 0; i != res.length; i++) {
+            res[i] = (i % 2) == 0 ? '#' : c[index++];
+        }
+        return res;
+    }
+
+    private int getPalindromeLength(StringBuilder sb, int index, int length) {
+        int st = index - length - 1;
+        int end = index + length + 1;
+
+        while (st >= 0 && end < sb.length()) {
+            if (sb.charAt(st--) == sb.charAt(end++)) {
+                length++;
+            } else {
+                break;
+            }
+        }
+        return length;
+    }
+
+    public String longestPalindrome2(String s) {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            sb.append('#');
+            sb.append(s.substring(i, i + 1));
+        }
+        sb.append('#');
+
+        int[] length = new int[sb.length()];
+        Arrays.fill(length, 0);
+
+        int center = 0;
+        int rightBoundary = 0;
+        int maxIndex = 0;
+
+        for (int i = 1; i < sb.length(); i++) {
+            int mirror = 2 * center - i;
+
+            if (i < rightBoundary) {
+                length[i] = Math.min(length[mirror], rightBoundary - i);
+            }
+
+            length[i] = getPalindromeLength(sb, i, length[i]);
+
+            if (i + length[i] > rightBoundary) {
+                center = i;
+                rightBoundary = i + length[i];
+            }
+
+            if (length[maxIndex] < length[i]) {
+                maxIndex = i;
+            }
+        }
+
+        StringBuilder res = new StringBuilder();
+
+        int start = maxIndex - length[maxIndex];
+        int end = maxIndex + length[maxIndex];
+
+        for (int i = start; i <= end; i++) {
+            if (sb.charAt(i) != '#') {res.append(sb.substring(i, i + 1));}
+        }
+
+        return res.toString();
     }
 
 }

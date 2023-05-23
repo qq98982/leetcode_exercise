@@ -15,7 +15,7 @@ package com.home.henry.binary_search_08;
  *
  * Input: nums = [2,5,6,0,0,1,2], target = 3 Output: false
  */
-class L081_SearchInRotatedSortedArrayII_007 {
+public class L081_SearchInRotatedSortedArrayII_007 {
     public boolean search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {return false;}
 

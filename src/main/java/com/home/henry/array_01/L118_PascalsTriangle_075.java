@@ -34,21 +34,21 @@ public class L118_PascalsTriangle_075 {
 
     static class Solution2 {
         public static List<List<Integer>> generate(int numRows) {
-            List<List<Integer>> allrows = new ArrayList<>();
-            if (numRows == 0) {return allrows;}
-            allrows.add(new ArrayList<>());
-            allrows.get(0).add(1);
+            List<List<Integer>> allRows = new ArrayList<>();
+            if (numRows == 0) {return allRows;}
+            allRows.add(new ArrayList<>());
+            allRows.get(0).add(1);
             for (int i = 1; i < numRows; i++) {
                 List<Integer> row = new ArrayList<>();
-                List<Integer> prerow = allrows.get(i - 1);
+                List<Integer> preRow = allRows.get(i - 1);
                 row.add(1);
                 for (int j = 1; j < i; j++) {
-                    row.add(prerow.get(j - 1) + prerow.get(j));
+                    row.add(preRow.get(j - 1) + preRow.get(j));
                 }
                 row.add(1);
-                allrows.add(row);
+                allRows.add(row);
             }
-            return allrows;
+            return allRows;
         }
     }
 

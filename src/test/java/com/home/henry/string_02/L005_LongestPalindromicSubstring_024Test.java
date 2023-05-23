@@ -20,4 +20,12 @@ class L005_LongestPalindromicSubstring_024Test {
         assertEquals("bab", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("babad"));
         assertEquals("bb", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("cbbd"));
     }
+
+    @Test
+    void testLongestPalindrome2() {
+        assertEquals("s", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("s"));
+        assertEquals("bab", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("babad"));
+        assertEquals("bb", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("cbbd"));
+    }
+
 }
