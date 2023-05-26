@@ -16,15 +16,10 @@ class L053_MaximumSubarray_023Test {
 
     @Test
     void testMaxSubArray() {
-        assertEquals(6, l053MaximumSubarray023UnderTest.maxSubArray(new int[] { -2,1,-3,4,-1,2,1,-5,4 }));
-        assertEquals(1, l053MaximumSubarray023UnderTest.maxSubArray(new int[] {1}));
-        assertEquals(23, l053MaximumSubarray023UnderTest.maxSubArray(new int[] { 5,4,-1,7,8}));
-    }
-
-    @Test
-    void testMaxSubArrayDP() {
-        assertEquals(6, l053MaximumSubarray023UnderTest.maxSubArrayDP(new int[] { -2,1,-3,4,-1,2,1,-5,4 }));
-        assertEquals(1, l053MaximumSubarray023UnderTest.maxSubArrayDP(new int[] {1}));
-        assertEquals(23, l053MaximumSubarray023UnderTest.maxSubArrayDP(new int[] { 5,4,-1,7,8}));
+        assertEquals(6,
+                     l053MaximumSubarray023UnderTest.maxSubArray(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 }));
+        assertEquals(1, l053MaximumSubarray023UnderTest.maxSubArray(new int[] { 1 }));
+        assertEquals(23, l053MaximumSubarray023UnderTest.maxSubArray(new int[] { 5, 4, -1, 7, 8 }));
+        assertEquals(1, l053MaximumSubarray023UnderTest.maxSubArray(new int[] { -2, 1 }));
     }
 }

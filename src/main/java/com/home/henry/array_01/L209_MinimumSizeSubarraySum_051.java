@@ -25,11 +25,11 @@ public class L209_MinimumSizeSubarraySum_051 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      */
-    public int minSubArrayLen(int s, int[] nums) {
+    public int minSubArrayLen(int target, int[] nums) {
         int sum = 0, left = 0, res = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
-            while (sum >= s && left <= i) {
+            while (sum >= target && left <= i) {
                 res = Math.min(res, i - left + 1);
                 sum -= nums[left++];
                 // 优化
