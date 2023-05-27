@@ -20,6 +20,12 @@ class L242_ValidAnagram_011Test {
         assertFalse(l242ValidAnagram011UnderTest.isAnagram("s", "t"));
         assertFalse(l242ValidAnagram011UnderTest.isAnagram("rat", "car"));
         assertFalse(l242ValidAnagram011UnderTest.isAnagram("rat", "cars"));
+        assertFalse(l242ValidAnagram011UnderTest.isAnagram("nl", "cx"));
         assertTrue(l242ValidAnagram011UnderTest.isAnagram("anagram", "nagaram"));
+    }
+
+    @Test
+    void testIsAnagram2() {
+        assertFalse(l242ValidAnagram011UnderTest.isAnagram2("nl", "cx"));
     }
 }

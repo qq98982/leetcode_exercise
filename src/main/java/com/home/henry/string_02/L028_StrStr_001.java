@@ -1,7 +1,7 @@
 package com.home.henry.string_02;
 
 /**
- * 28. Implement strStr()
+ * 28. Find the Index of the First Occurrence in a String
  *
  * Implement strStr().
  * Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
@@ -14,6 +14,37 @@ package com.home.henry.string_02;
  * consistent to C's strstr() and Java's indexOf().
  */
 public class L028_StrStr_001 {
+    public int strStr3(String haystack, String needle) {
+        int BASE = 100000;
+        int m = needle.length();
+        int targetHash = 0;
+        for (int i = 0; i < m; i++) {
+            targetHash = (targetHash * 31 + needle.charAt(i) ) % BASE;
+        }
+        int power = 1;
+        for (int i  = 0; i < m; i++) {
+            power = (power * 31) % BASE;
+        }
+        char[] ch = haystack.toCharArray();
+        int sourceHash = 0;
+        for (int i = 0; i < haystack.length(); i++) {
+            sourceHash = (sourceHash * 31 + ch[i]) % BASE;
+            if (i < m - 1) {continue;}
+            if (i >= m) {
+                sourceHash = (sourceHash - ch[i - m] * power) % BASE;
+                if (sourceHash < 0) {
+                    sourceHash += BASE;
+                }
+
+            }
+            if (sourceHash == targetHash) {
+                if (haystack.substring(i - m + 1, i + 1).equals(needle)) {
+                    return i - m + 1;
+                }
+            }
+        }
+        return -1;
+    }
 
     public int strStr(String haystack, String needle) {
         if (null == haystack || null == needle || haystack.length() < needle.length()) {
