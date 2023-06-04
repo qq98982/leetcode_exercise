@@ -19,6 +19,8 @@ class L028_StrStr_001Test {
         assertEquals(0, l028StrStr001UnderTest.strStr3("sadbutsad", "sad"));
         assertEquals(-1, l028StrStr001UnderTest.strStr3("leetcode", "leeto"));
         assertEquals(0, l028StrStr001UnderTest.strStr3("a", "a"));
+        assertEquals(1, l028StrStr001UnderTest.strStr3("mississippi", "issi"));
+        assertEquals(4, l028StrStr001UnderTest.strStr3("mississippi", "issip"));
 
 
     }
