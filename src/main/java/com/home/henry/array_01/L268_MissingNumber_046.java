@@ -6,6 +6,15 @@ package com.home.henry.array_01;
  * 这个题有三种做法,XOR, BS, SUM, 其中SUM最简单
  */
 public class L268_MissingNumber_046 {
+
+    public int missingNumber(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        return ((nums.length * (nums.length + 1)) - 2 * sum) / 2;
+    }
+
     static class Solution {
         public int missingNumber(int[] nums) {
             long sum = nums[0];

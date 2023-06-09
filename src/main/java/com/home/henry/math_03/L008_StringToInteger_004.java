@@ -6,35 +6,29 @@ package com.home.henry.math_03;
  */
 public class L008_StringToInteger_004 {
     public int myAtoi(String s) {
-        if (s == null || s.length() == 0) {return Integer.MIN_VALUE;}
         int len = s.length();
-        int index = 0;
-        while (index < len && s.charAt(index) == ' ') {
-            index++;
+        if (len == 0) {return 0;}
+        double num = 0;
+        int i = 0;
+        while (i < len && s.charAt(i) == ' ') {
+            i++;
         }
-        boolean positive = s.charAt(index) == '+';
-        boolean negative = s.charAt(index) == '-';
+        if (i == len) {return 0;}
+        boolean positive = s.charAt(i) == '+';
+        boolean negative = s.charAt(i) == '-';
         if (positive) {
-            index++;
+            i++;
         }
         if (negative) {
-            index++;
+            i++;
         }
-        long sum = 0l;
-        while (index < len && s.charAt(index) >= '0' && s.charAt(index) <= '9') {
-            sum = sum * 10 + (s.charAt(index++) - '0');
+        while (i < len && s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+            num = num * 10 + (s.charAt(i++) - '0');
         }
-        if (negative) {
-            sum = sum * -1;
-        }
-        if (sum < Integer.MIN_VALUE) {
-            return Integer.MIN_VALUE;
-        }
-
-        if (sum > Integer.MAX_VALUE) {
-            return Integer.MAX_VALUE;
-        }
-        return (int) sum;
+        num = negative ? -num : num;
+        num = (num > Integer.MAX_VALUE) ? Integer.MAX_VALUE : num;
+        num = (num < Integer.MIN_VALUE) ? Integer.MIN_VALUE : num;
+        return (int) num;
     }
 
     public int myAtoi2(String str) {

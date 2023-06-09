@@ -7,6 +7,14 @@ package com.home.henry.binary_search_08;
  */
 class L069_Sqrt_X_005 {
 
+    public int mySqrt2(int x) {
+        long r = x;
+        while (r * r > x) {
+            r = (r + x / r) / 2;
+        }
+        return (int) r;
+    }
+
     public int mySqrt(int x) {
         if (x < 2) {
             return x;

@@ -19,5 +19,7 @@ class L494_TargetSum_024Test {
         assertEquals(5, l494TargetSum024UnderTest.findTargetSumWays(new int[] { 1, 1, 1, 1, 1 }, 3));
         assertEquals(1, l494TargetSum024UnderTest.findTargetSumWays(new int[] { 1 }, 1));
         assertEquals(32, l494TargetSum024UnderTest.findTargetSumWays(new int[] { 0, 0, 0, 0, 0 }, 0));
+        assertEquals(0, l494TargetSum024UnderTest.findTargetSumWays(new int[] { 1 }, 2));
+        assertEquals(0, l494TargetSum024UnderTest.findTargetSumWays(new int[] { 7,9,3,8,0,2,4,8,3,9 }, 40));
     }
 }

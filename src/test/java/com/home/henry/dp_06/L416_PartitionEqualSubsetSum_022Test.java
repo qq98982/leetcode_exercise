@@ -19,5 +19,7 @@ class L416_PartitionEqualSubsetSum_022Test {
     void testCanPartition() {
         assertTrue(l416PartitionEqualSubsetSum022UnderTest.canPartition(new int[] { 1,5,11,5 }));
         assertFalse(l416PartitionEqualSubsetSum022UnderTest.canPartition(new int[] { 1,2,3,5 }));
+        assertFalse(l416PartitionEqualSubsetSum022UnderTest.canPartition(new int[] { 1,2,3,5 }));
+        assertFalse(l416PartitionEqualSubsetSum022UnderTest.canPartition(new int[] { 1,2,5 }));
     }
 }

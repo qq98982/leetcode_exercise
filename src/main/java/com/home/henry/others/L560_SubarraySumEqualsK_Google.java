@@ -18,68 +18,65 @@ import java.util.Map;
  */
 public class L560_SubarraySumEqualsK_Google {
 
-    static class Solution {
-        public int subarraySum(int[] nums, int k) {
-            if (nums == null || nums.length == 0) {return 0;}
+    public static int subarraySum(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {return 0;}
 
-            int sum = 0, result = 0;
-            Map<Integer, Integer> map = new HashMap<>(nums.length);
-            // sum - k = 0 就是sum == k 也要计算进去一次
-            map.put(0, 1);
-            for (int i = 0; i < nums.length; i++) {
-                sum += nums[i];
-                if (map.containsKey(sum - k)) {
-                    result += map.get(sum - k);
-                }
-                map.put(sum, map.getOrDefault(sum, 0) + 1);
-                System.out.println(map);
+        int sum = 0, result = 0;
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        // sum - k = 0 就是sum == k 也要计算进去一次
+        map.put(0, 1);
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (map.containsKey(sum - k)) {
+                result += map.get(sum - k);
             }
-            return result;
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
+        return result;
+    }
 
-        // 查找最长的和为k的长度
-        public static int longestSubarrayLength(int[] arr, int k) {
-            Map<Integer, Integer> map = new HashMap<>();
-            map.put(0, -1); // important
-            int sum = 0, len = 0;
-            for (int i = 0; i < arr.length; i++) {
-                sum += arr[i];
-                if (map.containsKey(sum - k)) {
-                    len = Math.max(len, i - map.get(sum - k));
-                }
-                map.putIfAbsent(sum, i);
+    // 查找最长的和为k的长度
+    public static int longestSubarrayLength(int[] arr, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1); // important
+        int sum = 0, len = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            if (map.containsKey(sum - k)) {
+                len = Math.max(len, i - map.get(sum - k));
             }
-            return len;
+            map.putIfAbsent(sum, i);
         }
-        // 查找最长的有相同数量正负数的子数组长度
-        public static int longestSubArrayLengthOfAddMinus(int[] arr) {
-            Map<Integer, Integer> map = new HashMap<>();
-            map.put(0, -1); // important
-            int sum = 0, len = 0;
-            for (int i = 0; i < arr.length; i++) {
-                if (arr[i] > 0) {
-                    sum += 1;
-                } else {
-                    sum -= 1;
-                }
-                if (map.containsKey(sum)) {
-                    len = Math.max(len, i - map.get(sum));
-                }
-                map.putIfAbsent(sum, i);
+        return len;
+    }
+
+    // 查找最长的有相同数量正负数的子数组长度
+    public static int longestSubArrayLengthOfAddMinus(int[] arr) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1); // important
+        int sum = 0, len = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                sum += 1;
+            } else {
+                sum -= 1;
             }
-            return len;
+            if (map.containsKey(sum)) {
+                len = Math.max(len, i - map.get(sum));
+            }
+            map.putIfAbsent(sum, i);
         }
+        return len;
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
-        System.out.println(s.subarraySum(new int[] { 1, 1, 1 }, 2)); // 2
-        System.out.println(s.subarraySum(new int[] { 0, 1, 2 }, 3)); // 2
-        System.out.println(s.subarraySum(new int[] { 2, 0, 1, 1, 2 }, 2)); // 5
-        System.out.println(s.subarraySum(new int[] { 2, 0, 1, 1, 2 }, 3)); // 2
-        System.out.println(s.subarraySum(new int[] { 2, 0, 1, 1, 2 }, 4)); // 3
-        System.out.println(s.subarraySum(new int[] { 2, 0, 1, 1, 2, 0 }, 2)); // 6
-        System.out.println(s.subarraySum(new int[] { 2, 1, 1, 1, 1, 3 }, 6)); // 3
-        System.out.println(s.subarraySum(new int[] { 3, -3, 5, 1, 4, 2 }, 6)); // 3
+        System.out.println(subarraySum(new int[] { 1, 1, 1 }, 2)); // 2
+        System.out.println(subarraySum(new int[] { 0, 1, 2 }, 3)); // 2
+        System.out.println(subarraySum(new int[] { 2, 0, 1, 1, 2 }, 2)); // 5
+        System.out.println(subarraySum(new int[] { 2, 0, 1, 1, 2 }, 3)); // 2
+        System.out.println(subarraySum(new int[] { 2, 0, 1, 1, 2 }, 4)); // 3
+        System.out.println(subarraySum(new int[] { 2, 0, 1, 1, 2, 0 }, 2)); // 6
+        System.out.println(subarraySum(new int[] { 2, 1, 1, 1, 1, 3 }, 6)); // 3
+        System.out.println(subarraySum(new int[] { 3, -3, 5, 1, 4, 2 }, 6)); // 3
     }
 }

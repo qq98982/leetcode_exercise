@@ -20,6 +20,8 @@ class L008_StringToInteger_004Test {
         assertEquals(-42, l008StringToInteger004UnderTest.myAtoi("   -42"));
         assertEquals(4193, l008StringToInteger004UnderTest.myAtoi("4193 with words"));
         assertEquals(0, l008StringToInteger004UnderTest.myAtoi("+-12"));
+        assertEquals(2147483647, l008StringToInteger004UnderTest.myAtoi("9223372036854775808"));
+        assertEquals(0, l008StringToInteger004UnderTest.myAtoi(" "));
     }
 
     @Test
@@ -28,5 +30,8 @@ class L008_StringToInteger_004Test {
         assertEquals(-42, l008StringToInteger004UnderTest.myAtoi2("   -42"));
         assertEquals(4193, l008StringToInteger004UnderTest.myAtoi2("4193 with words"));
         assertEquals(0, l008StringToInteger004UnderTest.myAtoi2("+-12"));
+        assertEquals(2147483647, l008StringToInteger004UnderTest.myAtoi2("9223372036854775808"));
+        assertEquals(0, l008StringToInteger004UnderTest.myAtoi2(" "));
+
     }
 }

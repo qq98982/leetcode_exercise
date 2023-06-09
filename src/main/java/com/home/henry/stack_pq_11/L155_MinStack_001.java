@@ -29,6 +29,42 @@ import java.util.Stack;
  * minStack.getMin(); // return -2
  */
 public class L155_MinStack_001 {
+
+    // 这个方法最简洁，双stack的也很好记
+    static class MinStack3 {
+        private Node head;
+
+        public void push(int x) {
+            if (head == null)
+                head = new Node(x, x, null);
+            else
+                head = new Node(x, Math.min(x, head.min), head);
+        }
+
+        public void pop() {
+            head = head.next;
+        }
+
+        public int top() {
+            return head.val;
+        }
+
+        public int getMin() {
+            return head.min;
+        }
+
+        private class Node {
+            int val;
+            int min;
+            Node next;
+
+            private Node(int val, int min, Node next) {
+                this.val = val;
+                this.min = min;
+                this.next = next;
+            }
+        }
+    }
     private Stack<Integer> stack;
     private int min;
 
