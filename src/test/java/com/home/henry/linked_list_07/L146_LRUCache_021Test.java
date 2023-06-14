@@ -36,5 +36,18 @@ class L146_LRUCache_021Test {
         assertEquals(3, l146LruCache021UnderTest.get(2));
     }
 
+    @Test
+    void testLRUCache3() {
+        l146LruCache021UnderTest.put(1,0);
+        l146LruCache021UnderTest.put(2,2);
+        assertEquals(0, l146LruCache021UnderTest.get(1));
+        l146LruCache021UnderTest.put(3,3);
+        assertEquals(-1, l146LruCache021UnderTest.get(2));
+        l146LruCache021UnderTest.put(4,4);
+        assertEquals(-1, l146LruCache021UnderTest.get(1));
+        assertEquals(3, l146LruCache021UnderTest.get(3));
+        assertEquals(4, l146LruCache021UnderTest.get(4));
+    }
+
 
 }

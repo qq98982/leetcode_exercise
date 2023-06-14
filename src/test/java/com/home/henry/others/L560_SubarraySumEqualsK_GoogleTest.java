@@ -12,6 +12,7 @@ class L560_SubarraySumEqualsK_GoogleTest {
         assertEquals(2, L560_SubarraySumEqualsK_Google.subarraySum(new int[] { 1, 2, 3 }, 3));
         assertEquals(6, L560_SubarraySumEqualsK_Google.subarraySum(new int[] { 3, 4, 7, -2, 2, 1, 4, 2 }, 7));
         assertEquals(3, L560_SubarraySumEqualsK_Google.subarraySum(new int[] { 2, 3, 6, 5, 4, 1, 10 }, 5));
+        assertEquals(4, L560_SubarraySumEqualsK_Google.subarraySum(new int[] { 1, 2, 1, 2, 1 }, 3));
         assertEquals(3, L560_SubarraySumEqualsK_Google.subarraySum(
                 new int[] { -4, 3, 6, -2, 1, -1, 0, 2, -2, 3, 1 }, 5));
     }

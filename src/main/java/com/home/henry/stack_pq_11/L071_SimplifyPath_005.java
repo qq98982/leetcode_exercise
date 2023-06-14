@@ -5,6 +5,12 @@ import java.util.LinkedList;
 
 /**
  * 71. Simplify Path
+ *
+ * Input: path = "/home/" Output: "/home"
+ *
+ * Input: path = "/../" Output: "/"
+ *
+ * Input: path = "/home//foo/" Output: "/home/foo"
  */
 public class L071_SimplifyPath_005 {
 

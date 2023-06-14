@@ -4,7 +4,7 @@ package com.home.henry.string_02;
  * 214. Shortest Palindrome
  *
  * 根据一个String, 生成一个最短的Palindrome, 比如abc12321 -> abc12321cba
- * Manachar算法, 时间复杂度为O(n)
+ * Manacher算法, 时间复杂度为O(n)
  * 思路: 求出包含最后一个字母的最长的Palindrome, 然后加上这个Palindrome前面字母的倒序
  */
 public class CreateShortestPalindromic_025 {

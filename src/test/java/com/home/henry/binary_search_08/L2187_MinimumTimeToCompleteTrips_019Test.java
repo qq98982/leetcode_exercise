@@ -19,5 +19,7 @@ class L2187_MinimumTimeToCompleteTrips_019Test {
         assertEquals(3L, l2187MinimumTimeToCompleteTrips019UnderTest.minimumTime(new int[] { 1, 2, 3 }, 5));
         assertEquals(2L, l2187MinimumTimeToCompleteTrips019UnderTest.minimumTime(new int[] { 2 }, 1));
         assertEquals(25L, l2187MinimumTimeToCompleteTrips019UnderTest.minimumTime(new int[] { 5, 10, 10 }, 9));
+        assertEquals(100000000000000L,
+                     l2187MinimumTimeToCompleteTrips019UnderTest.minimumTime(new int[] { 10000000 }, 10000000));
     }
 }

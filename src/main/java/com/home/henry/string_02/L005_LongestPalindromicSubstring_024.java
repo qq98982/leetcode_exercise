@@ -15,22 +15,29 @@ public class L005_LongestPalindromicSubstring_024 {
         // change s to an array with '#'s
         char[] ch = preHandle(s);
         int[] p = new int[ch.length];
+        // C是中心点, R是右边界
         int C = -1, R = -1, start = 0, max = Integer.MIN_VALUE;
         for (int i = 0; i < ch.length; i++) {
+            // 如果是右边界大于当前的i了,那么p[i]要在扩充和R - i中选一个较小的, 否则不能扩, 值是1
+            // 2C - i 和 R - i 较小的是因为后面如果到了末尾, 如果还用p中的数据就是错误的
             p[i] = R > i ? Math.min(p[2 * C - i], R - i) : 1;
             while (i - p[i] > -1 && i + p[i] < ch.length) {
+                // 如果对称的, 则可以更新p
                 if (ch[i - p[i]] == ch[i + p[i]]) {
                     p[i]++;
                 } else {
                     break;
                 }
             }
+            // 右边界选小的
             if (i + p[i] > R) {
                 R = i + p[i];
                 C = i;
             }
+            // 更新最大的点, 对应算出start
             if (p[i] > max) {
                 max = p[i];
+                // start = 2 * C - i; 这个也是对的
                 start = i;
             }
         }
@@ -45,7 +52,7 @@ public class L005_LongestPalindromicSubstring_024 {
         char[] c = s.toCharArray();
         char[] res = new char[c.length * 2 + 1];
         int index = 0;
-        for (int i = 0; i != res.length; i++) {
+        for (int i = 0; i < res.length; i++) {
             res[i] = (i % 2) == 0 ? '#' : c[index++];
         }
         return res;

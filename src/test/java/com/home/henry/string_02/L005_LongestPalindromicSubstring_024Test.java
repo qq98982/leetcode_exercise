@@ -19,6 +19,9 @@ class L005_LongestPalindromicSubstring_024Test {
         assertEquals("s", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("s"));
         assertEquals("bab", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("babad"));
         assertEquals("bb", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("cbbd"));
+        assertEquals("aaaa", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("abaaaa"));
+        assertEquals("a", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("abcda"));
+        assertEquals("1234567887654321", l005LongestPalindromicSubstring024UnderTest.longestPalindrome("HYTBCABADEFGHABCDEDCBAGHTFYW1234567887654321ZWETYGDE"));
     }
 
     @Test
@@ -26,6 +29,9 @@ class L005_LongestPalindromicSubstring_024Test {
         assertEquals("s", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("s"));
         assertEquals("bab", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("babad"));
         assertEquals("bb", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("cbbd"));
+        assertEquals("aaaa", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("abaaaa"));
+        assertEquals("a", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("abcda"));
+        assertEquals("1234567887654321", l005LongestPalindromicSubstring024UnderTest.longestPalindrome2("HYTBCABADEFGHABCDEDCBAGHTFYW1234567887654321ZWETYGDE"));
     }
 
 }
