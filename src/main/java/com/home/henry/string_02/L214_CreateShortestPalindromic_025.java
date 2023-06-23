@@ -7,7 +7,7 @@ package com.home.henry.string_02;
  * Manacher算法, 时间复杂度为O(n)
  * 思路: 求出包含最后一个字母的最长的Palindrome, 然后加上这个Palindrome前面字母的倒序
  */
-public class CreateShortestPalindromic_025 {
+public class L214_CreateShortestPalindromic_025 {
 
     public static String createShortestPalindrome(String s) {
         char[] ch = new char[s.length() * 2 + 1];
