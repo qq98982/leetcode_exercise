@@ -13,6 +13,7 @@ class L014_LongestCommonPrefix_002Test {
         assertEquals("a", L014_LongestCommonPrefix_002.longestCommonPrefix(new String[] { "ab", "a" }));
         assertEquals("", L014_LongestCommonPrefix_002.longestCommonPrefix(new String[] { "dog","racecar","car" }));
         assertEquals("fl", L014_LongestCommonPrefix_002.longestCommonPrefix(new String[] { "flower","flow","flight" }));
+        assertEquals("a", L014_LongestCommonPrefix_002.longestCommonPrefix(new String[] { "abca","aba","aaab" }));
     }
 
     @Test

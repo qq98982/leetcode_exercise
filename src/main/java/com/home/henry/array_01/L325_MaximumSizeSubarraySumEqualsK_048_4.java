@@ -13,7 +13,6 @@ import java.util.Map;
  * return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)
  */
 public class L325_MaximumSizeSubarraySumEqualsK_048_4 {
-    static class Solution {
         public int maxSubArrayEqualsK(int[] nums, int k) {
             if (nums == null || nums.length == 0) {return 0;}
             int sum = 0;
@@ -29,5 +28,4 @@ public class L325_MaximumSizeSubarraySumEqualsK_048_4 {
             }
             return res == Integer.MIN_VALUE ? 0 : res;
         }
-    }
 }
