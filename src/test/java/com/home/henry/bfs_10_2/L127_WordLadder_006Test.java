@@ -2,6 +2,7 @@ package com.home.henry.bfs_10_2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,13 +19,13 @@ class L127_WordLadder_006Test {
 
     @Test
     void testLadderLength() {
-        assertEquals(5, l127WordLadder006UnderTest.ladderLength("hit", "cog", List.of("hot","dot","dog","lot","log","cog")));
-        assertEquals(0, l127WordLadder006UnderTest.ladderLength("hit", "cog", List.of("hot","dot","dog","lot","log")));
+        assertEquals(5, l127WordLadder006UnderTest.ladderLength("hit", "cog", Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
+        assertEquals(0, l127WordLadder006UnderTest.ladderLength("hit", "cog", Arrays.asList("hot","dot","dog","lot","log")));
     }
 
     @Test
     void testLadderLength2() {
-        assertEquals(5, l127WordLadder006UnderTest.ladderLength2("hit", "cog", List.of("hot","dot","dog","lot","log","cog")));
-        assertEquals(0, l127WordLadder006UnderTest.ladderLength2("hit", "cog", List.of("hot","dot","dog","lot","log")));
+        assertEquals(5, l127WordLadder006UnderTest.ladderLength2("hit", "cog", Arrays.asList("hot","dot","dog","lot","log","cog")));
+        assertEquals(0, l127WordLadder006UnderTest.ladderLength2("hit", "cog", Arrays.asList("hot","dot","dog","lot","log")));
     }
 }

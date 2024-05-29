@@ -9,9 +9,6 @@ class L509_FibonacciNumber_039Test {
 
     @Test
     void testFib() {
-        for (int i = 1; i < 20; i++) {
-            System.out.println(fib(i) - 1);
-        }
         Assertions.assertEquals(0, fib(0));
         Assertions.assertEquals(1, fib(1));
         Assertions.assertEquals(1, fib(2));

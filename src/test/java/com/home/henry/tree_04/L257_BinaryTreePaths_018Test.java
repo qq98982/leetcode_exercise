@@ -2,6 +2,7 @@ package com.home.henry.tree_04;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,12 +21,12 @@ class L257_BinaryTreePaths_018Test {
 
     @Test
     void testBinaryTreePaths() {
-        final List<String> aList = List.of("1->3", "1->2->5");
+        final List<String> aList = Arrays.asList("1->3", "1->2->5");
         final List<String> bList = l257BinaryTreePaths018UnderTest.binaryTreePaths(
                 TreeTools.strTreeNodes("1,2,3,null,5"));
         assertEquals(aList.size(), bList.size());
         assertEquals(aList.containsAll(bList), bList.containsAll(aList));
-        assertEquals(List.of("1"),
+        assertEquals(Arrays.asList("1"),
                      l257BinaryTreePaths018UnderTest.binaryTreePaths(TreeTools.strTreeNodes("1")));
     }
 }

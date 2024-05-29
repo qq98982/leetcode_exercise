@@ -3,6 +3,7 @@ package com.home.henry.tree_04;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -25,14 +26,14 @@ class L144_BinaryTreePreorderTraversal_001Test {
         final List<Integer> result =
                 treePreorderTraversal.preorderTraversalIterativeSimple(root);
 
-        assertEquals(List.of(1, 2, 3), result);
+        assertEquals(Arrays.asList(1, 2, 3), result);
         assertTrue(
                 treePreorderTraversal.preorderTraversalIterativeSimple(
                         TreeTools.strTreeNodes("")).isEmpty());
-        assertEquals(List.of(1),
+        assertEquals(Arrays.asList(1),
                      treePreorderTraversal.preorderTraversalIterativeSimple(
                              TreeTools.strTreeNodes("1")));
-        assertEquals(List.of(1, 2, 4, 5, 3),
+        assertEquals(Arrays.asList(1, 2, 4, 5, 3),
                      treePreorderTraversal.preorderTraversalIterativeSimple(
                              TreeTools.strTreeNodes("1 2 3 4 5")));
     }
@@ -44,14 +45,14 @@ class L144_BinaryTreePreorderTraversal_001Test {
         final List<Integer> result =
                 treePreorderTraversal.preorderTraversal(root);
 
-        assertEquals(List.of(1, 2, 3), result);
+        assertEquals(Arrays.asList(1, 2, 3), result);
         assertTrue(
                 treePreorderTraversal.preorderTraversal(
                         TreeTools.strTreeNodes("")).isEmpty());
-        assertEquals(List.of(1),
+        assertEquals(Arrays.asList(1),
                      treePreorderTraversal.preorderTraversal(
                              TreeTools.strTreeNodes("1")));
-        assertEquals(List.of(1, 2, 4, 5, 3),
+        assertEquals(Arrays.asList(1, 2, 4, 5, 3),
                      treePreorderTraversal.preorderTraversal(
                              TreeTools.strTreeNodes("1 2 3 4 5")));
     }

@@ -2,6 +2,7 @@ package com.home.henry.tree_04;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,17 +21,17 @@ class L107_BinaryTreeLevelOrderTraversalII_007Test {
 
     @Test
     void testLevelOrderBottom() {
-        assertEquals(List.of(List.of(15,7),List.of(9,20),List.of(3)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottom(
+        assertEquals(Arrays.asList(Arrays.asList(15, 7), Arrays.asList(9, 20), Arrays.asList(3)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottom(
                 TreeTools.strTreeNodes("3,9,20,null,null,15,7")));
-        assertEquals(List.of(List.of(4,5),List.of(2,3),List.of(1)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottom(
+        assertEquals(Arrays.asList(Arrays.asList(4,5),Arrays.asList(2,3),Arrays.asList(1)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottom(
                 TreeTools.strTreeNodes("1,2,3,4,5")));
     }
 
     @Test
     void testLevelOrderBottomBFS() {
-        assertEquals(List.of(List.of(15,7),List.of(9,20),List.of(3)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottomBFS(
+        assertEquals(Arrays.asList(Arrays.asList(15,7),Arrays.asList(9,20),Arrays.asList(3)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottomBFS(
                 TreeTools.strTreeNodes("3,9,20,null,null,15,7")));
-        assertEquals(List.of(List.of(4,5),List.of(2,3),List.of(1)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottomBFS(
+        assertEquals(Arrays.asList(Arrays.asList(4,5),Arrays.asList(2,3),Arrays.asList(1)), l107BinaryTreeLevelOrderTraversalII007UnderTest.levelOrderBottomBFS(
                 TreeTools.strTreeNodes("1,2,3,4,5")));
     }
 }

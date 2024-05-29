@@ -2,6 +2,7 @@ package com.home.henry.math_03;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,14 +20,14 @@ class L015_ThreeSum_017Test {
 
     @Test
     void testThreeSum() {
-        assertEquals(List.of(List.of(-1,-1,2),List.of(-1,0,1)), l015ThreeSum017UnderTest.threeSum(new int[] { -1,0,1,2,-1,-4 }));
-        assertEquals(List.of(List.of(0,0,0)), l015ThreeSum017UnderTest.threeSum(new int[] { 0,0,0 }));
+        assertEquals(Arrays.asList(Arrays.asList(-1, -1, 2), Arrays.asList(-1, 0, 1)), l015ThreeSum017UnderTest.threeSum(new int[] { -1, 0, 1, 2, -1, -4 }));
+        assertEquals(Arrays.asList(Arrays.asList(0,0,0)), l015ThreeSum017UnderTest.threeSum(new int[] { 0,0,0 }));
         assertEquals(Collections.emptyList(), l015ThreeSum017UnderTest.threeSum(new int[] { 0,1,1 }));
     }
     @Test
     void testThreeSumSet() {
-        assertEquals(List.of(List.of(-1,-1,2),List.of(-1,0,1)), l015ThreeSum017UnderTest.threeSumSet(new int[] { -1,0,1,2,-1,-4 }));
-        assertEquals(List.of(List.of(0,0,0)), l015ThreeSum017UnderTest.threeSumSet(new int[] { 0,0,0 }));
+        assertEquals(Arrays.asList(Arrays.asList(-1,-1,2),Arrays.asList(-1,0,1)), l015ThreeSum017UnderTest.threeSumSet(new int[] { -1,0,1,2,-1,-4 }));
+        assertEquals(Arrays.asList(Arrays.asList(0,0,0)), l015ThreeSum017UnderTest.threeSumSet(new int[] { 0,0,0 }));
         assertEquals(Collections.emptyList(), l015ThreeSum017UnderTest.threeSumSet(new int[] { 0,1,1 }));
     }
 

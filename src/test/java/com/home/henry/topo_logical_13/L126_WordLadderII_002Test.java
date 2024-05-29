@@ -2,6 +2,8 @@ package com.home.henry.topo_logical_13;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,9 +20,15 @@ class L126_WordLadderII_002Test {
 
     @Test
     void testFindLadders() {
+        final List<String> list1 = new ArrayList<>();
+        list1.addAll(Arrays.asList("hit", "hot", "lot", "log", "cog"));
+        final List<String> list2 = new ArrayList<>();
+        list2.addAll(Arrays.asList("hit", "hot", "dot", "dog", "cog"));
+        final List<String> list3 = new ArrayList<>();
+        list3.addAll(Arrays.asList("hot", "dot", "dog", "lot", "log", "cog"));
         assertEquals(
-                List.of(List.of("hit", "hot", "lot", "log", "cog"), List.of("hit", "hot", "dot", "dog", "cog")),
+                Arrays.asList(list2, list1),
                 l126WordLadderII002UnderTest.findLadders("hit", "cog",
-                                                         List.of("hot", "dot", "dog", "lot", "log", "cog")));
+                                                         list3));
     }
 }
